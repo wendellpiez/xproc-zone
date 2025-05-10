@@ -1,0 +1,107 @@
+/*  CSS for the XProc Zone */
+body.night {
+  --main-bg: #1A1B3A; /* Deep indigo blue for the main background, calm and meditative */
+  --secondary-bg: #292A52; /* Slightly lighter blue-purple for secondary elements, adding depth */
+  --contrast-bg: #5B4F99; /* Rich, muted lavender for contrast background, dreamy and soothing */
+
+  --main-face: #D8D8F6; /* Soft, pale lavender for main text, ensuring readability on the dark background */
+  --contrast-face: #FFFFFF; /* Bright white for text on the contrast background, for maximum readability */
+
+  --link-face: #7F99FF; /* Soft, dreamy blue for links, subtle yet distinct */
+  --contrast-link-face: #A3B4FF; /* Lighter, glowing blue for links on the contrast background */
+
+  --highlight-color: #CABEFF; /* Gentle pastel purple for highlights, meditative and dreamy */
+  --border-color: #423B66; /* Muted purple for borders, blending calmly with the overall theme */
+}
+
+body.day {
+  --main-bg: #FAF3E0; /* Soft cream background, light and inviting */
+  --secondary-bg: #F5E3B3; /* Pale straw yellow for secondary elements, warm but subtle */
+  --contrast-bg: #EED194; /* Muted golden yellow for contrast areas, vibrant yet balanced */
+
+  --main-face: #4A3B2D; /* Deep brown for text, offering strong readability and contrast */
+  --contrast-face: #3B2A1A; /* Rich dark brown for text on the contrast background, grounding and elegant */
+
+  --link-face: #C38E15; /* Warm goldenrod for links, vibrant and attention-grabbing */
+  --contrast-link-face: #9D3B27; /* Deep brick red for links on contrast background, ensuring excellent readability */
+
+  --highlight-color: #F4B393; /* Warm peachy red for highlights, adding a soft and subtle red touch */
+  --border-color: #D7A97B; /* Tan with a hint of red for borders, harmonizing with the overall palette */
+}
+
+body.dawn {
+  --main-bg: #F2F8E8; /* Soft, pale green for the main background, evoking early morning light */
+  --secondary-bg: #FFF2DE; /* Peachy cream for secondary elements to add warmth */
+  --contrast-bg: #245678; /* Deep, calm blue reminiscent of the early morning sky */
+
+  --main-face: #3A3024; /* Warm dark brown for text, complementing the soft green background */
+  --contrast-face: #EAF4FC; /* Soft sky blue for text on the dark contrast background */
+
+  --link-face: #FF7E5F; /* Warm coral for links, evoking the glow of dawn */
+  --contrast-link-face: #F6B26B; /* Soft golden orange for links on the dark background */
+
+  --highlight-color: #FFAA33; /* Warm and cheerful light gold for highlights */
+  --border-color: #6AAE75; /* Fresh, uplifting green for borders, tying into the soft green background */
+}
+
+body.dusk {
+  --main-bg: #1B263B; /* Deep cool navy blue for the main background, evoking a serene evening sky */
+  --secondary-bg: #27496D; /* Muted teal for secondary elements, adding depth and a sense of coolness */
+  --contrast-bg: #3F88C5; /* A soft sky blue for contrast areas, reminiscent of twilight fading light */
+
+  --main-face: #D6E6F2; /* Pale, soft blue for text, ensuring readability on dark backgrounds */
+  --contrast-face: #F8F5F2 /* A soft, pale cream */
+
+  --link-face: #6FFFE9; /* Bright turquoise for links, evoking the shimmer of fireflies */
+  --contrast-link-face: #A1FFCE; /* Soft mint green for links on the contrast background, dreamy and ethereal */
+
+  --highlight-color: #7EF9FF; /* Gentle cyan for highlights, cool and refreshing */
+  --border-color: #3D5A80; /* Muted slate blue for borders, tying the theme together subtly */
+}
+
+body { background-color: var(--main-bg);  /* a very dark purple */
+       color: var(--main-face);
+       font-family: sans-serif;
+       font-family: "Noto Sans", sans-serif;
+       line-height: 1.8;
+}   
+
+#bannerbar { margin: 0rem; padding: 0rem }
+
+a {
+  color: var(--link-face); /* Sets the link color */
+  text-decoration: none; /* Removes underline for a clean look */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#themepick { display: block }
+#themepick p { display: inline-block; background-color: var(--secondary-bg);
+  margin: 0rem; padding: 0.2em; border: thin dotted var(--border-color) }
+
+#sitenav { background-color: var(--secondary-bg); float: right; clear: both; font-size: smaller;
+  padding: 0.3rem; color: var(--link-face); border: medium solid var(--border-color) }
+#sitenav a:hover { color: var(--highlight-color) }
+
+
+summary { font-style: italic }
+details { padding: 0.4em }
+
+.block { background-color: var(--secondary-bg); border: medium solid var(--border-color);
+         max-width: 54em }
+
+.panel { margin: 1rem; max-width: 42em;
+  background-color: var(--contrast-bg); color: var(--contrast-face); border: medium solid var(--border-color) }
+
+
+.block, .panel {  margin-left: 2rem; margin-right: 2rem; padding: 0.6rem }
+
+.panel > *:first-child,
+.block > *:first-child { margin-top: 0em }
+
+.panel a { color: var(--contrast-link-face) }
+
+h1, h2, h3, h4, h5, h6 { font-family: "Noto Serif", serif; font-weight: 400 }
+
