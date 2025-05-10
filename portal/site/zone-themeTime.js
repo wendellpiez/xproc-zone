@@ -13,10 +13,10 @@ function getPeriodForHour(hour) {
 function setTheme() {
   let params = new URLSearchParams(document.location.search);
   let given = params.get('by');
-  // if no given, set theme for now using nullish coalescing operator '??'
-  theme = given ?? getPeriodForHour( new Date().getHours() );
+  // if no given, or given = 'now', set theme for now using nullish coalescing operator '??'
+  theme = (given === 'now' ? null : given) ?? getPeriodForHour( new Date().getHours() );
   document.getElementById('page').className = theme;
-  rewriteInternalLinks(theme);
+  rewriteInternalLinks(given ?? theme);
 }
 
 // Rewriting links marked as 'internal' to retain theme of the moment

@@ -1,4 +1,20 @@
 /*  CSS for the XProc Zone */
+
+:root {
+  --main-bg: white;
+  --secondary-bg: gainsboro;
+  --contrast-bg: #3D3D3D;
+
+  --main-face: black;
+  --contrast-face: white;
+
+  --link-face: blue;
+  --contrast-link-face: skyblue;
+
+  --highlight-color: grey;
+  --border-color: black;  
+}
+
 body.night {
   --main-bg: #1A1B3A; /* Deep indigo blue for the main background, calm and meditative */
   --secondary-bg: #292A52; /* Slightly lighter blue-purple for secondary elements, adding depth */
@@ -50,7 +66,7 @@ body.dusk {
   --contrast-bg: #3F88C5; /* A soft sky blue for contrast areas, reminiscent of twilight fading light */
 
   --main-face: #D6E6F2; /* Pale, soft blue for text, ensuring readability on dark backgrounds */
-  --contrast-face: #F8F5F2 /* A soft, pale cream */
+  --contrast-face: #F8F5F2; /* A soft, pale cream */
 
   --link-face: #6FFFE9; /* Bright turquoise for links, evoking the shimmer of fireflies */
   --contrast-link-face: #A1FFCE; /* Soft mint green for links on the contrast background, dreamy and ethereal */
@@ -79,7 +95,7 @@ a:hover {
 
 #themepick { display: block }
 #themepick p { display: inline-block; background-color: var(--secondary-bg);
-  margin: 0rem; padding: 0.2em; border: thin dotted var(--border-color) }
+  margin: 0rem; padding: 0.2em; border: thin solid var(--border-color) }
 
 #sitenav { background-color: var(--secondary-bg); float: right; clear: both; font-size: smaller;
   padding: 0.3rem; color: var(--link-face); border: medium solid var(--border-color) }

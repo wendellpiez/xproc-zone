@@ -37,7 +37,7 @@
                 <p><a href="?by=day">day</a></p>
                 <p><a href="?by=dusk">dusk</a></p>
                 <p><a href="?by=night">night</a></p>
-                <p><a href="?">now</a></p>
+                <p><a href="?by=now">now</a></p>
             </div>
             </div>
         </p:with-input>
