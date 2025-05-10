@@ -1,0 +1,77 @@
+# Punchlist
+
+Reduce this punchlist to zero and delete it
+
+morgana-iiise.sh
+xmlcalabash3.sh
+
+xz.sh
+xz.bat
+xz.ps1
+
+setup
+portal - HTML and CSS sources for /pub
+  PIs for transclusion / injection (or: XInclude? see https://www.w3.org/TR/xinclude/#fragment-example
+)
+pub - becomes web site?
+projects
+  usarmy_FM_6-22
+  XProcDoc
+project-template
+
+Port and test Morgana installation scripts/readme
+
+XSLT       |
+Schematron | with smoke tests
+XSpec      |
+
+Set up 'house rules' Schematron over XProc
+  xproc-zone/ns namespace
+
+Set up GHA
+  morgana-setup.sh
+  execute smoketest
+  execute cicd-build.xpl
+
+HTML+SVG
+responsive design! Zone on a phone
+
+page population - contents copied in from feeds/REST calls?
+Architecture diagrams - an XProc-based pub system
+
+what are Google's minimal guidelines for web sites?
+
+dispatch to local (project) pipeline subroutines
+
+XProcDoc - indexes and links
+  demo of how to apply this to your own XProc library --? 
+XProc workbooks - rough and ready code to copy
+US Army FM 6-22 (coming)
+EVE Anthology - garland of poesies
+  Hypomnemata - works in progress
+  "File in Inbox" button creates a GH PR?
+  Sonneteer Redux - sonnets and others
+    diagrams
+    timed readers / Poetry Teller
+  Aesop
+  Lucian
+  Wordsworth
+  can pipe .eve, .todo in place
+Annotated XProc
+declare-step/@name 'main'?
+XProc graphs / boxes / HTML
+  
+Publishing model - writeup
+  publishing into pub
+  multiple pipelines decoupled, producing content
+  
+Luminescent / Laminator
+  A Zone project
+
+Zone Portal
+
+Criteria for selection
+  NOT archiving for the sake of archiving (we can do that somewhere else)
+  rather: does it extend the zone? 'curiosity quotient'? might we wish to use it for its own sake, and not just for the tech?
+  is putting it in the Zone as easy as (say) in PellucidLiterature?
+    (the Zone has GHA ...)

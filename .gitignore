@@ -1,0 +1,23 @@
+# IDE project file
+*.xpr
+
+# Local working files
+working/
+scratch/
+
+# contents of lib
+lib/*
+# except for important items
+!lib/readme.md
+!lib/GRAB-SAXON.xpl
+!lib/GRAB-SCHXSLT.xpl
+!lib/GRAB-XPROC.xpl
+!lib/morgana-config.xml
+
+# XSpec test results
+
+*-result.html
+*_report.html
+**/xspec/*-result.html
+**/*xspec*-result.html
+*junit-report.xml
