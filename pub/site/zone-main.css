@@ -1,21 +1,44 @@
 /*  CSS for the XProc Zone */
 
+html {
+  box-sizing: border-box;
+}
+
+/* *Somewhat* responsive text sizing for denser screens */
+@media (min-width: 64rem) {
+  html { font-size: 140%; /* Scale font size up */ }
+}
+
+@media (min-width: 96rem ) {
+  html { font-size: 180%; /* Scale font size further up */ }
+}
+
+/* Make images and media responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* */
+
 :root {
-  --main-bg: white;
-  --secondary-bg: gainsboro;
-  --contrast-bg: #3D3D3D;
+  --main-bg: whitesmoke;
+  --secondary-bg: white;
+  --contrast-bg: white;
 
   --main-face: black;
-  --contrast-face: white;
+  --contrast-face: black;
 
   --link-face: blue;
-  --contrast-link-face: skyblue;
+  --contrast-link-face: blue;
 
-  --highlight-color: grey;
+  --highlight-color: green;
   --border-color: black;  
 }
 
+/* Comments were provided by Github Copilot - apologies - */
 body.night {
+
   --main-bg: #1A1B3A; /* Deep indigo blue for the main background, calm and meditative */
   --secondary-bg: #292A52; /* Slightly lighter blue-purple for secondary elements, adding depth */
   --contrast-bg: #5B4F99; /* Rich, muted lavender for contrast background, dreamy and soothing */
@@ -27,22 +50,22 @@ body.night {
   --contrast-link-face: #A3B4FF; /* Lighter, glowing blue for links on the contrast background */
 
   --highlight-color: #CABEFF; /* Gentle pastel purple for highlights, meditative and dreamy */
-  --border-color: #423B66; /* Muted purple for borders, blending calmly with the overall theme */
+  --border-color: #00FFFF; /* Soft neon cyan, glowing and restful for the night theme */
 }
 
 body.day {
   --main-bg: #FAF3E0; /* Soft cream background, light and inviting */
   --secondary-bg: #F5E3B3; /* Pale straw yellow for secondary elements, warm but subtle */
-  --contrast-bg: #EED194; /* Muted golden yellow for contrast areas, vibrant yet balanced */
+  --contrast-bg: #407F55; /* Darker green for contrast background */
 
   --main-face: #4A3B2D; /* Deep brown for text, offering strong readability and contrast */
-  --contrast-face: #3B2A1A; /* Rich dark brown for text on the contrast background, grounding and elegant */
+  --contrast-face: #E0F7FA; /* Very light blue, legible against the green */
+  
+  --link-face: #004C99; /* Deep blue for links, ensuring strong contrast with all backgrounds */
+  --contrast-link-face: #FFD966; /* Warm and cheerful golden yellow, distinct from the light green contrast face */
 
-  --link-face: #C38E15; /* Warm goldenrod for links, vibrant and attention-grabbing */
-  --contrast-link-face: #9D3B27; /* Deep brick red for links on contrast background, ensuring excellent readability */
-
-  --highlight-color: #F4B393; /* Warm peachy red for highlights, adding a soft and subtle red touch */
-  --border-color: #D7A97B; /* Tan with a hint of red for borders, harmonizing with the overall palette */
+  --highlight-color: #FF5733; /* High contrast bright orange-red for highlights */
+  --border-color: #6CAF78; /* Cheerful and fresh medium green for daytime */
 }
 
 body.dawn {
@@ -72,21 +95,21 @@ body.dusk {
   --contrast-link-face: #A1FFCE; /* Soft mint green for links on the contrast background, dreamy and ethereal */
 
   --highlight-color: #7EF9FF; /* Gentle cyan for highlights, cool and refreshing */
-  --border-color: #3D5A80; /* Muted slate blue for borders, tying the theme together subtly */
+  --border-color: #D4A373; /* Muted golden-bronze, warm and elegant for an evening feel */
 }
 
-body { background-color: var(--main-bg);  /* a very dark purple */
+body { background-color: var(--main-bg);
        color: var(--main-face);
        font-family: sans-serif;
        font-family: "Noto Sans", sans-serif;
-       line-height: 1.8;
+       line-height: 1.6;
 }   
 
 #bannerbar { margin: 0rem; padding: 0rem }
 
 a {
   color: var(--link-face); /* Sets the link color */
-  text-decoration: none; /* Removes underline for a clean look */
+  text-decoration: none; 
 }
 
 a:hover {
@@ -97,10 +120,34 @@ a:hover {
 #themepick p { display: inline-block; background-color: var(--secondary-bg);
   margin: 0rem; padding: 0.2em; border: thin solid var(--border-color) }
 
+body.dawn  #themepick p.set.dawn,
+body.day   #themepick p.set.day,
+body.dusk  #themepick p.set.dusk,
+body.night #themepick p.set.night,
+body.none  #themepick p.set.none  { border-style: dotted; background-color: var(--main-bg) }
+
 #sitenav { background-color: var(--secondary-bg); float: right; clear: both; font-size: smaller;
-  padding: 0.3rem; color: var(--link-face); border: medium solid var(--border-color) }
+  padding: 0.3rem; color: var(--link-face); border: thin solid var(--border-color) }
 #sitenav a:hover { color: var(--highlight-color) }
 
+header { margin: 1em 0em }
+
+header > * { margin: 0em }
+header > p { font-size: 140%; font-style: italic; font-weight: 600 }
+
+footer { font-size: smaller }
+
+.in-a-row {
+  display: flex;
+  width: 100%; }
+
+.in-a-row > *  { flex: 1; /* Each panel takes up equal space */ }
+
+.in-a-row > * { text-align: center; }
+
+.in-a-row > *:first-child { text-align: left; /* Align text to the left */ }
+
+.in-a-row > *:last-child { text-align: right; /* Align text to the right */ }
 
 summary { font-style: italic }
 details { padding: 0.4em }
@@ -111,13 +158,14 @@ details { padding: 0.4em }
 .panel { margin: 1rem; max-width: 42em;
   background-color: var(--contrast-bg); color: var(--contrast-face); border: medium solid var(--border-color) }
 
-
 .block, .panel {  margin-left: 2rem; margin-right: 2rem; padding: 0.6rem }
 
 .panel > *:first-child,
 .block > *:first-child { margin-top: 0em }
 
 .panel a { color: var(--contrast-link-face) }
+
+hr { border: thin solid var(--border-color); }
 
 h1, h2, h3, h4, h5, h6 { font-family: "Noto Serif", serif; font-weight: 400 }
 

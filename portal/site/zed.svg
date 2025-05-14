@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+    viewBox="0 0 100 100">
+    
+    <!--<rect width="100%" height="100%" fill="black"/>-->
+    
+    <g fill="none" stroke="black" stroke-width="4" transform="translate(50 50)" fill-opacity="0.6">
+        <circle cx="0" cy="-1" r="44" stroke="white"/>
+        <circle cx="0" cy="0" r="42" fill="white"/>
+        <circle cx="0" cy="2" r="36" stroke-width="1" fill="white"/>
+        <circle cx="0" cy="4" r="32" stroke-width="1" fill="white"/>
+        <!--<path transform="translate(0 4)" d="M -16 -16 L 16 16 M 16 -16 L -16 16" stroke-width="8"/>-->
+        <text y="8" font-weight="bold" font-size="20"
+            stroke-width="0.2" fill="none" font-family="monospace" text-anchor="middle">XProc</text>
+    </g>
+    
+    <path id="zed" d="M 15 10 h 75 l -35 60 h 40 l -5 20 h -85 l 45 -60 h -40 z"
+        fill="cyan" fill-opacity="0.6"/>
+    <path d="M 15 10 h 75 l -35 60 h 40 l -5 20 h -85 l 45 -60 h -40 z" stroke="blue"
+        stroke-opacity="0.7" stroke-width="4" fill="none"/>
+    
+    
+</svg>

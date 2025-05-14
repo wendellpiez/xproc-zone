@@ -8,7 +8,7 @@
     <p:option name="path-to-root" select="'.'"/>
     
     <p:input port="source">
-        <p:document href="index.xhtml" content-type="application/xml"/>
+        <p:document href="../index.xhtml" content-type="application/xml"/>
     </p:input>
     
     <p:output port="result" serialization="map{ 'indent': true() }"/>
@@ -22,23 +22,38 @@
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
             <link rel="stylesheet"            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" />
+            <link rel="icon" type="image/svg+xml" href="{ $path-to-root }/site/zed.svg"/>
+        </p:with-input>
+    </p:insert>
+    
+    <p:insert position="last-child" match="html/body">
+        <p:with-input port="insertion">
+            <hr class="hr"/>
+            <footer class="in-a-row">
+                <!-- Add your name here! -->
+                <div><b><a href="{ $path-to-root}">XProc Zone</a></b> is a project of Wendell Piez since 2025</div>
+                <div>
+                    <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+                </div>
+            </footer>
         </p:with-input>
     </p:insert>
     
     <p:insert position="first-child" match="html/body">
         <p:with-input port="insertion">
             <div id="bannerbar">
-            <div id="sitenav">
-                <a href="https://github.com/wendellpiez/xproc-zone">XProc Zone Codebase</a>
-            </div>
-            <div id="themepick">
-                <!-- Using the interface defined in zone-themeTime.js -->
-                <p><a href="?by=dawn">dawn</a></p>
-                <p><a href="?by=day">day</a></p>
-                <p><a href="?by=dusk">dusk</a></p>
-                <p><a href="?by=night">night</a></p>
-                <p><a href="?by=now">now</a></p>
-            </div>
+                <div id="sitenav">
+                    <a href="https://github.com/wendellpiez/xproc-zone">XProc Zone Codebase</a>
+                </div>
+                <div id="themepick">
+                    <!-- Using the interface defined in zone-themeTime.js -->
+                    <p class="dawn set" ><a href="?by=dawn" >dawn</a></p>
+                    <p class="day set"  ><a href="?by=day"  >day</a></p>
+                    <p class="dusk set" ><a href="?by=dusk" >dusk</a></p>
+                    <p class="night set"><a href="?by=night">night</a></p>
+                    <p class="set"      ><a href="?by=now"  >now</a></p>
+                    <p class="set none" ><a href="?by=none" >none</a></p>
+                </div>
             </div>
         </p:with-input>
     </p:insert>
@@ -58,11 +73,13 @@
     <!-- Marking internal links to be targeted in href rewrites cf rewriteInternalLinks() in zone-themeTime.js -->
     <p:add-attribute match="a[not(matches(@href,'^https?:'))]"  attribute-name="class" attribute-value="internal"/>
     
-    <!-- But on theme picker anchors! -->
+    <!-- But not on theme picker anchors - so we remove @class -->
     <p:delete match="div[@id='themepick']//a/@class"/>
     
-    <!-- And rewriting them to point to .html for the plain deployment -->
+    <!-- Now we rewrite links to point to .html for the plain deployment -->
     <p:label-elements match="a[@class='internal']" attribute="href" label="replace(@href,'xhtml$','html')"/>
+    
+    <p:delete match="/processing-instruction()"/>
     
     <p:namespace-delete prefixes="c zone"/>
     
