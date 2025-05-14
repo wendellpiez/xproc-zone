@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   query="http://wendellpiez.com/xproc-zone/ns" query-at="shout-function.xqm">
+
+   <!--  Inspired by https://github.com/xspec/xspec/blob/master/tutorial/xquery-tutorial.xspec -->
+
+   <x:scenario label="Calling function capitalize-first">
+      <x:call function="zone:SHOUT">
+         <x:param select="'hello'"/>
+      </x:call>
+      <x:expect label="Appears in UPPER CASE!!!, with GRATUITOUS EXCLAMATION POINTS!!!" select="'HELLO!!!'"/>
+      <x:expect label="Exclaims quite loudly (whatever it says)" test="ends-with($x:result,'!!!')"/>
+   </x:scenario>
+
+</x:description>

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Runs under bash including Git Bash for Windows
+
 # This script attempts to download MorganaXProcIII
 
 # NEEDED - a .bat version of this to run under Windows w/o bash
@@ -18,7 +20,7 @@ pushd lib > /dev/null
 #   - lib/GRAB-SAXON.xpl
 # - change reference string in next line
 
-morgana=MorganaXProc-IIIse-1.4
+morgana=MorganaXProc-IIIse-1.6.4
 
 morgana_download="https://sourceforge.net/projects/morganaxproc-iiise/files/${morgana}/${morgana}.zip/download"
 
