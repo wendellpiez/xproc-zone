@@ -1,23 +1,5 @@
 /*  CSS for the XProc Zone */
 
-html {
-  box-sizing: border-box;
-}
-
-/* *Somewhat* responsive text sizing for denser screens */
-@media (min-width: 64rem) {
-  html { font-size: 140%; /* Scale font size up */ }
-}
-
-@media (min-width: 96rem ) {
-  html { font-size: 180%; /* Scale font size further up */ }
-}
-
-/* Make images and media responsive */
-img, video {
-  max-width: 100%;
-  height: auto;
-}
 
 /* */
 
@@ -155,7 +137,7 @@ details { padding: 0.4em }
 .block { background-color: var(--secondary-bg); border: medium solid var(--border-color);
          max-width: 54em }
 
-.panel { margin: 1rem; max-width: 42em;
+.panel { margin: 1rem; max-width: 54em;
   background-color: var(--contrast-bg); color: var(--contrast-face); border: medium solid var(--border-color) }
 
 .block, .panel {  margin-left: 2rem; margin-right: 2rem; padding: 0.6rem }
@@ -164,6 +146,8 @@ details { padding: 0.4em }
 .block > *:first-child { margin-top: 0em }
 
 .panel a { color: var(--contrast-link-face) }
+
+.nowrap { white-space: nowrap }
 
 hr { border: thin solid var(--border-color); }
 

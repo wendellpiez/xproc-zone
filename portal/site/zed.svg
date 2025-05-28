@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-    viewBox="0 0 100 100">
+    viewBox="0 0 100 100" xmlns:xlink="http://www.w3.org/1999/xlink">
     
-    <!--<rect width="100%" height="100%" fill="black"/>-->
+    <defs>
+        <g id="zed">
+            <path id="z" d="M -40 -40 h 70 l -45 60 h 40 l -5 20 h -75 l 45 -60 h -35 z"/>
+            <!--<path id="sd" d="M -55 -40 l -20 80 l -10 -40 z"/> 
+            <path id="ed" d="M 55 40 l 30 -40 l -10 -40 z" />
+            <path id="solidus" d="M 25 40 l 20 -80 h 15 l -20 80 z" />-->            
+        </g>
+    </defs>
+       
+    <!--<rect width="100%" height="100" fill="purple"/>-->
     
-    <g fill="none" stroke="black" stroke-width="4" transform="translate(50 50)" fill-opacity="0.6">
-        <circle cx="0" cy="-1" r="44" stroke="white"/>
-        <circle cx="0" cy="0" r="42" fill="white"/>
-        <circle cx="0" cy="2" r="36" stroke-width="1" fill="white"/>
-        <circle cx="0" cy="4" r="32" stroke-width="1" fill="white"/>
-        <!--<path transform="translate(0 4)" d="M -16 -16 L 16 16 M 16 -16 L -16 16" stroke-width="8"/>-->
-        <text y="8" font-weight="bold" font-size="20"
-            stroke-width="0.2" fill="none" font-family="monospace" text-anchor="middle">XProc</text>
+    <g transform="translate(50 50) scale(1) rotate(0)">
+        <g fill="#534582" stroke-width="2" fill-opacity="0.5" stroke="cyan"
+            transform="scale(1)">
+            <circle cx="0" cy="0" r="48"/>
+            <circle cx="2" cy="0" r="40"/>
+            <circle cx="4" cy="0" r="32" fill-opacity="1"/>
+        </g>
+        <!--<path d="M -30 -30 L 30 -30 L -30 30 L 30 30" stroke="red" stroke-width="6"
+            stroke-opacity="0.4" fill="none"/>-->
+        <g transform="translate(10 0) scale(1)">
+            <use x="4" y="6" xlink:href="#zed" fill="black" fill-opacity="0.7"
+                stroke="black" stroke-opacity="0.4" stroke-width="3"/>
+            <use xlink:href="#zed" fill="lavender" fill-opacity="1"
+                stroke="midnightblue" stroke-opacity="1" stroke-width="1"/>
+        </g>
     </g>
-    
-    <path id="zed" d="M 15 10 h 75 l -35 60 h 40 l -5 20 h -85 l 45 -60 h -40 z"
-        fill="cyan" fill-opacity="0.6"/>
-    <path d="M 15 10 h 75 l -35 60 h 40 l -5 20 h -85 l 45 -60 h -40 z" stroke="blue"
-        stroke-opacity="0.7" stroke-width="4" fill="none"/>
-    
     
 </svg>

@@ -14,17 +14,18 @@
             <p:document href="index.xhtml" content-type="application/xml"/>
             <p:document href="xproc-pages.xhtml" content-type="application/xml"/>            
             <p:document href="style-guide.xhtml" content-type="application/xml"/>            
+            <p:document href="fm6-22/index.xhtml" content-type="application/xml"/>            
         </p:with-input>
         
         <p:variable name="base" select="p:document-property(.,'base-uri') => p:urify()"/>
-        <p:variable name="sitepath" select="resolve-uri('.')"/>
+        <p:variable name="sitepath" select="resolve-uri('.') => p:urify()"/>
         
         <!--$filepath is the path to the file, relative to the current directory (of this pipeline) -->
         
         <!-- For paths, the expectation is that all sources are inside the 'portal' directory -->
         <p:variable name="filepath" select="substring-after( $base, $sitepath )"/>
-        <!--filedir is '.' plus the relative path to the directory of the file-->
-        <p:variable name="filedir" select="'.' || (tokenize($filepath)[not(position() eq last())] ! ('/' || .))"/>
+        <!--filedir is '.' or the relative path to the directory of the file-->
+        <p:variable name="filedir" select="((tokenize($filepath,'/')[not(position() eq last())] => string-join('/'))[normalize-space(.)],'.')[1]"/>
         <!-- $pagename is the base name of the file, w/o suffix 'xhtml' -->
         <p:variable name="pagename" select="tokenize( $filepath,'/' )[last()] => replace('\.[^\.]+$','')"/>
         <p:variable name="path-to-root" select="'.' || (tokenize($filepath,'/')[not(position() eq 1)] ! '/..' )"/>

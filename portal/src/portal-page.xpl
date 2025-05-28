@@ -31,7 +31,7 @@
             <hr class="hr"/>
             <footer class="in-a-row">
                 <!-- Add your name here! -->
-                <div><b><a href="{ $path-to-root}">XProc Zone</a></b> is a project of Wendell Piez since 2025</div>
+                <div><b><a href="{ $path-to-root}">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
                 <div>
                     <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
                 </div>
@@ -58,7 +58,7 @@
         </p:with-input>
     </p:insert>
     
-    <p:if test="not( $pagename='index' )">
+    <p:if test="not( $pagename='index' and $path-to-root='.' )">
         <p:insert position="after" match="html/body/div/div[@id='sitenav']/a[1]">
             <p:with-input port="insertion">
                 <p:inline> | <a href="{ $path-to-root }/index.html">Home</a></p:inline>
@@ -71,7 +71,7 @@
     <p:add-attribute match="html/body" attribute-name="onload" attribute-value="setTheme()"/>
 
     <!-- Marking internal links to be targeted in href rewrites cf rewriteInternalLinks() in zone-themeTime.js -->
-    <p:add-attribute match="a[not(matches(@href,'^https?:'))]"  attribute-name="class" attribute-value="internal"/>
+    <p:add-attribute match="a[not(@class='clean')][not(matches(@href,'^https?:'))]"  attribute-name="class" attribute-value="internal"/>
     
     <!-- But not on theme picker anchors - so we remove @class -->
     <p:delete match="div[@id='themepick']//a/@class"/>
@@ -80,6 +80,8 @@
     <p:label-elements match="a[@class='internal']" attribute="href" label="replace(@href,'xhtml$','html')"/>
     
     <p:delete match="/processing-instruction()"/>
+    
+    <p:string-replace match="text()[normalize-space()]" replace="replace(string(.),'\s+',' ')"/>
     
     <p:namespace-delete prefixes="c zone"/>
     

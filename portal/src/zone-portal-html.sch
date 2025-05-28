@@ -33,15 +33,10 @@
       </sch:rule>
       <sch:rule context="html:head/html:title">
          <sch:let name="nominal-title" value="/*/html:body/html:main/$header(.)"/>
-         <sch:let name="retagged-title" value="$nominal-title/string(.) || ' - XProc Zone'"/>
-         <sch:assert sqf:fix="reset-pagetitle amend-pagetitle" test="starts-with(.,$nominal-title)">Page title looks wrong: expecting to start with '<sch:value-of select="$nominal-title"/>'</sch:assert>
+         <sch:let name="retagged-title" value=" 'XProc Zone - ' || $nominal-title/string(.) "/>
+         <sch:let name="exception" value="empty($nominal-title) or (/html:html/@id='index' and (. = 'The XProc Zone'))"/>
+         <sch:assert sqf:fix="reset-pagetitle" test="(. = $retagged-title) or $exception">Page title looks wrong: expecting '<sch:value-of select="$retagged-title"/>'</sch:assert>
          <sqf:fix id="reset-pagetitle">
-            <sqf:description>
-               <sqf:title>Make the title '<sch:value-of select="$nominal-title"/>'</sqf:title>
-            </sqf:description>
-            <sqf:replace target="html:title" node-type="element" select="$nominal-title"/>
-         </sqf:fix> 
-         <sqf:fix id="amend-pagetitle">
             <sqf:description>
                <sqf:title>Make the title '<sch:value-of select="$retagged-title"/>'</sqf:title>
             </sqf:description>
@@ -60,6 +55,7 @@
    </sch:pattern>
    
    <sch:pattern>
+      <sch:rule context="html:body/html:main/html:img[@id='logo']"/>
       <sch:rule context="html:li/html:p">
          <sch:report test="true()">p cannot appear inside li - only single-line list items are supported</sch:report>
       </sch:rule>
@@ -68,7 +64,7 @@
          html:section |
          html:p | html:ul | html:ol | html:li | html:pre | html:details | html:summary"/>
       <sch:rule context="html:h1 | html:h2 | html:h3 | html:h4 | html:h5 | html:h6"/>
-      <sch:rule context="html:b | html:i | html:code | html:a | html:q | html:em"/>
+      <sch:rule context="html:b | html:i | html:code | html:a | html:q | html:em | html:span"/>
       <sch:rule context="html:table | html:thead | html:tbody | html:tr | html:th | html:td"/>
       <sch:rule context="html:body/html:img | html:section/html:img | html:div"/>
       <sch:rule context="*">
@@ -78,7 +74,7 @@
    
    <xsl:variable name="header" as="function(*)"  
       select="function($e as element()) as element()?
-              { $e ! (html:h1, html:h2, html:h3, html:h4, html:h5, html:h6)[1] }"/>
+              { $e ! (.|child::html:header)/(html:h1, html:h2, html:h3, html:h4, html:h5, html:h6)[1] }"/>
    
    <sch:pattern id="errant-text">
       <sch:rule context="html:section | html:body">
@@ -106,12 +102,13 @@
    
    <sch:pattern>
       <sch:rule context="html:section">
-         <sch:assert test="exists(parent::html:body|parent::html:section|parent::html:div)"><sch:name/> found out of place</sch:assert>
+         <sch:assert test="exists(parent::html:body|parent::html:main|parent::html:section|parent::html:div)"><sch:name/> found out of place</sch:assert>
       </sch:rule>
       <sch:rule context="html:h1 | html:h2 | html:h3 | html:h4 | html:h5 | html:h6">
+         <sch:let name="exception" value="exists(parent::html:header)"/>
          <sch:let name="deep" value="count(ancestor::html:body | ancestor::html:section | ancestor::html:div)"/>
          <sch:let name="fixup" value="'h' || $deep"/>
-         <sch:assert sqf:fix="retag-header" test="number(replace(local-name(), '\D', '')) = $deep"><sch:name/> found out of place - try
+         <sch:assert sqf:fix="retag-header" test="$exception or ( number(replace(local-name(), '\D', '')) = $deep )"><sch:name/> found out of place - try
                <sch:value-of select="$fixup"/></sch:assert>
          <sch:assert test="empty(parent::* except (parent::html:body|parent::html:main|parent::html:section|parent::html:div|parent::html:header))">Not expecting to see <sch:name/> here</sch:assert>
          
@@ -127,7 +124,12 @@
       
    </sch:pattern>
    
+   <sch:let name="okay-spans" value="'nowrap'"/>
+   
    <sch:pattern>
+      <sch:rule context="html:span">
+         <sch:assert test="@class=$okay-spans">span is not marked with a known class: we recognize <sch:value-of select="string-join($okay-spans,',')"/></sch:assert>
+      </sch:rule>
       <sch:rule context="html:a">        
          <!--<sch:rule context="html:a[matches(@href,'^https?:')] | html:a[matches(@href,'/$')]"/>-->
          <sch:let name="internal" value="not(matches(@href,'^https?:/')) and matches(@href,'\.xhtml$')"/>

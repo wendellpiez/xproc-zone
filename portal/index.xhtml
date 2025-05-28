@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<?xml-model href="src/zone-portal-html.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" id="index">
     <head>
         <title>The XProc Zone</title>
         <link rel="stylesheet" href="site/zone-main.css" />
@@ -8,6 +7,7 @@
     </head>
     <body id="page">
         <main>
+            <img id="logo" src="site/zed.svg" style="float:right; width:10rem"/>
             <header>
                 <h1>The XProc Zone</h1>
                 <p>Dare to Learn</p>
@@ -19,6 +19,34 @@
                     <li>See the <a href="style-guide.xhtml">Style Guide</a></li>
                 </ul>
             </div>
+            <div class="panel">
+                <h2>US Army Field Manual on Leadership Development <span class="nowrap">(FM 6-22) 2022</span></h2>
+                <p>See an <a href="fm6-22/index.xhtml">electronic version of the army field manual
+                        on Leadership Development</a>, converted from an HTML export from PDF, using
+                    XProc and XSLT.</p>
+                <p>This project was ported and adapted from an <a href="https://github.com/usnistgov/oscal-xproc3">earlier effort</a> at NIST, the National
+                    Institute for Standards and Technology. The Zone adds only the <a class="clean" href="fm6-22/FM_6-22-draw_one.html">Draw</a> feature
+                    with some improved styling.</p>
+            </div>
+          <div class="block">
+            <h2>For developers</h2>
+            <p>Software developers working with the XML/XDM stack may find the Zone interesting as a
+                    testbed. The Zone seeks to foreground realistic and intelligible examples that
+                    demonstrate the power of combining the two driving design features of this
+                    technology:</p>
+            <ul>
+              <li>The <em>transparency</em> of declarative encoding as exemplified In XML, XProc and
+            kindred technologies (XSLT, XPath, RNG and others)</li>
+              <li>The <em>determinism</em> of the pipelined, template-based processing model, with
+            its implied <em>demonstrability</em>, <em>repeatability</em> and (by implication)
+            testability, validability and <em>trust</em></li>
+            </ul>
+            <p>Any developers who wish to engage, or sponsors who wish to motivate this effort,
+                are invited to contact the proprietor or reach out through Github
+                    channels.</p>
+                <p>If you wish only to study, borrow and learn: the Zone is for you too.</p>
+          </div>
+          
         </main>
     </body>
 </html>

@@ -50,59 +50,6 @@ The Zone is maintained under `git`, which helps with this problem. We have more 
 Since the biggest risk of automation has always been stepping on one's own feet -- at scale -- remember the corollary to Murphy's Law: *if it won't necessarily work, it won't work*. Make necessity your friend.
 
 ### Running XProc
-
-As a back-end technology, XProc supports many deployment models. As a declarative language it is (in conception) "side-effect free" but that does not make it ineffective. Its capabilities in application are in its interfaces for reading data from and writing to file systems and networked resources using common protocols. This lets us bring information into XProc, and to expose and secure information rendered by XProc, out here (out there?) in the real world. The Zone is here and gone.
-
-In a perfect world, there will be many options for running XProc. Today, professional XProc developers may want to use tools such as [oXygen XML Editor](https://www.oxygenxml.com/) (or [Developer](https://www.oxygenxml.com/xml_developer.html)), an Integrated Development Environment (IDE). Check to see if you already have an XProc 3.0/3.1 engine in your setup.
-
-For learners and those just experimenting and evaluating, free tools are enough.
-
-### Command-line tools
-
-One option available to everyone is to run an available XProc engine from the command line. As it provides a level basis for everyone, everything on this repository is built to work from a command line or shell script, including under CI/CD (continuous integration/development). This offers versatility along with platform independence.
-
-Open source processors that can execute your XProc pipelines using command-line invocations include [Morgana XProc III-se][morgana] and [XML Calabash 3][xmlcalabash3]. The site provides instructions for using Morgana III-se, while on occasion XML Calabash may also be used, as documented.
-
-#### Setting up Morgana XProc III-se for the project
-
-Those without an XProc 3.0 processor can install one easily. See the morgana-setup.md file [tbd].
-
-[Morgana][morgana] is implemented in Scala by Achim Berndzen, on a Java platform. It is lightweight, fast, conformant, and extensible: this installation supports Schematron and XSpec as well as supported standard features including XSLT and XQuery (using Saxon).
-
-Morgana is open source software licensed under the [GNU General Public License (GPL) 3](http://www.gnu.de/documents/gpl-3.1.en.html).
-
-#### Using XML Calabash for the project
-
-Another recommendation is [XML Calabash](xmlcalabash3). For this project, consider it the 'second-line' processor, useful for:
-
-- Confirming standards conformance by replicating functionality
-- Testing, if and as XProc conformance ever becomes a question
-- Some features not supported in Morgana XProc III-se
-
-The intent is that one should fairly expect that pipelines written for one processor, except where documented as such, should work the same way in the other (produce the same results for the same inputs). Where and insofar as this expectation is met, we similarly have some assurance (in principle) of the *survivability* and *viability* of the code base, apart from today's platforms. One can dream.
-
-And the practical impact is that if you are already running XML Calabash, you can continue to do so with pipelines published here, in the zone.
-
-XML Calabash is built in Java by Norm Tovey-Walsh of Saxonica. A rebuild of its XProc 1.0 progenitor, it is full-featured and well tested in the field.
-
-XML Calabash is open source software licensed under XXX.
-
-#### Java platform dependency
-
-Either recommended processor requires Java to run.
-
-Provided runtimes were tested using OpenJDK 17. On Windows, the Microsoft distribution has been unproblematic.
-
-### Running pipelines
-
-#### Smoke test pipelines
-
-tbd
-
-#### Project pipelines
-
-tbd
-
 ## Project maintenance plan
 
 This project works under a passive maintenance plan, and is likely to see punctuated equilibrium - periods of statis, briefly interrupted by periods of growth and change.

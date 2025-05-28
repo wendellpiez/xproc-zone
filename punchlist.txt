@@ -8,9 +8,22 @@ Switch on Github Pages
 US Army FM 6-22
 Mind Training
 XProcDoc
-XSLT Launchpad
-
-
+XProc Kitchen
+  Annotated XProc
+  Tips, tricks and techniques
+  Graphs and renderings
+    visualizations - who needs em?
+     (people who can visualize have their own, people who can't, don't want them)
+    render an XProc into a series of tones?
+      
+XSLT Laboratory
+Untutorial
+  Tips and notes on XProc and XSLT
+Uncommonplace Book
+  EVE anthology
+  Squibs quotes notes and filler / hypomnemata
+    including SVG images?
+    Calligrams
 
 what are Google's minimal guidelines for web sites?
 
@@ -18,8 +31,12 @@ dispatch to local (project) pipeline subroutines
 
 XProcDoc - indexes and links
   demo of how to apply this to your own XProc library --? 
-XProc workbooks - rough and ready code to copy
+XProc Kitchen
+  Tips, posts and workbooks - rough and ready code to copy
+    One page per workbook
+    'Starter sheet' XProc with boilerplate
 US Army FM 6-22 (coming)
+Uncommonplace Book
 EVE Anthology - garland of poesies
   Hypomnemata - works in progress
   "File in Inbox" button creates a GH PR?
