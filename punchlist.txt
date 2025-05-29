@@ -8,15 +8,25 @@ Switch on Github Pages
 US Army FM 6-22
 Mind Training
 XProcDoc
+XProcDoc - indexes and links
+  demo of how to apply this to your own XProc library --? 
 XProc Kitchen
   Annotated XProc
   Tips, tricks and techniques
+    No ports XProc
+    Anonymous functions bound to variables
   Graphs and renderings
-    visualizations - who needs em?
-     (people who can visualize have their own, people who can't, don't want them)
-    render an XProc into a series of tones?
-      
+  Tips, posts and workbooks - rough and ready code to copy
+    One page per workbook
+    'Starter sheet' XProc with boilerplate
+x icons/fishbowl.svg
+Annotated XProc
+  XProc graphs / boxes / HTML
+  visualizations - who needs em?
+  (people who can visualize have their own, people who can't, don't want them)
+    
 XSLT Laboratory
+
 Untutorial
   Tips and notes on XProc and XSLT
 Uncommonplace Book
@@ -24,43 +34,30 @@ Uncommonplace Book
   Squibs quotes notes and filler / hypomnemata
     including SVG images?
     Calligrams
-
-what are Google's minimal guidelines for web sites?
-
-dispatch to local (project) pipeline subroutines
-
-XProcDoc - indexes and links
-  demo of how to apply this to your own XProc library --? 
-XProc Kitchen
-  Tips, posts and workbooks - rough and ready code to copy
-    One page per workbook
-    'Starter sheet' XProc with boilerplate
-US Army FM 6-22 (coming)
-Uncommonplace Book
-EVE Anthology - garland of poesies
   Hypomnemata - works in progress
   "File in Inbox" button creates a GH PR?
   Sonneteer Redux - sonnets and others
     diagrams
     timed readers / Poetry Teller
+
+Editions / translations
   Aesop
   Lucian
-  Wordsworth
-  can pipe .eve, .todo in place
-Annotated XProc
-XProc graphs / boxes / HTML
-  
-Publishing model - writeup
-  publishing into pub
-  multiple pipelines decoupled, producing content
+
   
 Luminescent / Laminator
   A Zone project
 
-Zone Portal
+Mark Studies
 
-Criteria for selection
+what are Google's minimal guidelines for web sites?
+
+Micronesian Navigation?
+
+Zone Portal criteria for selection
   NOT archiving for the sake of archiving (we can do that somewhere else)
-  rather: does it extend the zone? 'curiosity quotient'? might we wish to use it for its own sake, and not just for the tech?
-  is putting it in the Zone as easy as (say) in PellucidLiterature?
-    (the Zone has GHA ...)
+  rather: does it extend the zone?
+    'curiosity quotient'?
+     might we wish to use it for its own sake, and not just for the tech?
+     Is putting it in the Zone as easy as other means of publication?
+    
