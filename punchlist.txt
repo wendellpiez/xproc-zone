@@ -7,9 +7,12 @@ Switch on Github Pages
 
 US Army FM 6-22
 Mind Training
-XProcDoc
-XProcDoc - indexes and links
-  demo of how to apply this to your own XProc library --? 
+XProc Cheat Sheet
+  XprocDoc pipeline
+  add remarks on XML Calabash support
+  Index to XProc steps in the repository
+    Demo of how to apply this to your own XProc library --?
+
 XProc Kitchen
   Annotated XProc
   Tips, tricks and techniques
@@ -24,8 +27,9 @@ Annotated XProc
   XProc graphs / boxes / HTML
   visualizations - who needs em?
   (people who can visualize have their own, people who can't, don't want them)
-    
+
 XSLT Laboratory
+  HaikuML
 
 Untutorial
   Tips and notes on XProc and XSLT

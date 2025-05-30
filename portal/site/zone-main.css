@@ -38,7 +38,7 @@ body.night {
 body.day {
   --main-bg: #FAF3E0; /* Soft cream background, light and inviting */
   --secondary-bg: #F5E3B3; /* Pale straw yellow for secondary elements, warm but subtle */
-  --contrast-bg: #407F55; /* Darker green for contrast background */
+  --contrast-bg: #534582;
 
   --main-face: #4A3B2D; /* Deep brown for text, offering strong readability and contrast */
   --contrast-face: #E0F7FA; /* Very light blue, legible against the green */
@@ -47,7 +47,7 @@ body.day {
   --contrast-link-face: #FFD966; /* Warm and cheerful golden yellow, distinct from the light green contrast face */
 
   --highlight-color: #FF5733; /* High contrast bright orange-red for highlights */
-  --border-color: #6CAF78; /* Cheerful and fresh medium green for daytime */
+  --border-color: #90c3d4
 }
 
 body.dawn {
