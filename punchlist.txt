@@ -2,26 +2,35 @@
 
 Reduce this punchlist to zero and delete it
 
+Are footers on all pages?
 
 Switch on Github Pages
 
-US Army FM 6-22
+x US Army FM 6-22
 Mind Training
 XProc Cheat Sheet
   XprocDoc pipeline
-  add remarks on XML Calabash support
-  Index to XProc steps in the repository
+  x add remarks on XML Calabash support
+  x Index to XProc steps in the repository
     Demo of how to apply this to your own XProc library --?
 
-XProc Kitchen
+XProc Lab
   Annotated XProc
   Tips, tricks and techniques
+    Your scripts were always pipelines
+      Now do it without all the overhead and syntax pain
+      In a language designed for handling structured data, not just texts or blobs
+      With the help of obliging tools configured therefore
+      Opening the boundary between choreography and internal operations
+      And standardized!
     No ports XProc
     Anonymous functions bound to variables
+    Maps - don't be scared!
+    @exclude-inline-prefixes - beware!
+    Casting data types
   Graphs and renderings
   Tips, posts and workbooks - rough and ready code to copy
     One page per workbook
-    'Starter sheet' XProc with boilerplate
 x icons/fishbowl.svg
 Annotated XProc
   XProc graphs / boxes / HTML

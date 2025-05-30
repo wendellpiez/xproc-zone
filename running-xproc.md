@@ -32,11 +32,11 @@ Another recommendation is [XML Calabash](xmlcalabash3). For this project, consid
 
 The intent is that one should fairly expect that pipelines written for one processor, except where documented as such, should work the same way in the other (produce the same results for the same inputs). Where and insofar as this expectation is met, we similarly have some assurance (in principle) of the *survivability* and *viability* of the code base, apart from today's platforms. One can dream.
 
-And the practical impact is that if you are already running XML Calabash, you can continue to do so with pipelines published here, in the zone.
+And the practical impact is that if you are already running XML Calabash, you can continue to do so with pipelines published here, in the Zone.
 
-XML Calabash is built in Java by Norm Tovey-Walsh of Saxonica. A rebuild of its XProc 1.0 progenitor, it is full-featured and well tested in the field.
+XML Calabash is built in Java by Norm Tovey-Walsh of Saxonica. A rebuild of its XProc 1.0 progenitor, it is full-featured and well tested in the field. It is open source software licensed under the MIT License (use and distribute freely with acknowledgement).
 
-XML Calabash is open source software licensed under the MIT License (use and distribute freely with acknowledgement).
+Java developers should check their Maven repositories for XML Calabash 3.0.
 
 ### Java platform dependency
 
@@ -52,17 +52,17 @@ Two scripts at the top level are provided, for running the Morgana processor as
 
 In the folder [setup/smoketest/](setup/smoketest/) are several simple 'smoke test' pipelines for testing your XProc engine as configured.
 
-
 #### Project pipelines
 
-XProc project pipelines may be found throughout. Projects will include standalone components but also will contribute to the portal production.
+XProc pipelines (`.xpl` files) may be found throughout the XProc Zone, both dedicated to projects and at large. Projects will include standalone pipelines but may also contribute to portal production. Generic pipelines may be used across projects, and for higher-order tasks such as validating the XProc pipelines themselves against a set of rules defined for the repository.
 
 The portal may be regarded as a project in itself, while:
 
 - It is not stored in [projects/](projects) but in [its own folder](portal/)
-- It may include, in production, calls to resources and pipelines in other projects (in building the portal)
 - It produces static outputs to be committed to the repository with the project, not only as an archive but an ongoing publication, in [pub/](pub/). This folder is served from a web site to produce the XProc Zone Portal.
- 
+- Building the portal entails running one or more pipelines that may include, in production, calls to resources and pipelines in other projects
+
+---
 
 <!-- links -->
 

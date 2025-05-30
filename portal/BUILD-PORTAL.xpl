@@ -11,10 +11,11 @@
     
     <p:for-each name="iteration">
         <p:with-input select="/">
-            <p:document href="index.xhtml" content-type="application/xml"/>
-            <p:document href="xproc-pages.xhtml" content-type="application/xml"/>            
-            <p:document href="style-guide.xhtml" content-type="application/xml"/>            
-            <p:document href="fm6-22/index.xhtml" content-type="application/xml"/>            
+            <p:document href="index.xhtml"           content-type="application/xml"/>
+            <p:document href="xproc-pages.xhtml"     content-type="application/xml"/>            
+            <p:document href="style-guide.xhtml"     content-type="application/xml"/>            
+            <p:document href="fm6-22/index.xhtml"    content-type="application/xml"/>            
+            <p:document href="xproc-lab/index.xhtml" content-type="application/xml"/>            
         </p:with-input>
         
         <p:variable name="base" select="p:document-property(.,'base-uri') => p:urify()"/>

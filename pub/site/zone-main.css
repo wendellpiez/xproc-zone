@@ -140,7 +140,7 @@ details { padding: 0.4em }
 .panel { margin: 1rem; max-width: 54em;
   background-color: var(--contrast-bg); color: var(--contrast-face); border: medium solid var(--border-color) }
 
-.block, .panel {  margin-left: 2rem; margin-right: 2rem; padding: 0.6rem }
+.block, .panel {  margin-left: 2rem; margin-right: 2rem; margin-top: 0.6rem; padding: 0.6rem }
 
 .panel > *:first-child,
 .block > *:first-child { margin-top: 0em }
@@ -148,6 +148,8 @@ details { padding: 0.4em }
 .panel a { color: var(--contrast-link-face) }
 
 .nowrap { white-space: nowrap }
+
+.hanging { padding-left: 2.4em; text-indent: -2.4em }
 
 hr { border: thin solid var(--border-color); }
 
