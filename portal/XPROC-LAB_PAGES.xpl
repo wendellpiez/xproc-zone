@@ -8,7 +8,7 @@
    <p:import href="../projects/XProcDoc/assemble-step-index.xpl"/>
    
    
-   <p:variable name="outdir" select="'../pub/xproc-lab'"/>
+   <p:variable name="outdir" select="'../docs/xproc-lab'"/>
    
    <!-- Produces XHTML -->
    <zone:assemble-step-index/>

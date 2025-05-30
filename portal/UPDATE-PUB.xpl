@@ -7,7 +7,7 @@
     <p:import href="BUILD-PORTAL.xpl"/>
     
     
-    <p:variable name="pubdir" select="'../pub'"/>
+    <p:variable name="pubdir" select="'../docs'"/>
     
     <zone:BUILD-PORTAL name="populate-pub" pubdir="{ $pubdir }"/>
     

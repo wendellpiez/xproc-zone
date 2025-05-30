@@ -55,7 +55,7 @@
    </p:declare-step> 
    
    
-   <p:variable name="outdir" select="'../pub/fm6-22'"/>
+   <p:variable name="outdir" select="'../docs/fm6-22'"/>
    
    <p:identity name="oscal-source" message="[FM_6-22_PAGES] Seeing source file { base-uri(/) }"/>
    

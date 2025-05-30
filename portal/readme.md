@@ -16,7 +16,7 @@ Parts of the web site not here will be produced by pipelines in projects, and ma
 
 ## Publication
 
-Pipelines in this directory produce a neighbor directory, [../pub/](../pub/..), containing a 'build': static outputs of pipelines that together produce the project portal as a plain web site using HTML, CSS, Javascript, SVG and other tech (XML/XSLT?) as appropriate for its various applications.
+Pipelines in this directory produce a neighbor directory, [../docs/](../docs/..), containing a 'build': static outputs of pipelines that together produce the project portal as a plain web site using HTML, CSS, Javascript, SVG and other tech (XML/XSLT?) as appropriate for its various applications.
 
 These pipelines are maintained and run from elsewhere in the repository. They can be run together using the pipeline [UPDATE-PUB.xpl](UPDATE-PUB.xpl), which will dispatch to other pipelines including [BUILD-PORTAL.xpl](BUILD-PORTAL.xpl), which builds the main site.
 

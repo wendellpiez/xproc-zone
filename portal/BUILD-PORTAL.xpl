@@ -7,7 +7,7 @@
     
     <p:import href="src/portal-page.xpl"/>
     
-    <p:option name="pubdir" select="'../pub'"/>
+    <p:option name="pubdir" select="'../docs'"/>
     
     <p:for-each name="iteration">
         <p:with-input select="/">
