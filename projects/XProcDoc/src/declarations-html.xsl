@@ -7,16 +7,9 @@
    exclude-result-prefixes="#all" expand-text="true"
    version="3.0">
    
-   <!--
-   Punchlist
-   
-   ToC/directory
-   CSS
-   - grid?
-   -->
-   
+     
 
-   <xsl:variable name="page-title">XProc 3.1 Steps: an index</xsl:variable>
+   <xsl:variable name="page-title">XProc 3.0/3.1 Crib Sheet</xsl:variable>
    
    <xsl:template match="/*">
       <html>

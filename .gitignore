@@ -2,6 +2,7 @@
 *.xpr
 
 # Local working files
+punchlist.txt
 working/
 scratch/
 
