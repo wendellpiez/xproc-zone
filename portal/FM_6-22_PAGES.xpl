@@ -102,9 +102,28 @@ header { margin: auto; max-width: 40rem }
 .requirements.group, .group { border: none }
 .requirements-group-title { display: none }
 
-button#draw_one_now { margin: 1em auto; display: block; font-size: 120%;
+button.controller { margin: 1em auto; display: block; font-size: 120%;
   padding: 0.2em; border: thin inset grey }
 
+button.controller {
+  border: medium solid #ccc;
+  background: whitesmoke;
+  color: black;
+}
+
+button.controller:hover {
+  border-color: lightsteelblue;
+  border-style: dashed;
+  background-color: white;
+}
+
+button.controller:active,
+button.controller:focus {
+  border-color: midnightblue;
+  background: lightsteelblue;
+  color: white;
+  outline: none;
+}
 #draw_one .control summary { font-size: 120%; font-weight: bold; text-align: center }
 
 details.control { padding: 1em 2em }
@@ -113,27 +132,43 @@ details.control { padding: 1em 2em }
          </style>
          <script type="text/javascript">
 
-const controls = document.getElementsByClassName('control');
-
 function getRandomControlId() {
+  const controls = document.getElementsByClassName('control');
   const randomIndex = Math.floor(Math.random() * controls.length);
   return controls[randomIndex].id;
 }
 
+/* picks a random table and loads it */
 function draw_one() {
-   let anID = getRandomControlId();
-   let aControl = document.getElementById(anID);
+   const url = new URL(window.location.href);
+   url.searchParams.set('table', getRandomControlId());
+   window.location.href = url.toString();
+}
+
+/* shows the given table, hiding all the others */
+function show_table(tableID) {
+   const theControl = document.getElementById(tableID);
+   const controls = document.getElementsByClassName('control');
    [...controls].forEach(el => el.style.display = 'none');
    [...controls].forEach(el => el.open = false);
-   aControl.style.display = 'block';
+   theControl.style.display = 'block';
 }
+
+/* any reload will load the given table (or none) */
+window.onload = function () {
+   const c = new URLSearchParams(document.location.search);
+   const currentTable = c.get('table');
+   show_table(currentTable);
+}
+
          </script>
       </p:with-input>
    </p:insert>
    
    <p:insert match="html/body/main" position="first-child">
       <p:with-input port="insertion" expand-text="false">
-         <button id="draw_one_now" onclick="draw_one()" >DRAW</button>
+         <button class="controller" onclick="navigator.clipboard.writeText(window.location.href)">Copy link</button>
+         <button class="controller" id="draw_one_now" onclick="draw_one()" >DRAW</button>
       </p:with-input>
    </p:insert>
    

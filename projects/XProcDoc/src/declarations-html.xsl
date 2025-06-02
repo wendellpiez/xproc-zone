@@ -225,6 +225,7 @@ button.cp { float: right }
    </xsl:template>
    
    <xsl:template name="make-script" expand-text="false">
+      <!-- replace with navigator.clipboard.writeText, which returns a promise - or not? our use is pretty secure     -->
       <script>
          /* selects textarea#linkcopy and copies it to the system clipboard */
          function copyToClipboard(block) {

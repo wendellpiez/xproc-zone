@@ -123,9 +123,8 @@ footer { font-size: smaller }
   display: flex;
   width: 100%; }
 
-.in-a-row > *  { flex: 1; /* Each panel takes up equal space */ }
-
-.in-a-row > * { text-align: center; }
+.in-a-row > *  { flex: 1; /* Each panel takes up equal space */ 
+                 text-align: center; }
 
 .in-a-row > *:first-child { text-align: left; /* Align text to the left */ }
 
