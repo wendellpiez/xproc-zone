@@ -25,7 +25,7 @@ Beyond its utility, XProc is also an easy way in to learn the foundations of mar
 
 ## Where to start
 
-The Zone has two regions, or manifestations: a "public" space, the Portal, with its exhibits. And the downstairs, the Repository (repo). You are reading a README.md document in the Repo: standing at the top of the stairs, looking down.
+The Zone has two regions, or manifestations: a "public space", the [Portal](https://wendellpiez.github.io/xproc-zone/), with its several exhibits. And the downstairs, the Repository (repo). You are reading a README.md document in the Repo: standing at the top of the stairs, looking down.
 
 The portal may show anything in the repo, in any form, or hide things or mark or mask or transform them. *The Zone is a band of **mimesis** or representation. An area of surround.* It shows things all dressed up, not only as they actually are but as they imagine themselves to be.
 
@@ -50,6 +50,13 @@ The Zone is maintained under `git`, which helps with this problem. We have more 
 Since the biggest risk of automation has always been stepping on one's own feet -- at scale -- remember the corollary to Murphy's Law: *if it won't necessarily work, it won't work*. Make necessity your friend.
 
 ### Running XProc
+
+Run XProc 3.0 however you like, or use a setup provided.
+
+See directions in the [setup/](setup/) for the local setup. Scripts are provided to make the chores easy.
+
+Once set up, scripts in this folder - `xz.bat` or `xz.sh` (take your pick) can be used to invoke the processor on any pipeline. [Keep reading for more details](running-xproc.md).
+
 ## Project maintenance plan
 
 This project works under a passive maintenance plan, and is likely to see punctuated equilibrium - periods of statis, briefly interrupted by periods of growth and change.
