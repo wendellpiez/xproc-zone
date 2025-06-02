@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml"><head><title>XProc 3.0/3.1 Crib Sheet</title><style xml:space="preserve">
 
-aside.directory { position: fixed; top: 4em; right: 1vw; height: 90%; background-color: gainsboro; border: thin solid black; padding: 1.6em;
+aside.directory { position: fixed; top: 4em; right: 1vw; height: 80vh; background-color: gainsboro; border: thin solid black; padding: 1.6em;
   margin: 0em; overflow-y: scroll }
 .directory p { margin: 0em; margin-top: 0.3em }
 
@@ -38,7 +38,7 @@ button.cp { float: right }
          window.getSelection().selectAllChildren(block);
          document.execCommand('copy');
          }
-      </script><link rel="stylesheet" href="../site/zone-main.css"/><style xml:space="preserve" type="text/css">
+      </script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap"/><link rel="stylesheet" href="../site/zone-main.css"/><style xml:space="preserve" type="text/css">
 
 
 #bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
@@ -46,6 +46,10 @@ button.cp { float: right }
 #bannerbar a { color: skyblue; text-decoration: none; border: thin solid skyblue;
                background-color: #404F69; padding: 0.3em }
 #bannerbar a:hover { text-decoration: underline; color: cyan }
+
+#bannerbar #sitenav { border: none; padding: 0em; font-size: inherit }
+
+code { font-size: larger }
 
             </style><link rel="icon" href="../site/zed.svg" type="image/svg+xml"/></head><body><div id="bannerbar">
             <div id="pnav">
@@ -354,4 +358,10 @@ button.cp { float: right }
   report-format="<span class="ss">[xs:string]</span> 'xvrl'"
   serialization="<span class="ss">[map(xs:QName,item()*)?]</span>"&gt;
   &lt;p:with-input port="source" primary="true" content-types="xml html"/&gt;
-&lt;/p:validate-with-dtd&gt;</pre></div><div class="syntax-block"><button class="cp" onclick="copyToClipboard(this.nextElementSibling)" onmouseover="this.nextElementSibling.classList.add('seeme')" onmouseout="this.nextElementSibling.classList.remove('seeme')">Copy</button><pre class="syntax-map">&lt;p:with-input port="..." pipe="result@DO_validate-with-dtd"/&gt;</pre></div><div class="syntax-block"><button class="cp" onclick="copyToClipboard(this.nextElementSibling)" onmouseover="this.nextElementSibling.classList.add('seeme')" onmouseout="this.nextElementSibling.classList.remove('seeme')">Copy</button><pre class="syntax-map">&lt;p:with-input port="..." pipe="report@DO_validate-with-dtd"/&gt;</pre></div><p class="option">option name="<code>assert-valid</code>" select="<code>true()</code>" as="<code>xs:boolean</code>"</p><p class="option">option name="<code>report-format</code>" select="<code>'xvrl'</code>" as="<code>xs:string</code>"</p><p class="option">option name="<code>serialization</code>" as="<code>map(xs:QName,item()*)?</code>"</p><p class="input primary">input port="<code>source</code>" primary="<code>true</code>" content-types="<code>xml html</code>"</p><p class="output primary">output port="<code>result</code>" primary="<code>true</code>" content-types="<code>xml html</code>"</p><p class="output">output port="<code>report</code>" sequence="<code>true</code>" content-types="<code>xml json</code>"</p></details></section></main></body></html>
+&lt;/p:validate-with-dtd&gt;</pre></div><div class="syntax-block"><button class="cp" onclick="copyToClipboard(this.nextElementSibling)" onmouseover="this.nextElementSibling.classList.add('seeme')" onmouseout="this.nextElementSibling.classList.remove('seeme')">Copy</button><pre class="syntax-map">&lt;p:with-input port="..." pipe="result@DO_validate-with-dtd"/&gt;</pre></div><div class="syntax-block"><button class="cp" onclick="copyToClipboard(this.nextElementSibling)" onmouseover="this.nextElementSibling.classList.add('seeme')" onmouseout="this.nextElementSibling.classList.remove('seeme')">Copy</button><pre class="syntax-map">&lt;p:with-input port="..." pipe="report@DO_validate-with-dtd"/&gt;</pre></div><p class="option">option name="<code>assert-valid</code>" select="<code>true()</code>" as="<code>xs:boolean</code>"</p><p class="option">option name="<code>report-format</code>" select="<code>'xvrl'</code>" as="<code>xs:string</code>"</p><p class="option">option name="<code>serialization</code>" as="<code>map(xs:QName,item()*)?</code>"</p><p class="input primary">input port="<code>source</code>" primary="<code>true</code>" content-types="<code>xml html</code>"</p><p class="output primary">output port="<code>result</code>" primary="<code>true</code>" content-types="<code>xml html</code>"</p><p class="output">output port="<code>report</code>" sequence="<code>true</code>" content-types="<code>xml json</code>"</p></details></section></main><hr class="hr"/><footer class="in-a-row">
+            <!-- Add your name here! -->
+            <div><b><a href="">XProc Zone</a></b> was designed and built by Wendell Piez, 2025</div>
+            <div>
+               <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+            </div>
+         </footer></body></html>

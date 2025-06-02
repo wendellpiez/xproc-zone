@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.w3.org/1999/xhtml" 
+   exclude-inline-prefixes="#all"
     xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
 
    <!-- Pipeline produces two HTML file outputs from OSCAL source, for demonstration -->
@@ -14,25 +15,55 @@
    
    <!--<p:output port="result"/>-->
    
-   <p:declare-step name="add-banner" type="zone:add-banner">
+   <p:declare-step name="add-formework" type="zone:add-formework">
       <p:input port="source"/>
       <p:output port="result"/>
       <p:insert match="html/head" position="last-child">
          <p:with-input port="insertion" expand-text="false">
             <style type="text/css" xml:space="preserve">
 
+a { text-decoration: none }
+a:hover { text-decoration: underline }
 
 #bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
 
-#bannerbar a { color: skyblue; text-decoration: none; border: thin solid skyblue;
+#bannerbar a { color: skyblue; border: thin solid skyblue;
                background-color: #404F69; padding: 0.3em }
 #bannerbar a:hover { text-decoration: underline }
 .catalog#chapter4   #bannerbar a#fulltext { display: none }
 .catalog#table_view #bannerbar a#tables   { display: none }
 .catalog#draw_one   #bannerbar a#draw     { display: none }
 
+
+footer { font-size: smaller; color: white }
+footer a { color: lightsteelblue }
+
+.in-a-row {
+  display: flex;
+  width: 100%; }
+
+.in-a-row > *  { flex: 1; /* Each panel takes up equal space */ 
+                 text-align: center; }
+
+.in-a-row > *:first-child { text-align: left; /* Align text to the left */ }
+
+.in-a-row > *:last-child { text-align: right; /* Align text to the right */ }
+
+
             </style>
             <link rel="icon" type="image/svg+xml" href="../site/zed.svg"/>            
+         </p:with-input>
+      </p:insert>
+      <p:insert position="last-child" match="html/body">
+         <p:with-input port="insertion">
+            <hr class="hr"/>
+            <footer class="in-a-row">
+               <!-- Add your name here! -->
+               <div><b><a href="{ ../index.html }">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
+               <div>
+                  <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+               </div>
+            </footer>
          </p:with-input>
       </p:insert>
       <p:insert position="first-child" match="html/body">
@@ -54,7 +85,6 @@
       <p:namespace-delete prefixes="oscal zone xs c" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0" />
    </p:declare-step> 
    
-   
    <p:variable name="outdir" select="'../docs/fm6-22'"/>
    
    <p:identity name="oscal-source" message="[FM_6-22_PAGES] Seeing source file { base-uri(/) }"/>
@@ -64,7 +94,7 @@
       <p:with-input port="stylesheet" href="../projects/USArmy_FM6-22/src/www_fm22-6_fulltext.xsl"/>
    </p:xslt>
    
-   <zone:add-banner/>
+   <zone:add-formework/>
    
    <p:store href="{ $outdir }/FM_6-22-fulltext.html" serialization="map{ 'method': 'html' }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-fulltext.html ..."/>
    
@@ -76,7 +106,7 @@
       <p:with-input port="stylesheet" href="../projects/USArmy_FM6-22/src/www_fm22-6_tables.xsl"/>
    </p:xslt>
    
-   <zone:add-banner/>
+   <zone:add-formework/>
    
    <p:store href="{ $outdir }/FM_6-22-tables.html" serialization="map{ 'method': 'html' }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-tables.html ..."/>
 
@@ -119,7 +149,7 @@ button.controller:hover {
 
 button.controller:active,
 button.controller:focus {
-  border-color: midnightblue;
+  border-color: white;
   background: lightsteelblue;
   color: white;
   outline: none;

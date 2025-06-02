@@ -72,15 +72,33 @@ th { background-color: gainsboro }
 
      </style><style xml:space="preserve" type="text/css">
 
+a { text-decoration: none }
+a:hover { text-decoration: underline }
 
 #bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
 
-#bannerbar a { color: skyblue; text-decoration: none; border: thin solid skyblue;
+#bannerbar a { color: skyblue; border: thin solid skyblue;
                background-color: #404F69; padding: 0.3em }
 #bannerbar a:hover { text-decoration: underline }
 .catalog#chapter4   #bannerbar a#fulltext { display: none }
 .catalog#table_view #bannerbar a#tables   { display: none }
 .catalog#draw_one   #bannerbar a#draw     { display: none }
+
+
+footer { font-size: smaller; color: white }
+footer a { color: lightsteelblue }
+
+.in-a-row {
+  display: flex;
+  width: 100%; }
+
+.in-a-row > *  { flex: 1; /* Each panel takes up equal space */ 
+                 text-align: center; }
+
+.in-a-row > *:first-child { text-align: left; /* Align text to the left */ }
+
+.in-a-row > *:last-child { text-align: right; /* Align text to the right */ }
+
 
             </style><link rel="icon" href="../site/zed.svg" type="image/svg+xml"></head><body class="catalog" id="chapter4"><div id="bannerbar">
                <div id="pnav">
@@ -4955,4 +4973,10 @@ th { background-color: gainsboro }
           </div>
         </details></section>
     </section>
-  </section></main></body></html>
+  </section></main><hr class="hr"><footer class="in-a-row">
+               <!-- Add your name here! -->
+               <div><b><a href="">XProc Zone</a></b> was designed and built by Wendell&nbsp;Piez, 2025</div>
+               <div>
+                  <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+               </div>
+            </footer></body></html>

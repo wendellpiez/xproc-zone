@@ -15,6 +15,7 @@
    
    <p:insert match="html/head" position="last-child">
       <p:with-input port="insertion" expand-text="false">
+         <link rel="stylesheet"            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" />
          <link rel="stylesheet" href="../site/zone-main.css"/>
          <style type="text/css" xml:space="preserve">
 
@@ -24,6 +25,10 @@
 #bannerbar a { color: skyblue; text-decoration: none; border: thin solid skyblue;
                background-color: #404F69; padding: 0.3em }
 #bannerbar a:hover { text-decoration: underline; color: cyan }
+
+#bannerbar #sitenav { border: none; padding: 0em; font-size: inherit }
+
+code { font-size: larger }
 
             </style>
          <link rel="icon" type="image/svg+xml" href="../site/zed.svg"/>            
@@ -43,6 +48,20 @@
          </div>
       </p:with-input>
    </p:insert>
+   
+   <p:insert position="last-child" match="html/body">
+      <p:with-input port="insertion">
+         <hr class="hr"/>
+         <footer class="in-a-row">
+            <!-- Add your name here! -->
+            <div><b><a href="{ ../index.html }">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
+            <div>
+               <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+            </div>
+         </footer>
+      </p:with-input>
+   </p:insert>
+   
    
    <p:delete match="details/@open"/>
    

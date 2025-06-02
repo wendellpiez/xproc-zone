@@ -189,7 +189,7 @@
    <xsl:template name="make-style" expand-text="false">
       <style xml:space="preserve">
 
-aside.directory { position: fixed; top: 4em; right: 1vw; height: 90%; background-color: gainsboro; border: thin solid black; padding: 1.6em;
+aside.directory { position: fixed; top: 4em; right: 1vw; height: 80vh; background-color: gainsboro; border: thin solid black; padding: 1.6em;
   margin: 0em; overflow-y: scroll }
 .directory p { margin: 0em; margin-top: 0.3em }
 
