@@ -96,7 +96,7 @@ footer a { color: lightsteelblue }
    
    <zone:add-formework/>
    
-   <p:store href="{ $outdir }/FM_6-22-fulltext.html" serialization="map{ 'method': 'html' }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-fulltext.html ..."/>
+   <p:store href="{ $outdir }/FM_6-22-fulltext.html" serialization="map{ 'method': 'html', 'indent': true()  }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-fulltext.html ..."/>
    
    <!-- implicit p:sink as we start with new source port -->
    
@@ -108,7 +108,7 @@ footer a { color: lightsteelblue }
    
    <zone:add-formework/>
    
-   <p:store href="{ $outdir }/FM_6-22-tables.html" serialization="map{ 'method': 'html' }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-tables.html ..."/>
+   <p:store href="{ $outdir }/FM_6-22-tables.html" serialization="map{ 'method': 'html', 'indent': true()  }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-tables.html ..."/>
 
    <!-- Further modifications make the 'tabular' view into the 'draw one' view -->
    
@@ -143,7 +143,6 @@ button.controller {
 
 button.controller:hover {
   border-color: lightsteelblue;
-  border-style: dashed;
   background-color: white;
 }
 
@@ -158,6 +157,8 @@ button.controller:focus {
 
 details.control { padding: 1em 2em }
 .requirement div.part { margin-left: 0em }
+
+main { min-height: 60vh }
 
          </style>
          <script type="text/javascript">
@@ -204,7 +205,7 @@ window.onload = function () {
    
    <p:string-replace match="text()[normalize-space()]" replace="replace(string(.),'\s+',' ')"/>
    
-   <p:store href="{ $outdir }/FM_6-22-draw_one.html" serialization="map{ 'method': 'html' }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-draw_one.html ..."/>
+   <p:store href="{ $outdir }/FM_6-22-draw_one.html" serialization="map{ 'method': 'html', 'indent': true() }" message="[FM_6-22_PAGES] p:store: { $outdir }/FM_6-22-draw_one.html ..."/>
    
    
 <!--1. hide everything with CSS

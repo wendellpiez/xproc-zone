@@ -5,6 +5,8 @@
    xmlns="http://www.w3.org/1999/xhtml"
    xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
 
+
+<!-- REQUIRES CONNECTIVITY - set your proxy server -->
    <p:import href="../projects/XProcDoc/assemble-step-index.xpl"/>
    
    
@@ -62,7 +64,6 @@ code { font-size: larger }
       </p:with-input>
    </p:insert>
    
-   
    <p:delete match="details/@open"/>
    
    <p:label-elements match="aside[@class='directory']//a" attribute="onclick" label="'document.getElementById(''' || substring-after(@href,'#') || ''').open=true;'"/>
@@ -77,7 +78,8 @@ code { font-size: larger }
    <p:namespace-delete prefixes="zone xs c"/>
    
    
-   <p:store href="{ $outdir }/xproc-crib-sheet.html" message=" p:store: { $outdir }/xproc-crib-sheet.html ..."/>
+   <p:store href="{ $outdir }/xproc-crib-sheet.html" message=" p:store: { $outdir }/xproc-crib-sheet.html ..."
+      />
    
    
 </p:declare-step>
