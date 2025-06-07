@@ -58,6 +58,13 @@
         </p:with-input>
     </p:insert>
     
+    <p:insert position="first-child" match="html/body/main">
+        <p:with-input port="insertion">
+            <p:document href="../site/zed.svg" />
+        </p:with-input>
+    </p:insert>
+    
+    
     <p:if test="not( $pagename='index' and $path-to-root='.' )">
         <p:insert position="after" match="html/body/div/div[@id='sitenav']/a[1]">
             <p:with-input port="insertion">

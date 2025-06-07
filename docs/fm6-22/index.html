@@ -50,6 +50,92 @@
          </div>
       </div>
       <main>
+         <svg id="zone_logo"
+              width="100%"
+              height="100%"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid meet"
+              zoomAndPan="magnify"
+              version="1.0"
+              contentScriptType="text/ecmascript"
+              contentStyleType="text/css"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+               <path id="zee"
+                     d="M -20 -27 Q 0 -27 20 -30 L -20 0 C 30 0 30 20 0 30 C -30 40 -30 10 30 0">
+               </path>
+               <!-- Neon Glow Filter -->
+               <filter id="neon"
+                       xlink:type="simple"
+                       xlink:show="other"
+                       xlink:actuate="onLoad">
+                  <feGaussianBlur stdDeviation="3">
+                  </feGaussianBlur>
+                  <feComponentTransfer result="glow">
+                     <feFuncA type="linear"
+                              slope="1">
+                     </feFuncA>
+                  </feComponentTransfer>
+                  <feMerge>
+                     <feMergeNode in="glow">
+                     </feMergeNode>
+                     <feMergeNode in="SourceGraphic">
+                     </feMergeNode>
+                  </feMerge>
+               </filter>
+            </defs>
+            <!--
+    #logo #zone { fill: #534582; stroke: whitesmoke }
+    #logo #zed { stroke: #3B7EFF }
+    
+    -->
+            <!--<rect width="100%" height="100%" fill="black"/>-->
+            <g transform="translate(50 50)">
+               <g id="zone"
+                  fill="blue"
+                  stroke-width="1"
+                  fill-opacity="0.5"
+                  stroke-opacity="0.7"
+                  stroke="white">
+                  <circle cx="0"
+                          cy="0"
+                          r="48">
+                  </circle>
+                  <circle cx="2"
+                          cy="0"
+                          r="40">
+                  </circle>
+                  <circle cx="4"
+                          cy="0"
+                          r="32"
+                          fill-opacity="1">
+                  </circle>
+               </g>
+               <g id="zed"
+                  transform="scale(1.1)"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  fill="none"
+                  stroke="whitesmoke">
+                  <use xlink:href="#zee"
+                       stroke-width="8"
+                       stroke-opacity="0.4"
+                       filter="url(#neon)"
+                       xlink:type="simple"
+                       xlink:show="embed"
+                       xlink:actuate="onLoad">
+                  </use>
+                  <use xlink:href="#zee"
+                       stroke-width="4"
+                       stroke-opacity="0.8"
+                       xlink:type="simple"
+                       xlink:show="embed"
+                       xlink:actuate="onLoad">
+                  </use>
+               </g>
+            </g>
+         </svg>
          <header>
             <h1>US Army Field Manual 6-22: Developing Leadership</h1>
             <h2>Chapter 4: Learning and Developmental Activities</h2>

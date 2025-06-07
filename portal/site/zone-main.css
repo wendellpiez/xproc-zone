@@ -18,6 +18,10 @@
   --border-color: black;  
 }
 
+#zone_logo { width: 5em; float: right }
+#index  #zone_logo { width: 10em }
+
+
 /* Comments were provided by Github Copilot - apologies - */
 body.night {
 
@@ -33,6 +37,11 @@ body.night {
 
   --highlight-color: #CABEFF; /* Gentle pastel purple for highlights, meditative and dreamy */
   --border-color: #00FFFF; /* Soft neon cyan, glowing and restful for the night theme */
+
+
+#zone_logo #zone { fill: var(--contrast-bg); var(--border-color) }
+#zone_logo #zed  { stroke: var(--border-color) }
+
 }
 
 body.day {
@@ -47,7 +56,11 @@ body.day {
   --contrast-link-face: #FFD966; /* Warm and cheerful golden yellow, distinct from the light green contrast face */
 
   --highlight-color: #FF5733; /* High contrast bright orange-red for highlights */
-  --border-color: #90c3d4
+  --border-color: #90c3d4;
+
+#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--highlight-color) }
+#zone_logo #zed  { stroke: var(--contrast-bg) }
+
 }
 
 body.dawn {
@@ -63,6 +76,10 @@ body.dawn {
 
   --highlight-color: #FFAA33; /* Warm and cheerful light gold for highlights */
   --border-color: #6AAE75; /* Fresh, uplifting green for borders, tying into the soft green background */
+
+#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
+#zone_logo #zed  { stroke: var(--link-face) }
+
 }
 
 body.dusk {
@@ -78,6 +95,10 @@ body.dusk {
 
   --highlight-color: #7EF9FF; /* Gentle cyan for highlights, cool and refreshing */
   --border-color: #D4A373; /* Muted golden-bronze, warm and elegant for an evening feel */
+
+#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
+#zone_logo #zed  { stroke: var(--highlight-color) }
+
 }
 
 body { background-color: var(--main-bg);
@@ -86,6 +107,8 @@ body { background-color: var(--main-bg);
        font-family: "Noto Sans", sans-serif;
        line-height: 1.6;
 }   
+
+/*#3B7EFF*/
 
 #bannerbar { margin: 0rem; padding: 0rem }
 
