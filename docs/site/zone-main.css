@@ -58,8 +58,8 @@ body.day {
   --highlight-color: #2D9CDB;
   --border-color: #B49A7A;
 
-#zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
-#zone_logo #zed  { stroke: var(--contrast-face) }
+#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
+#zone_logo #zed  { stroke: var(--highlight-color) }
 
 }
 
