@@ -177,5 +177,5 @@ hr { border: thin solid var(--border-color); }
 
 h1, h2, h3, h4, h5, h6 { font-family: "Noto Serif", serif; font-weight: 400 }
 
-.highlight { color: var(--highlight-color) }
+.highlight, .hi { color: var(--highlight-color) }
 
