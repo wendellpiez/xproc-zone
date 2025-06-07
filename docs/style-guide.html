@@ -70,7 +70,7 @@
                        xlink:type="simple"
                        xlink:show="other"
                        xlink:actuate="onLoad">
-                  <feGaussianBlur stdDeviation="3">
+                  <feGaussianBlur stdDeviation="4">
                   </feGaussianBlur>
                   <feComponentTransfer result="glow">
                      <feFuncA type="linear"
@@ -84,6 +84,7 @@
                      </feMergeNode>
                   </feMerge>
                </filter>
+               <!--            -->
             </defs>
             <!--
     #logo #zone { fill: #534582; stroke: whitesmoke }
@@ -95,7 +96,7 @@
                <g id="zone"
                   fill="blue"
                   stroke-width="1"
-                  fill-opacity="0.5"
+                  fill-opacity="0.3"
                   stroke-opacity="0.7"
                   stroke="white">
                   <circle cx="0"
@@ -108,8 +109,7 @@
                   </circle>
                   <circle cx="4"
                           cy="0"
-                          r="32"
-                          fill-opacity="1">
+                          r="32">
                   </circle>
                </g>
                <g id="zed"
@@ -117,10 +117,10 @@
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   fill="none"
-                  stroke="whitesmoke">
+                  stroke="white">
                   <use xlink:href="#zee"
                        stroke-width="8"
-                       stroke-opacity="0.4"
+                       stroke-opacity="0.2"
                        filter="url(#neon)"
                        xlink:type="simple"
                        xlink:show="embed"
@@ -128,7 +128,7 @@
                   </use>
                   <use xlink:href="#zee"
                        stroke-width="4"
-                       stroke-opacity="0.8"
+                       stroke-opacity="0.7"
                        xlink:type="simple"
                        xlink:show="embed"
                        xlink:actuate="onLoad">

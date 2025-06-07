@@ -3,6 +3,9 @@
       xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link type="text/css"
+            href="src/zone-html-authoring.css"
+            rel="stylesheet">
       <title>The XProc Zone</title>
       <script src="./site/zone-themeTime.js"
               type="text/javascript">
@@ -70,7 +73,7 @@
                        xlink:type="simple"
                        xlink:show="other"
                        xlink:actuate="onLoad">
-                  <feGaussianBlur stdDeviation="3">
+                  <feGaussianBlur stdDeviation="4">
                   </feGaussianBlur>
                   <feComponentTransfer result="glow">
                      <feFuncA type="linear"
@@ -84,6 +87,7 @@
                      </feMergeNode>
                   </feMerge>
                </filter>
+               <!--            -->
             </defs>
             <!--
     #logo #zone { fill: #534582; stroke: whitesmoke }
@@ -95,7 +99,7 @@
                <g id="zone"
                   fill="blue"
                   stroke-width="1"
-                  fill-opacity="0.5"
+                  fill-opacity="0.3"
                   stroke-opacity="0.7"
                   stroke="white">
                   <circle cx="0"
@@ -108,8 +112,7 @@
                   </circle>
                   <circle cx="4"
                           cy="0"
-                          r="32"
-                          fill-opacity="1">
+                          r="32">
                   </circle>
                </g>
                <g id="zed"
@@ -117,10 +120,10 @@
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   fill="none"
-                  stroke="whitesmoke">
+                  stroke="white">
                   <use xlink:href="#zee"
                        stroke-width="8"
-                       stroke-opacity="0.4"
+                       stroke-opacity="0.2"
                        filter="url(#neon)"
                        xlink:type="simple"
                        xlink:show="embed"
@@ -128,7 +131,7 @@
                   </use>
                   <use xlink:href="#zee"
                        stroke-width="4"
-                       stroke-opacity="0.8"
+                       stroke-opacity="0.7"
                        xlink:type="simple"
                        xlink:show="embed"
                        xlink:actuate="onLoad">
@@ -149,7 +152,7 @@
                      href="style-guide.html">Style Guide</a>
                </li>
                <li>
-                  <a href="https://github.com/wendellpiez/xproc-zone">Browse the code repository</a> holding the code and data in the Zone</li>
+                  <a href="https://github.com/wendellpiez/xproc-zone">Browse the code repository</a> holding the code and data</li>
             </ul>
          </div>
          <div class="panel">
@@ -163,7 +166,7 @@
          <div class="panel">
             <h2>XProc Laboratory</h2>
             <p>XProc being XML, it is well suited for processing in XProc. <a class="internal"
-                  href="xproc-lab/index.html">Here</a> we use XProc to make useful things for XProc.</p>
+                  href="xproc-lab/index.html">Here</a> XProc is used to make useful things for XProc.</p>
             <p>An <a href="xproc-lab/xproc-crib-sheet.html"
                   class="clean">XProc Crib Sheet</a> offers syntax snippets and links to help ease your way on your XProc journey.</p>
             <p>An index to XProc in the Zone is forthcoming.</p>
@@ -179,6 +182,13 @@
             <p>The Zone is also more than a platform for demonstrations. Not everything in the repository is equally well documented, or finds its way onto the portal. Deep in the Zone you might find easter eggs or other small treasures.</p>
             <p>Any developers who wish to engage, or anyone who wishes to help sustain and promote XProc Zone, are invited to contact the proprietor or reach out through Github channels.</p>
             <p>If you wish only to study, borrow and learn: the Zone is for you too.</p>
+         </div>
+         <div class="block">
+            <h2>For learners and educators</h2>
+            <p>In the Zone you will find nothing as organized as a <em>curriculum</em> (Lat: <q>little run</q>, <em>viz</em>
+               <a href="https://en.wiktionary.org/wiki/cursus">cursus</a>), but instead a space or area. One hallway leads to another, where may be found curiosities and items of interest, general and particular. Add them to your tour.</p>
+            <p>Like a museum with back stairways, the Zone is designed for you to traverse as you choose, going directly to what you want to see, or stopping and staring along the way.</p>
+            <p>Disciplines of interest include Media, Rhetoric, Informatics, Metrology, data science, data and information security, cybernetics (Operations Research), formal languages and data modeling.</p>
          </div>
       </main>
       <hr class="hr">

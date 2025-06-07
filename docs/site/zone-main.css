@@ -18,8 +18,8 @@
   --border-color: black;  
 }
 
-#zone_logo { width: 5em; float: right }
-#index  #zone_logo { width: 10em }
+#zone_logo { width: 6em; float: right }
+#index  #zone_logo { width: 12em; max-width: 25vw }
 
 
 /* Comments were provided by Github Copilot - apologies - */
@@ -66,10 +66,10 @@ body.day {
 body.dawn {
   --main-bg: #F2F8E8; /* Soft, pale green for the main background, evoking early morning light */
   --secondary-bg: #FFF2DE; /* Peachy cream for secondary elements to add warmth */
-  --contrast-bg: #245678; /* Deep, calm blue reminiscent of the early morning sky */
+  --contrast-bg: #D6F5E3;
 
   --main-face: #3A3024; /* Warm dark brown for text, complementing the soft green background */
-  --contrast-face: #EAF4FC; /* Soft sky blue for text on the dark contrast background */
+  --contrast-face: #25756A;
 
   --link-face: #FF7E5F; /* Warm coral for links, evoking the glow of dawn */
   --contrast-link-face: #F6B26B; /* Soft golden orange for links on the dark background */
@@ -77,7 +77,7 @@ body.dawn {
   --highlight-color: #FFAA33; /* Warm and cheerful light gold for highlights */
   --border-color: #6AAE75; /* Fresh, uplifting green for borders, tying into the soft green background */
 
-#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
+#zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
 #zone_logo #zed  { stroke: var(--link-face) }
 
 }
