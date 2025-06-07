@@ -50,16 +50,16 @@ body.day {
   --contrast-bg: #534582;
 
   --main-face: #4A3B2D; /* Deep brown for text, offering strong readability and contrast */
-  --contrast-face: #E0F7FA; /* Very light blue, legible against the green */
+  --contrast-face: #FFFDF5;
   
   --link-face: #004C99; /* Deep blue for links, ensuring strong contrast with all backgrounds */
   --contrast-link-face: #FFD966; /* Warm and cheerful golden yellow, distinct from the light green contrast face */
 
-  --highlight-color: #FF5733; /* High contrast bright orange-red for highlights */
-  --border-color: #90c3d4;
+  --highlight-color: #2D9CDB;
+  --border-color: #B49A7A;
 
-#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--highlight-color) }
-#zone_logo #zed  { stroke: var(--contrast-bg) }
+#zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
+#zone_logo #zed  { stroke: var(--contrast-face) }
 
 }
 
@@ -72,9 +72,9 @@ body.dawn {
   --contrast-face: #25756A;
 
   --link-face: #FF7E5F; /* Warm coral for links, evoking the glow of dawn */
-  --contrast-link-face: #F6B26B; /* Soft golden orange for links on the dark background */
+  --contrast-link-face: #4697E9;
 
-  --highlight-color: #FFAA33; /* Warm and cheerful light gold for highlights */
+  --highlight-color: #20BFC3;
   --border-color: #6AAE75; /* Fresh, uplifting green for borders, tying into the soft green background */
 
 #zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
@@ -96,8 +96,8 @@ body.dusk {
   --highlight-color: #7EF9FF; /* Gentle cyan for highlights, cool and refreshing */
   --border-color: #D4A373; /* Muted golden-bronze, warm and elegant for an evening feel */
 
-#zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
-#zone_logo #zed  { stroke: var(--highlight-color) }
+#zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
+#zone_logo #zed  { stroke: var(--contrast-face) }
 
 }
 
@@ -176,4 +176,6 @@ details { padding: 0.4em }
 hr { border: thin solid var(--border-color); }
 
 h1, h2, h3, h4, h5, h6 { font-family: "Noto Serif", serif; font-weight: 400 }
+
+.highlight { color: var(--highlight-color) }
 
