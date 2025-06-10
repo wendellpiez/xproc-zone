@@ -9,7 +9,6 @@
 <!-- REQUIRES CONNECTIVITY - set your proxy server -->
    <p:import href="../projects/XProcDoc/assemble-step-index.xpl"/>
    
-   
    <p:variable name="outdir" select="'../docs/xproc-lab'"/>
    
    <!-- Produces XHTML -->
@@ -21,6 +20,7 @@
          <link rel="stylesheet" href="../site/zone-main.css"/>
          <style type="text/css" xml:space="preserve">
 
+#introduction { border: thin solid black; margin-bottom: 1em }
 
 #bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
 
@@ -30,12 +30,17 @@
 
 #bannerbar #sitenav { border: none; padding: 0em; font-size: inherit }
 
-code { font-size: larger }
+code { font-size: larger; padding: 0.2em;
+       background-color: #DDC6CA }
+
+.lab a { color: midnightblue }
 
             </style>
          <link rel="icon" type="image/svg+xml" href="../site/zed.svg"/>            
       </p:with-input>
    </p:insert>
+   
+   <p:add-attribute match="/html/body" attribute-name="class" attribute-value="lab"/>
    
    <p:insert match="html/body" position="first-child">
       <p:with-input port="insertion">
@@ -64,11 +69,21 @@ code { font-size: larger }
       </p:with-input>
    </p:insert>
    
+   <p:rename match="section[@id='introduction']" new-name="details"/>   
+   <p:namespace-rename to="http://www.w3.org/1999/xhtml" apply-to="elements"/>
+   
+   <p:insert match="details[@id='introduction']" position="first-child">
+      <p:with-input port="insertion">
+         <summary>Description</summary>
+      </p:with-input>
+   </p:insert>
+   
+   
    <p:delete match="details/@open"/>
    
    <p:label-elements match="aside[@class='directory']//a" attribute="onclick" label="'document.getElementById(''' || substring-after(@href,'#') || ''').open=true;'"/>
    
-   <p:insert match="body/main/div[1]" position="after">
+   <p:insert match="body/main/details[1]" position="after">
       <p:with-input port="insertion">
          <button onclick="document.querySelectorAll('details.step').forEach(d => d.open = true); ">Open All</button>
          <button style="margin-left: 1em" onclick="document.querySelectorAll('details.step').forEach(d => d.open = false);">Close All</button>
@@ -76,7 +91,6 @@ code { font-size: larger }
    </p:insert>
    
    <p:namespace-delete prefixes="zone xs c"/>
-   
    
    <p:store href="{ $outdir }/xproc-crib-sheet.html" message=" p:store: { $outdir }/xproc-crib-sheet.html ..."
       />

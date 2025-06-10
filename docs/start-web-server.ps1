@@ -3,4 +3,4 @@
 # Suggestion (as Administrator): Install-Module -Name Pode
 # There are some hoops to jump through
 
-Start-PodeStaticServer -Port 8080
+Start-PodeStaticServer -Port 8088

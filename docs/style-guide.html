@@ -144,7 +144,7 @@
                <p>Details, details</p>
                <ul>
                   <li>More details</li>
-                  <li>With details, including some <em>emphasized</em> and <strong>strengthened</strong> and <i>italic</i> and <b>bold</b>.</li>
+                  <li>With details, including some <em>emphasized</em> and <strong>strengthened</strong> and <i>italic</i> and <b>bold</b>. And <b class="hi">highlighted bold</b>.</li>
                </ul>
             </details>
          </div>
@@ -152,11 +152,23 @@
             <h2>Panel One</h2>
             <p>Panel one goes here, <a class="internal"
                   href="index.html">Linking</a> and with <em>emphasis</em> as well.</p>
+            <p>The styling supports two main kinds of div displays in addition to the default plus whatever you might add. A <q>panel</q> is what you see here. An example of a <q>block</q> is the <code>details</code> (expanding box) above, or the section entitled <a class="internal"
+                  href="#block">Block</a> below. Any HTML element can be a panel or a block, marked as such using its <code>class</code> attribute in the normal way.</p>
          </div>
          <div class="panel">
             <h2>Panel Two</h2>
             <p>Panel two goes here.</p>
+            <p>The <i class="hi">emphasis color</i> can be gotten by using <code>class="hi"</code> or <q>highlight</q> on anything at all. We can extend this vocabulary as needed for more effects.</p>
             <p class="hanging">By applying a class value <q>hanging</q>, it is possible to achieve a hanging indentation for a paragraph, useful (for example) for lists of bibliographic citations.</p>
+         </div>
+         <div class="block"
+              id="block">
+            <h2>Block</h2>
+            <p>Not marked as a panel, but marked as a block. Panels are more distinctive.</p>
+         </div>
+         <p>But not everything has to be in a panel or block.</p>
+         <div>
+            <p>In fact there may be structures on a page unstyled in the default view.</p>
          </div>
       </main>
       <hr class="hr">

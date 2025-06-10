@@ -15,6 +15,7 @@
   --contrast-link-face: blue;
 
   --highlight-color: green;
+  --contrast-highlight-color: green;
   --border-color: black;  
 }
 
@@ -35,7 +36,8 @@ body.night {
   --link-face: #7F99FF; /* Soft, dreamy blue for links, subtle yet distinct */
   --contrast-link-face: #A3B4FF; /* Lighter, glowing blue for links on the contrast background */
 
-  --highlight-color: #CABEFF; /* Gentle pastel purple for highlights, meditative and dreamy */
+  --highlight-color: #40E0D0; /*  turquoise */
+  --contrast-highlight-color: 	#00CCCC;
   --border-color: #00FFFF; /* Soft neon cyan, glowing and restful for the night theme */
 
 
@@ -46,7 +48,7 @@ body.night {
 
 body.day {
   --main-bg: #FAF3E0; /* Soft cream background, light and inviting */
-  --secondary-bg: #F5E3B3; /* Pale straw yellow for secondary elements, warm but subtle */
+  --secondary-bg: cornsilk;
   --contrast-bg: #534582;
 
   --main-face: #4A3B2D; /* Deep brown for text, offering strong readability and contrast */
@@ -56,6 +58,7 @@ body.day {
   --contrast-link-face: #FFD966; /* Warm and cheerful golden yellow, distinct from the light green contrast face */
 
   --highlight-color: #2D9CDB;
+  --contrast-highlight-color: #c0e1f4;
   --border-color: #B49A7A;
 
 #zone_logo #zone { fill: var(--secondary-bg); stroke: var(--border-color) }
@@ -71,14 +74,15 @@ body.dawn {
   --main-face: #3A3024; /* Warm dark brown for text, complementing the soft green background */
   --contrast-face: #25756A;
 
-  --link-face: #FF7E5F; /* Warm coral for links, evoking the glow of dawn */
+  --link-face: #4697E9;
   --contrast-link-face: #4697E9;
 
   --highlight-color: #20BFC3;
+  --contrast-highlight-color: #FF7E5F;
   --border-color: #6AAE75; /* Fresh, uplifting green for borders, tying into the soft green background */
 
 #zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
-#zone_logo #zed  { stroke: var(--link-face) }
+#zone_logo #zed  { stroke: var(--contrast-highlight-color) }
 
 }
 
@@ -93,7 +97,8 @@ body.dusk {
   --link-face: #6FFFE9; /* Bright turquoise for links, evoking the shimmer of fireflies */
   --contrast-link-face: #A1FFCE; /* Soft mint green for links on the contrast background, dreamy and ethereal */
 
-  --highlight-color: #7EF9FF; /* Gentle cyan for highlights, cool and refreshing */
+  --contrast-highlight-color: #7EF9FF; 
+  --highlight-color: #efdac7;
   --border-color: #D4A373; /* Muted golden-bronze, warm and elegant for an evening feel */
 
 #zone_logo #zone { fill: var(--contrast-bg); stroke: var(--border-color) }
@@ -178,4 +183,10 @@ hr { border: thin solid var(--border-color); }
 h1, h2, h3, h4, h5, h6 { font-family: "Noto Serif", serif; font-weight: 400 }
 
 .highlight, .hi { color: var(--highlight-color) }
+.panel .highlight, .panel .hi { color: var(--contrast-highlight-color) }
+
+.alt-highlight, .althi { color: var(--contrast-highlight-color) }
+.panel .alt-highlight, .panel .althi { color: var(--highlight-color) }
+
+code { font-size: 120% }
 
