@@ -20,6 +20,9 @@
          <link rel="stylesheet" href="../site/zone-main.css"/>
          <style type="text/css" xml:space="preserve">
 
+details#directory { }
+details#directory[open] {  overflow-y: scroll }
+
 #introduction { border: thin solid black; margin-bottom: 1em }
 
 #bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
@@ -69,8 +72,17 @@ code { font-size: larger; padding: 0.2em;
       </p:with-input>
    </p:insert>
    
+   <p:rename match="aside[@id='directory']" new-name="details"/>   
+   
    <p:rename match="section[@id='introduction']" new-name="details"/>   
+   
    <p:namespace-rename to="http://www.w3.org/1999/xhtml" apply-to="elements"/>
+   
+   <p:insert match="details[@id='directory']" position="first-child">
+      <p:with-input port="insertion">
+         <summary>index</summary>
+      </p:with-input>
+   </p:insert>
    
    <p:insert match="details[@id='introduction']" position="first-child">
       <p:with-input port="insertion">

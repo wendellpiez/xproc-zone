@@ -35,6 +35,7 @@
          <p:inline>
             <steps>ixml</steps>
             <steps>mail</steps>
+            <steps>file</steps>
             <steps>os</steps>
             <steps>paged-media</steps>
             <!--<steps>rdf</steps>-->

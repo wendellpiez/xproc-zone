@@ -19,7 +19,7 @@
             <xsl:call-template name="make-script"/>
          </head>
          <body>
-            <aside class="directory">
+            <aside id="directory">
                <xsl:apply-templates select="//declare-step" mode="directory">
                   <xsl:sort select="@type"/>
                </xsl:apply-templates>
@@ -189,9 +189,9 @@
    <xsl:template name="make-style" expand-text="false">
       <style xml:space="preserve">
 
-aside.directory { position: fixed; top: 4em; right: 1vw; height: 80vh; background-color: gainsboro; border: thin solid black; padding: 1.6em;
-  margin: 0em; overflow-y: scroll }
-.directory p { margin: 0em; margin-top: 0.3em }
+#directory { position: fixed; top: 4em; right: 1vw; background-color: gainsboro; border: thin solid black; max-height: 80vh  }
+aside#directory { padding: 1.2em; margin: 0em; overflow-y: scroll; }
+#directory p { margin: 0em; margin-top: 0.3em }
 
 main { max-width: 50em }
 
