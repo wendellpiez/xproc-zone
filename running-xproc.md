@@ -12,15 +12,15 @@ For learners and those just experimenting and evaluating, free tools are enough.
 
 One option available to everyone is to run an available XProc engine from the command line. As it provides a level basis for everyone, everything on this repository is built to work from a command line or shell script, including under CI/CD (continuous integration/development). This offers versatility along with platform independence.
 
-Open source processors that can execute your XProc pipelines using command-line invocations include [Morgana XProc III-se][morgana] and [XML Calabash 3][xmlcalabash3]. This repository provides instructions for using Morgana III-se, while on occasion XML Calabash may also be used, as documented.
+Open source processors that can execute your XProc pipelines using command-line invocations include [Morgana XProc-IIIse][morgana] and [XML Calabash 3][xmlcalabash3]. This repository provides instructions for using Morgana-IIIse, while on occasion XML Calabash may also be used, as documented.
 
-### Setting up Morgana XProc III-se for the project
+### Setting up Morgana XProc-IIIse for the project
 
 Those without an XProc 3.0 processor can install one. See the file [setup/morgana-setup.md](setup/morgana-setup.md).
 
 [Morgana][morgana] is implemented in Scala by Achim Berndzen, on a Java platform. It is lightweight, fast, conformant, and extensible: this installation supports Schematron and XSpec as well as supported standard features including XSLT and XQuery (using Saxon).
 
-Morgana is open source software licensed under the [GNU General Public License (GPL) 3](http://www.gnu.de/documents/gpl-3.1.en.html).
+Morgana is open source software licensed under the [GNU General Public License (GPL) 3](http://www.gnu.de/documents/gpl-3.1.en.html). IIIse is the open-source, unsupported edition. See the Morgana pages for information on Morgana-IIIee, the extended editionn.
 
 ### Using XML Calabash for the project
 
@@ -28,7 +28,7 @@ Another recommendation is [XML Calabash](xmlcalabash3). For this project, consid
 
 - Confirming standards conformance by replicating functionality
 - Testing, if and as XProc conformance ever becomes a question
-- Some features not supported in Morgana XProc III-se
+- Some features not supported in Morgana XProc-IIIse
 
 The intent is that one should fairly expect that pipelines written for one processor, except where documented as such, should work the same way in the other (produce the same results for the same inputs). Where and insofar as this expectation is met, we similarly have some assurance (in principle) of the *survivability* and *viability* of the code base, apart from today's platforms. One can dream.
 
@@ -46,7 +46,7 @@ Provided runtimes were tested using OpenJDK 17. On Windows, the Microsoft distri
 
 ### Running pipelines
 
-Two scripts at the top level are provided, for running the Morgana processor as 
+Two scripts at the top level are provided, for running the Morgana processor as installed by scripts in the [setup/](setup/) folder.
 
 #### Smoke test pipelines
 
