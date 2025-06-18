@@ -31,6 +31,6 @@
     <xsl:template mode="signature" match="@href">[@{ local-name()}]</xsl:template>
     
     <xsl:template mode="signature"
-        match="@name | @pipe | @port">[@{ local-name()}='{ . }']</xsl:template>
+        match="@name | @pipe | @port | @as">[@{ local-name()}='{ . }']</xsl:template>
 
 </xsl:stylesheet>

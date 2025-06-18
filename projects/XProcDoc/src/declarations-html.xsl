@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3" 
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
    xmlns="http://www.w3.org/1999/xhtml"
    exclude-result-prefixes="#all" expand-text="true"
    version="3.0">
@@ -37,7 +37,7 @@
       </html>
    </xsl:template>
    
-   <xsl:function name="ox:morgana-supports" as="xs:boolean">
+   <xsl:function name="zone:morgana-supports" as="xs:boolean">
       <xsl:param name="step" as="element(declare-step)"/>
       <!-- Morgana coverage is documented at https://www.xml-project.com/morganaxproc-iiise.html -->
       <xsl:sequence select="$step/@library=('standard','validation','file','ixml') and not($step/@type='p:validate-with-nvdl')"/>
@@ -50,7 +50,7 @@
    </xsl:template>
    
       <xsl:template match="declare-step">
-         <details id="{ ox:step-name(.) }" class="step { @library[.='standard']/' standard' } { if (ox:morgana-supports(.)) then 'supported' else 'unsupported'}" open="open">
+         <details id="{ zone:step-name(.) }" class="step { @library[.='standard']/' standard' } { if (zone:morgana-supports(.)) then 'supported' else 'unsupported'}" open="open">
          <summary>
             <div class="linkout">
                <xsl:apply-templates select="." mode="specification-link">
@@ -62,7 +62,7 @@
             </div>
             <xsl:text>{ @type} </xsl:text>
          </summary>
-            <xsl:if test="ox:morgana-supports(.) => not()">
+            <xsl:if test="zone:morgana-supports(.) => not()">
                <p class="warning">Unsupported in MorganaXProc-IIIse</p></xsl:if>
          <xsl:apply-templates select="." mode="syntax-map"/>
          <xsl:apply-templates select="option">
@@ -88,7 +88,7 @@
    <xsl:template match="declare-step" mode="syntax-map">
       <xsl:call-template name="syntax-block">
          <xsl:with-param name="codeblock">
-            <xsl:text>&lt;{ @type} name="DO_{ ox:step-name(.) }"</xsl:text>
+            <xsl:text>&lt;{ @type} name="DO_{ zone:step-name(.) }"</xsl:text>
             <xsl:apply-templates mode="#current" select="option">
                <xsl:sort select="@name"/>
             </xsl:apply-templates>
@@ -103,7 +103,7 @@
          <xsl:variable name="implicit" select="empty(../output except .)"/>
          <xsl:call-template name="syntax-block">
             <xsl:with-param name="codeblock">
-               <xsl:text>&lt;p:with-input port="..." pipe="{@port[not($implicit)]}@DO_{ ox:step-name(parent::declare-step) }"/></xsl:text>
+               <xsl:text>&lt;p:with-input port="..." pipe="{@port[not($implicit)]}@DO_{ zone:step-name(parent::declare-step) }"/></xsl:text>
             </xsl:with-param>
          </xsl:call-template>
       </xsl:for-each>
@@ -141,7 +141,7 @@
       <xsl:text>/></xsl:text>
    </xsl:template>
 
-   <xsl:function name="ox:step-name" as="xs:string?">
+   <xsl:function name="zone:step-name" as="xs:string?">
       <xsl:param name="step" as="element(declare-step)"/>
       <xsl:sequence select="$step ! substring-after(@type,'p:')"/>
    </xsl:function>
@@ -149,7 +149,7 @@
    
    <xsl:template match="declare-step[@library='standard']" mode="specification-link" priority="10">
       <xsl:param name="linktext">{ @type }</xsl:param>
-      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/3.0/steps/#c.{ox:step-name(.)}">
+      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/3.0/steps/#c.{zone:step-name(.)}">
          <xsl:sequence select="$linktext"/>
       </a>
       <xsl:call-template name="xprecref-link"/>
@@ -157,7 +157,7 @@
    
    <xsl:template match="declare-step" mode="specification-link">
       <xsl:param name="linktext">{ @type }</xsl:param>
-      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/master/head/{@library}/#c.{ox:step-name(.)}">
+      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/master/head/{@library}/#c.{zone:step-name(.)}">
          <xsl:sequence select="$linktext"/>
       </a>
       <xsl:call-template name="xprecref-link"/>
@@ -165,13 +165,13 @@
 
    <xsl:template name="xprecref-link">
       <!--Still getting some 404s -->
-      <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.{ox:step-name(.)}.html">XProcRef description</a>
+      <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.{zone:step-name(.)}.html">XProcRef description</a>
    </xsl:template>
       
 
    <xsl:template match="declare-step" mode="internal-link">      
-      <a href="#{ox:step-name(.)}" class="steplink internal{ @library[.='standard']/' standard-step' } {
-         if (ox:morgana-supports(.)) then 'supported' else 'unsupported' }">{ @type }</a>
+      <a href="#{zone:step-name(.)}" class="steplink internal{ @library[.='standard']/' standard-step' } {
+         if (zone:morgana-supports(.)) then 'supported' else 'unsupported' }">{ @type }</a>
    </xsl:template>  
    
    <xsl:template match="declare-step/*">
@@ -189,7 +189,7 @@
    <xsl:template name="make-style" expand-text="false">
       <style xml:space="preserve">
 
-#directory { position: fixed; top: 4em; right: 1vw; background-color: gainsboro; border: thin solid black; max-height: 80vh  }
+#directory { position: fixed; top: 4em; right: 1rem; background-color: gainsboro; border: thin solid black; max-height: 80vh  }
 aside#directory { padding: 1.2em; margin: 0em; overflow-y: scroll; }
 #directory p { margin: 0em; margin-top: 0.3em }
 
@@ -208,7 +208,7 @@ pre.syntax-map { outline: thin solid black; background-color: white; padding: 1e
 pre.syntax-map.seeme { outline: medium dotted black; background-color: #a3b4ff  }
 div.syntax-block { max-width: fit-content }
 p.warning { font-style: italic }
-p.option, p.input, p.output { padding: 0.2em; border: thin solid inherit; width: fit-content } 
+p.option, p.input, p.output { padding: 0.2em; border: thin solid inherit; width: fit-content; font-size: smaller } 
 p.option:hover, p.input:hover, p.output:hover { background-color: whitesmoke; outline: medium solid white } 
 
 a { text-decoration: none; color: midnightblue }

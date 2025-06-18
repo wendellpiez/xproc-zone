@@ -140,6 +140,12 @@ body.none  #themepick p.set.none  { border-style: dotted; background-color: var(
   padding: 0.3rem; color: var(--link-face); border: thin solid var(--border-color) }
 #sitenav a:hover { color: var(--highlight-color) }
 
+.buttonbar { padding: 0em; margin-left: 2em }
+.buttonbar li { display: inline-block; background-color: var(--secondary-bg);
+  margin: 0.2em; padding: 0.2em; outline: thin outset var(--border-color) }
+.buttonbar li:hover { outline-width: medium; outline-style: outset;
+  color: var(--contrast-highlight-color); background-color: var(--main-bg) }
+
 header { margin: 1em 0em }
 
 header > * { margin: 0em }
@@ -177,6 +183,8 @@ details { padding: 0.4em }
 .nowrap { white-space: nowrap }
 
 .hanging { padding-left: 2.4em; text-indent: -2.4em }
+
+.smaller { font-size: smaller }
 
 hr { border: thin solid var(--border-color); }
 

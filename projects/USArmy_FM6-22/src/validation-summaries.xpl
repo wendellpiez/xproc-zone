@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:library xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xvrl="http://www.xproc.org/ns/xvrl"
    xmlns:svrl="http://purl.oclc.org/dsdl/svrl">
@@ -14,7 +14,7 @@
    
    
    <!-- An XSLT is the other obvious way to do this, but XProc! --> 
-   <p:declare-step name="xvrl-summarize" type="ox:xvrl-summarize">
+   <p:declare-step name="xvrl-summarize" type="zone:xvrl-summarize">
       <!-- Expecting an xvrl:report or xvrl:NO_REPORT on the primary input port -->
       <p:input port="xvrl-report" primary="true"/>
       
@@ -53,7 +53,7 @@
       <p:namespace-delete prefixes="c ox xsl xvrl svrl"/>
    </p:declare-step>
    
-   <p:declare-step name="svrl-summarize" type="ox:svrl-summarize">
+   <p:declare-step name="svrl-summarize" type="zone:svrl-summarize">
       <!-- Expecting an svrl:report on the primary input port -->
       <p:input port="svrl-report" primary="true"/>
       

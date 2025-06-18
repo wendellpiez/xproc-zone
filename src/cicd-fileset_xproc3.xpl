@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3"
-   type="ox:cicd-fileset_XProc3_HouseRules"
-   name="cicd-fileset_XProc3_HouseRules"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   type="zone:cicd-fileset_XProc3_repo-validations"
+   name="cicd-fileset_XProc3_repo-validations"
    >
 
    <!-- Pipeline to be called as subpipeline, delivering a list of XProcs -->

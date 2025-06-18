@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
    xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
    xmlns:p="http://www.w3.org/ns/xproc">
    
@@ -8,28 +9,6 @@
         including help with local rules -->
 
    <!-- *Not* for checking XProc correctness - to do that, run it -->
-
-<!-- Don't rely on comments that are likely to go out of date. Rely instead on code.
-   
-   
-     Among the rules tested here:
-     
-     There must be a namespace 'http://csrc.nist.gov/ns/oscal-xproc3' prefixed 'ox'
-     
-     The name of the step, /*/@name, matches the base name of the file.
-     The type of the step, /*/@type also matches the base name except is prefixed 'ox' for the repo namespace.
-     The stated XProc version must be 3.0
-   
-     No PIs are permitted.
-
-     @message
-       Should be prepended with the step name, in brackets e.g. message="[STEP-NAME] message ..."
-       A variable may be also used to start the message, which offers a workaround.
-       Should appear on any p:load or p:store step (others tbd)
-     
-     Resources
-       the Schematron looks for resources at the end of @href (with no variable callouts), reporting failures
-   -->
 
    <sch:ns prefix="p" uri="http://www.w3.org/ns/xproc"/>
    <sch:ns prefix="c" uri="http://www.w3.org/ns/xproc-step"/>
@@ -46,10 +25,11 @@
       A warning is given if the file is not listed in TEST-XPROC-SET.xpl for CI/CD runtime
       
       The XProc is version 3.0
-      The assigned type /*/@type should match the file name, in the http://csrc.nist.gov/ns/oscal-xproc3 namespace (prefix 'ox')
+      The assigned type /*/@type should match the file name, in the http://wendellpiez.com/xproc-zone/ns namespace
+      with prefix 'zone' (stay out of trouble)
       The name /*/@name should also match the file name
       
-      No PIs appear anywhere
+      No PIs appear anywhere (we can work out exceptions if needed)
       
       Messages are tagged - leading with either a literal [STEP-NAME], or a variable reference
       

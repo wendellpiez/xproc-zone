@@ -3,7 +3,6 @@
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3"
    exclude-result-prefixes="#all"
    xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
@@ -63,13 +62,13 @@
    
    <!--<xsl:variable name="lookup-tables" select="//table-wrap[@id=('table4_4','table4_5')]/table"/>
    
-   <xsl:function name="ox:category-for-control" as="xs:string?">
+   <xsl:function name="zone:category-for-control" as="xs:string?">
       <xsl:param name="tableID" as="xs:string"/>
       <xsl:variable name="linking-row" select="$lookup-tables/tbody/tr[td/p/xref/@rid=$tableID]"/>
       <xsl:sequence select="($linking-row | $linking-row/preceding-sibling::tr)[count(td) eq 4][last()]/td[1]/normalize-space(.)"/>
    </xsl:function>
    
-   <xsl:function name="ox:subcategory-for-control" as="xs:string?">
+   <xsl:function name="zone:subcategory-for-control" as="xs:string?">
       <xsl:param name="tableID" as="xs:string"/>
       <xsl:variable name="linking-row"     select="$lookup-tables/tbody/tr[td/p/xref/@rid=$tableID]"/>
       <xsl:sequence select="($linking-row | $linking-row/preceding-sibling::tr)[count(td) = (3,4)][last()]/td[2]/normalize-space(.)"/>
@@ -256,8 +255,8 @@
       <control id="{ @id }" class="{ $class }">
          <title>{ caption/title/normalize-space() }</title>
          <xsl:apply-templates select="label"/>
-         <!--<prop name="category"    value="{ ox:category-for-control(@id/string(.)) }"/>-->
-         <!--<prop name="subcategory" value="{ ox:subcategory-for-control(@id) }"/>-->
+         <!--<prop name="category"    value="{ zone:category-for-control(@id/string(.)) }"/>-->
+         <!--<prop name="subcategory" value="{ zone:subcategory-for-control(@id) }"/>-->
          
          <part name="evaluation">
             <xsl:apply-templates mode="#current" select="table/tbody/tr[2]/td[1]">

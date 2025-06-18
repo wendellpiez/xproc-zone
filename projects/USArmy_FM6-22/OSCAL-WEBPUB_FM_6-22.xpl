@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3" type="ox:OSCAL-WEBPUB_FM_6-22" name="OSCAL-WEBPUB_FM_6-22"
-   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   >
+<p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"
+   xmlns:c="http://www.w3.org/ns/xproc-step"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   type="zone:OSCAL-WEBPUB_FM_6-22" name="OSCAL-WEBPUB_FM_6-22"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
    <!-- Pipeline produces two HTML file outputs from OSCAL source, for demonstration -->
    

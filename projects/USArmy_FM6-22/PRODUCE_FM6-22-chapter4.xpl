@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
-   xmlns:ox="http://csrc.nist.gov/ns/oscal-xproc3" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xvrl="http://www.xproc.org/ns/xvrl"
    xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-   type="ox:PRODUCE_FM6-22-chapter4"
+   type="zone:PRODUCE_FM6-22-chapter4"
    name="PRODUCE_FM6-22-chapter4">
 
    <!--
@@ -171,18 +172,18 @@
             name="no-rng">
             <p:with-input>
                <p:inline>
-                  <ox:message>Schema { $sts-rng } not found - try running pipeline GRAB-NISO_STS-RNG.xpl</ox:message>
+                  <message>Schema { $sts-rng } not found - try running pipeline GRAB-NISO_STS-RNG.xpl</message>
                </p:inline>
             </p:with-input>
          </p:identity>
       </p:otherwise>
    </p:choose>
 
-   <ox:validation-summarize name="summarize-sts-validation"
+   <zone:validation-summarize name="summarize-sts-validation"
       doc-name="'the STS result'" schema-name="$sts-rng">
       <!--<p:with-option name="doc-name" select="'the STS result'"/>
       <p:with-option name="schema-name" select="$sts-rng"/>-->
-   </ox:validation-summarize>
+   </zone:validation-summarize>
 
    <!-- Now we have STS and have checked it, we can produce OSCAL -->
 
@@ -267,17 +268,17 @@
          <p:identity message="{$label} Not validating OSCAL - no schema found at { $oscal-xsd }" name="no-xsd">
             <p:with-input>
                <p:inline>
-                  <ox:message>Schema { $oscal-xsd } not found - try running pipeline GRAB-RESOURCES.xpl</ox:message>
+                  <omessage>Schema { $oscal-xsd } not found - try running pipeline GRAB-RESOURCES.xpl</omessage>
                </p:inline>
             </p:with-input>
          </p:identity>
       </p:otherwise>
    </p:choose>
 
-   <ox:validation-summarize name="summarize-oscal-validation">
+   <zone:validation-summarize name="summarize-oscal-validation">
       <p:with-option name="doc-name"    select="'the OSCAL result'"/>
       <p:with-option name="schema-name" select="$oscal-xsd"/>
-   </ox:validation-summarize>
+   </zone:validation-summarize>
 
    <!-- All done making OSCAL and schema-validating -
         next we validate the same OSCAL again, this time with Schematron -->
@@ -287,11 +288,11 @@
       <p:with-input port="schema" href="src/oscal-check.sch"/>
    </p:validate-with-schematron>
    
-   <ox:validation-summarize name="summarize-oscal-schematron">
+   <zone:validation-summarize name="summarize-oscal-schematron">
       <p:with-input port="validation-report" pipe="report@schematron-validator"/>
       <p:with-option name="doc-name"    select="'the OSCAL result'"/>
       <p:with-option name="schema-name" select="'src/oscal-check.sch'"/>
-   </ox:validation-summarize>
+   </zone:validation-summarize>
    
    <!-- Now done with validation, we aggregate all the validation reports into one -->
    <p:wrap-sequence wrapper="ox:REPORTS" name="validation-reports">
