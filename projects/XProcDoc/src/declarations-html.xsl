@@ -189,8 +189,8 @@
    <xsl:template name="make-style" expand-text="false">
       <style xml:space="preserve">
 
-#directory { position: fixed; top: 4em; right: 1rem; background-color: gainsboro; border: thin solid black; max-height: 80vh  }
-aside#directory { padding: 1.2em; margin: 0em; overflow-y: scroll; }
+#directory { position: fixed; top: 6em; right: 1rem; background-color: gainsboro; border: thin solid black; max-height: 80vh  }
+aside#directory { padding: 1.2em; margin: 0em; overflow-y: scroll;  top: 4em; }
 #directory p { margin: 0em; margin-top: 0.3em }
 
 main { max-width: 50em }

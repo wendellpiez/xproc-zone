@@ -4,12 +4,12 @@
    xmlns:html="http://www.w3.org/1999/xhtml"
    xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-   <p:import href="assemble-step-index.xpl"/>
+   <p:import href="src/assemble-crib-sheet.xpl"/>
    
    <p:option name="result-path" select="'out/xproc-step-list.html'"/>
 
    <!-- Produces XHTML -->
-   <zone:assemble-step-index/>
+   <zone:assemble-crib-sheet/>
    
    <p:store href="{ $result-path }" message="Saving XProc Crib Sheet results in { $result-path }"/>
    

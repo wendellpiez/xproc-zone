@@ -3,7 +3,7 @@
    xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
    xmlns:html="http://www.w3.org/1999/xhtml"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   type="zone:assemble-step-index">
+   type="zone:assemble-crib-sheet">
 
 <!--Inputs must be available for this pipeline to run!
 
@@ -58,10 +58,10 @@ src/declarations-html.xsl
    <!-- Next: XSLT to produce HTML for the step digest, with links back to the Recs
         and XSpec for this XSLT -->
    <p:group name="produce-page">
-     <p:load href="xproc-steps.xml"/>
+     <p:load href="../out/xproc-steps.xml"/>
 
       <p:xslt message="[XPROC-STEP-INDEX-HTML] Producing HTML from XML step list xproc-steps.xml">
-         <p:with-input port="stylesheet" href="src/declarations-html.xsl"/>
+         <p:with-input port="stylesheet" href="declarations-html.xsl"/>
       </p:xslt>
 
       <!-- Grabbing the list of links to optional step definitions straight from the page on line -  -->

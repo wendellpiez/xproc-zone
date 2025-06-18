@@ -21,13 +21,15 @@
     
     <xsl:template match="index">
         <body>
-            <xsl:for-each-group select="entry" group-by="@name">
-                <xsl:sort select="current-grouping-key()"/>
-                <details class="elem">
-                    <summary class="head">{ current-grouping-key() }</summary>
-                            <xsl:apply-templates select="current-group()"/>
-                </details>
-            </xsl:for-each-group>
+            <main class="xproc-index">
+                <xsl:for-each-group select="entry" group-by="@name">
+                    <xsl:sort select="current-grouping-key()"/>
+                    <details class="elem">
+                        <summary class="head">{ current-grouping-key() }</summary>
+                        <xsl:apply-templates select="current-group()"/>
+                    </details>
+                </xsl:for-each-group>
+            </main>
         </body>        
     </xsl:template>
     
@@ -60,10 +62,10 @@ button.cp { float: right }
 
 .elem summary { font-size: 140%; margin-bottom: 0.6em }
 
-.elem .entry { display: grid; align-items: center; grid-template-columns: 1fr 1fr; gap: 0.4em;
+.elem .entry { display: grid; align-items: center; grid-template-columns: 2fr 3fr; gap: 0.4em;
   background-color: lightsteelblue; border: thin solid black; padding: 0.2em; }
 .elem .filepath { text-align: right }
-.entry p { margin: 0em }
+.entry p { margin: 0.2em; padding: 0.4em }
 .entry .signature { font-family: monospace; font-size: 128%; background-color: whitesmoke }
 
          </style>

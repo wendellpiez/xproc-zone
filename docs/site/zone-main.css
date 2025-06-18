@@ -115,7 +115,7 @@ body { background-color: var(--main-bg);
 
 /*#3B7EFF*/
 
-#bannerbar { margin: 0rem; padding: 0rem }
+#bannerbar { margin: 0rem; padding: 0rem; width: 100%; }
 
 a {
   color: var(--link-face); /* Sets the link color */

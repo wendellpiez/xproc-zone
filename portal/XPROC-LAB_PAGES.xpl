@@ -7,21 +7,27 @@
 
 
 <!-- REQUIRES CONNECTIVITY - set your proxy server -->
-   <p:import href="../projects/XProcDoc/assemble-step-index.xpl"/>
+   <p:import href="../projects/XProcDoc/src/assemble-crib-sheet.xpl"/>
    
-   <p:variable name="outdir" select="'../docs/xproc-lab'"/>
+   <p:import href="../projects/XProcDoc/src/index-repository-xproc.xpl"/>
    
-   <!-- Produces XHTML -->
-   <zone:assemble-step-index/>
-   
+   <p:declare-step type="zone:xproc-lab-equipment">
+      
+      <p:input  port="source"/>
+      <p:output port="result"/>
+      
    <p:insert match="html/head" position="last-child">
       <p:with-input port="insertion" expand-text="false">
          <link rel="stylesheet"            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" />
          <link rel="stylesheet" href="../site/zone-main.css"/>
          <style type="text/css" xml:space="preserve">
 
-details#directory { }
-details#directory[open] {  overflow-y: scroll }
+details#directory { padding-right: 1em; max-height: inherit; min-width: 20vw }
+#directory-listing { overflow-y: scroll; box-sizing: border-box; max-height: 80vh; margin-top: 0.6em }
+
+div#details-controls { position: fixed; top: 4em; right: 1rem }
+    
+button#closeAll { display: none }
 
 #introduction { border: thin solid black; margin-bottom: 1em }
 
@@ -35,6 +41,9 @@ details#directory[open] {  overflow-y: scroll }
 
 code { font-size: larger; padding: 0.2em;
        background-color: #DDC6CA }
+
+main.xproc-index { max-width: inherit }
+main.xproc-index .panel { max-width: 72em }
 
 .lab a { color: midnightblue }
 
@@ -71,12 +80,49 @@ code { font-size: larger; padding: 0.2em;
          </footer>
       </p:with-input>
    </p:insert>
+   </p:declare-step>
    
-   <p:rename match="aside[@id='directory']" new-name="details"/>   
+<!-- ADVENTURES AWAIT THE BOLD -->
+   
+   
+   <p:variable name="outdir" select="'../docs/xproc-lab'"/>
+   
+   <!-- Produces XHTML -->
+   <zone:index-repository-xproc/>
+   
+   <zone:xproc-lab-equipment name="equip-repo-index"/>
+   
+   <p:add-attribute match="details[@class='elem']" attribute-name="class" attribute-value="elem panel"/>
+   
+   <p:insert match="main" position="first-child">
+      <p:with-input port="insertion">
+         <h1>Index to XProc in the Zone</h1>
+         <p>This index is produced from the XProc source data using XProc.</p>
+      </p:with-input>
+   </p:insert>   
+   
+   <p:store href="{ $outdir }/zone-xproc-index.html" message=" p:store: { $outdir }/zone-xproc-index.html ..."/>
+   
+   <!-- this is implicit but we put it here anyway -->
+   <p:sink/>
+      
+   <!-- Produces XHTML -->
+   <zone:assemble-crib-sheet/>
+   
+   <zone:xproc-lab-equipment name="equip-crib-sheet"/>
    
    <p:rename match="section[@id='introduction']" new-name="details"/>   
    
+   <p:rename match="aside[@id='directory']" new-name="div"/>
+   
+   <p:wrap match="*[@id='directory']" wrapper="details"/>
+   
    <p:namespace-rename to="http://www.w3.org/1999/xhtml" apply-to="elements"/>
+
+   <p:add-attribute match="details[div/@id='directory']" attribute-name="id" attribute-value="directory"/>
+   
+   <p:add-attribute match="details[@id='directory']/div" attribute-name="id" attribute-value="directory-listing"/>
+   
    
    <p:insert match="details[@id='directory']" position="first-child">
       <p:with-input port="insertion">
@@ -93,12 +139,18 @@ code { font-size: larger; padding: 0.2em;
    
    <p:delete match="details/@open"/>
    
-   <p:label-elements match="aside[@class='directory']//a" attribute="onclick" label="'document.getElementById(''' || substring-after(@href,'#') || ''').open=true;'"/>
+   <p:label-elements match="details[@id='directory']//a" attribute="onclick" label="'document.getElementById(''' || substring-after(@href,'#') || ''').open=true;'"/>
    
-   <p:insert match="body/main/details[1]" position="after">
+   <p:insert match="details[@id='directory']" position="before">
       <p:with-input port="insertion">
-         <button onclick="document.querySelectorAll('details.step').forEach(d => d.open = true); ">Open All</button>
-         <button style="margin-left: 1em" onclick="document.querySelectorAll('details.step').forEach(d => d.open = false);">Close All</button>
+         <div id="details-controls">
+            <button id="openAll"
+               onclick="this.nextElementSibling.style.display = 'inline-block'; this.style.display='none'; document.querySelectorAll('details.step').forEach(d => d.open = true);"
+               >Open All</button>
+            <button id="closeAll" style="margin-left: 1em"
+               onclick="this.previousElementSibling.style.display = 'inline-block'; this.style.display='none'; document.querySelectorAll('details.step').forEach(d => d.open = false);"
+               >Close All</button>
+         </div>
       </p:with-input>
    </p:insert>
    
