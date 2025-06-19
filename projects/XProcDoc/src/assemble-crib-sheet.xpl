@@ -20,17 +20,18 @@ src/declarations-html.xsl
 <!-- Depends on source data produced by COLLECT-XPROC-STEPS.xpl - you will get an error if that pipeline is not run first -->
 <!-- For later: an integrated pipeline that runs both together -->
 
-   <p:output port="result"/>
+   <p:output port="result" serialization="map { 'indent': true() }"/>
 
    <p:group name="compound-step-links" xmlns:db="http://docbook.org/ns/docbook">
       <p:output port="result"/>
+      <p:load  href="https://spec.xproc.org/lastcall-2024-08/head/xproc/specification.xml"/>
       <p:for-each>
-         <p:with-input select="/descendant::db:para[@xml:id='p.subpipeline']/db:tag[not(.='p:variable')]"
-            href="https://spec.xproc.org/lastcall-2024-08/head/xproc/specification.xml"/>
+         <p:with-input select="/descendant::db:para[@xml:id='p.subpipeline']/db:tag[not(.='p:variable')]"/>
          <p:rename match="db:tag" new-name="a"/>
          <p:add-attribute attribute-name="href"
             attribute-value="https://spec.xproc.org/lastcall-2024-08/head/xproc/#{string(.) => translate(':','.')}"/>
          <p:add-attribute match="a" attribute-name="target" attribute-value="specs"/>
+         <p:wrap match="/*" wrapper="code"/>
          <p:wrap match="/*" wrapper="li"/>
       </p:for-each>
       <p:wrap-sequence wrapper="ul"/>
@@ -72,7 +73,7 @@ src/declarations-html.xsl
       </p:insert>
 
       <!-- Reaching back to insert the toc links from above -->
-      <p:insert match="section[@class='introduction']" xmlns="http://www.w3.org/1999/xhtml"
+      <p:insert match="section[@id='introduction']" xmlns="http://www.w3.org/1999/xhtml"
          position="after" message="[XPROC-STEP-INDEX-HTML] Inserting compound step links">
          <p:with-input port="insertion" select="/*" pipe="result@compound-step-links"/>
       </p:insert>
