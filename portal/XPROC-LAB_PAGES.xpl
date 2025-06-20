@@ -7,7 +7,7 @@
 
 
 <!-- REQUIRES CONNECTIVITY - set your proxy server -->
-   <p:import href="../projects/XProcDoc/src/assemble-crib-sheet.xpl"/>
+   <p:import href="../projects/XProcDoc/src/assemble-step-list.xpl"/>
    
    <p:import href="../projects/XProcDoc/src/index-repository-xproc.xpl"/>
    
@@ -112,9 +112,9 @@ main.xproc-index .panel { max-width: 72em }
    <p:sink/>
       
    <!-- Produces XHTML -->
-   <zone:assemble-crib-sheet/>
+   <zone:assemble-step-list/>
    
-   <zone:xproc-lab-equipment name="equip-crib-sheet"/>
+   <zone:xproc-lab-equipment name="equip-step-list"/>
    
    <p:rename match="section[@id='introduction']" new-name="details"/>   
    
@@ -161,7 +161,7 @@ main.xproc-index .panel { max-width: 72em }
    
    <p:namespace-delete prefixes="zone xs c"/>
    
-   <p:store href="{ $outdir }/xproc-crib-sheet.html" message=" p:store: { $outdir }/xproc-crib-sheet.html ..."
+   <p:store href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."
       />
    
    

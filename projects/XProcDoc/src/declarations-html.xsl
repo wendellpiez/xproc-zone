@@ -9,7 +9,7 @@
    
      
 
-   <xsl:variable name="page-title">XProc 3.0/3.1 Crib Sheet</xsl:variable>
+   <xsl:variable name="page-title">XProc 3.0/3.1 Step List</xsl:variable>
    
    <xsl:template match="/*">
       <html>

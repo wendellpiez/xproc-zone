@@ -3,7 +3,7 @@
    xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
    xmlns:html="http://www.w3.org/1999/xhtml"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   type="zone:assemble-crib-sheet">
+   type="zone:assemble-step-list">
 
 <!--Inputs must be available for this pipeline to run!
 
