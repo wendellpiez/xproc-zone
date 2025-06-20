@@ -43,7 +43,8 @@
         <p:with-input port="insertion">
             <div id="bannerbar">
                 <div id="sitenav">
-                    <a href="https://github.com/wendellpiez/xproc-zone">XProc Zone Codebase</a>
+                    <span>XProc Zone </span>
+                    <a href="https://github.com/wendellpiez/xproc-zone">Code</a>
                 </div>
                 <div id="themepick">
                     <!-- Using the interface defined in zone-themeTime.js -->
@@ -66,9 +67,9 @@
     
     
     <p:if test="not( $pagename='index' and $path-to-root='.' )">
-        <p:insert position="after" match="html/body/div/div[@id='sitenav']/a[1]">
+        <p:insert position="before" match="html/body/div/div[@id='sitenav']/a[1]">
             <p:with-input port="insertion">
-                <p:inline> | <a href="{ $path-to-root }/index.html">Home</a></p:inline>
+                <p:inline><a href="{ $path-to-root }/index.html">Home</a><span> | </span></p:inline>
             </p:with-input>
         </p:insert>
     </p:if>

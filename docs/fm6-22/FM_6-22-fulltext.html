@@ -80,14 +80,23 @@ th { background-color: gainsboro }
 a { text-decoration: none }
 a:hover { text-decoration: underline }
 
-#bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
 
-#bannerbar a { color: skyblue; border: thin solid skyblue;
-               background-color: #404F69; padding: 0.3em }
-#bannerbar a:hover { text-decoration: underline }
-.catalog#chapter4   #bannerbar a#fulltext { display: none }
-.catalog#table_view #bannerbar a#tables   { display: none }
-.catalog#draw_one   #bannerbar a#draw     { display: none }
+#bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em;
+  font-family: sans-serif }
+
+#sitenav, #pnav p { margin: 0em; background-color: #404F69; color: skyblue;
+  padding: 0.3em; border: thin solid skyblue }
+
+#bannerbar a { color: skyblue; }
+#bannerbar a:hover { text-decoration: underline; color: cyan }
+
+#pnav p { display: inline-block; font-family: sans-serif }
+#sitenav { font-size: smaller }
+#sitenav a { font-weight: bold }
+
+.catalog#chapter4   #bannerbar p#fulltext { display: none }
+.catalog#table_view #bannerbar p#tables   { display: none }
+.catalog#draw_one   #bannerbar p#draw     { display: none }
 
 
 footer { font-size: smaller; color: white }
@@ -114,16 +123,24 @@ footer a { color: lightsteelblue }
          id="chapter4">
       <div id="bannerbar">
          <div id="pnav">
-            <a href="index.html">Project</a>
-            <a id="fulltext"
-               href="FM_6-22-fulltext.html">Chapter 4</a>
-            <a id="tables"
-               href="FM_6-22-tables.html">Tables</a>
-            <a id="draw"
-               href="FM_6-22-draw_one.html">Draw one</a>
+            <p>
+               <a href="index.html">FM 6-22 Project</a>
+            </p>
+            <p id="fulltext">
+               <a href="FM_6-22-fulltext.html">Chapter 4</a>
+            </p>
+            <p id="tables">
+               <a href="FM_6-22-tables.html">Tables</a>
+            </p>
+            <p id="draw">
+               <a href="FM_6-22-draw_one.html">Draw one</a>
+            </p>
          </div>
          <div id="sitenav">
-            <a href="../index.html">XProc Zone</a>
+            <span>XProc Zone </span>
+            <a href="http://localhost:8088/index.html"
+               class="internal">Home</a>
+            <span> | </span>
             <a href="https://github.com/wendellpiez/xproc-zone">Code</a>
          </div>
       </div>

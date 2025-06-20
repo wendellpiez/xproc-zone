@@ -138,6 +138,7 @@ body.none  #themepick p.set.none  { border-style: dotted; background-color: var(
 
 #sitenav { background-color: var(--secondary-bg); float: right; clear: both; font-size: smaller;
   padding: 0.3rem; color: var(--link-face); border: thin solid var(--border-color) }
+#sitenav a { font-weight: bold }
 #sitenav a:hover { color: var(--highlight-color) }
 
 .buttonbar { padding: 0em; margin-left: 2em }

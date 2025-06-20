@@ -31,13 +31,16 @@ button#closeAll { display: none }
 
 #introduction { border: thin solid black; margin-bottom: 1em }
 
-#bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em }
+#bannerbar { display: flex; justify-content: space-between; color: skyblue; padding-top: 0.2em; }
 
-#bannerbar a { color: skyblue; text-decoration: none; border: thin solid skyblue;
-               background-color: #404F69; padding: 0.3em }
+#bannerbar div,
+#bannerbar p { margin: 0em; background-color: #404F69; color: skyblue }
+
+#bannerbar div { padding: 0.3em; border: thin solid skyblue }
+
+
+#bannerbar a { color: skyblue; }
 #bannerbar a:hover { text-decoration: underline; color: cyan }
-
-#bannerbar #sitenav { border: none; padding: 0em; font-size: inherit }
 
 code { font-size: larger; padding: 0.2em;
        background-color: #DDC6CA }
@@ -58,10 +61,12 @@ main.xproc-index .panel { max-width: 72em }
       <p:with-input port="insertion">
          <div id="bannerbar">
             <div id="pnav">
-               <a href="index.html">XProc Lab</a>
+               <p><a href="index.html">XProc Lab</a></p>
             </div>
             <div id="sitenav">
-               <a href="../index.html">XProc Zone</a>
+               <span>XProc Zone </span>
+               <a class="internal" href="http://localhost:8088/index.html">Home</a>
+               <span> | </span>
                <a href="https://github.com/wendellpiez/xproc-zone">Code</a>
             </div>
          </div>

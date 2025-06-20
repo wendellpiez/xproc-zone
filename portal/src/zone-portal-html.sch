@@ -105,7 +105,7 @@
          <sch:assert test="exists(parent::html:body|parent::html:main|parent::html:section|parent::html:div)"><sch:name/> found out of place</sch:assert>
       </sch:rule>
       <sch:rule context="html:h1 | html:h2 | html:h3 | html:h4 | html:h5 | html:h6">
-         <sch:let name="exception" value="exists(parent::html:header)"/>
+         <sch:let name="exception" value="exists(parent::html:header) or @class='subtitle'"/>
          <sch:let name="deep" value="count(ancestor::html:body | ancestor::html:section | ancestor::html:div)"/>
          <sch:let name="fixup" value="'h' || $deep"/>
          <sch:assert sqf:fix="retag-header" test="$exception or ( number(replace(local-name(), '\D', '')) = $deep )"><sch:name/> found out of place - try
