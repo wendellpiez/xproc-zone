@@ -168,6 +168,8 @@ footer { font-size: smaller }
 summary { font-style: italic }
 details { padding: 0.4em }
 
+main div, main details { max-width: 60em }
+
 .block { background-color: var(--secondary-bg); border: medium solid var(--border-color);
          max-width: 54em }
 
