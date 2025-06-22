@@ -70,7 +70,7 @@ main.xproc-index { max-width: inherit;
             </div>
             <div id="sitenav">
                <span>XProc Zone </span>
-               <a class="internal" href="http://localhost:8088/index.html">Home</a>
+               <a class="internal" href="index.html">Home</a>
                <span> | </span>
                <a href="https://github.com/wendellpiez/xproc-zone">Code</a>
             </div>
