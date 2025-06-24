@@ -2,15 +2,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
-   xmlns="http://www.w3.org/1999/xhtml"
-   exclude-result-prefixes="#all" expand-text="true"
-   version="3.0">
-   
-     
+   xmlns:zone="http://wendellpiez.com/xproc-zone/ns" xmlns="http://www.w3.org/1999/xhtml"
+   exclude-result-prefixes="#all" expand-text="true" version="3.0">
+
+
 
    <xsl:variable name="page-title">XProc 3.0/3.1 Step List</xsl:variable>
-   
+
    <xsl:template match="/*">
       <html>
          <head>
@@ -26,31 +24,35 @@
             </aside>
             <main>
                <xsl:call-template name="lede"/>
-            <xsl:for-each-group select="declare-step" group-by="(@library,'standard')[1]">
-               <section class="library" id="{current-grouping-key()}">
-                  <h2>{ current-grouping-key() ! upper-case(.) } library</h2>
-                  <xsl:apply-templates select="current-group()"/>
-               </section>
-            </xsl:for-each-group>
+               <xsl:for-each-group select="declare-step" group-by="(@library, 'standard')[1]">
+                  <section class="library" id="{current-grouping-key()}">
+                     <h2>{ current-grouping-key() ! upper-case(.) } library</h2>
+                     <xsl:apply-templates select="current-group()"/>
+                  </section>
+               </xsl:for-each-group>
             </main>
          </body>
       </html>
    </xsl:template>
-   
+
    <xsl:function name="zone:morgana-supports" as="xs:boolean">
       <xsl:param name="step" as="element(declare-step)"/>
       <!-- Morgana coverage is documented at https://www.xml-project.com/morganaxproc-iiise.html -->
-      <xsl:sequence select="$step/@library=('standard','validation','file','ixml') and not($step/@type='p:validate-with-nvdl')"/>
+      <xsl:sequence
+         select="$step/@library = ('standard', 'validation', 'file', 'ixml') and not($step/@type = 'p:validate-with-nvdl')"
+      />
    </xsl:function>
-   
+
    <xsl:template match="declare-step" mode="directory">
       <p class="index">
          <xsl:apply-templates select="." mode="internal-link"/>
       </p>
    </xsl:template>
-   
-      <xsl:template match="declare-step">
-         <details id="{ zone:step-name(.) }" class="step { @library[.='standard']/' standard' } { if (zone:morgana-supports(.)) then 'supported' else 'unsupported'}" open="open">
+
+   <xsl:template match="declare-step">
+      <details id="{ zone:step-name(.) }"
+         class="step { @library[.='standard']/' standard' } { if (zone:morgana-supports(.)) then 'supported' else 'unsupported'}"
+         open="open">
          <summary>
             <div class="linkout">
                <xsl:apply-templates select="." mode="specification-link">
@@ -62,29 +64,22 @@
             </div>
             <xsl:text>{ @type} </xsl:text>
          </summary>
-            <xsl:if test="zone:morgana-supports(.) => not()">
-               <p class="warning">Unsupported in MorganaXProc-IIIse</p></xsl:if>
+         <xsl:if test="zone:morgana-supports(.) => not()">
+            <p class="warning">Unsupported in MorganaXProc-IIIse</p>
+         </xsl:if>
          <xsl:apply-templates select="." mode="syntax-map"/>
-         <xsl:apply-templates select="option">
-            <xsl:sort select="@name"/>
-         </xsl:apply-templates>
-         <xsl:apply-templates select="input">
-            <xsl:sort select="@primary" order="descending"/>
-            <xsl:sort select="@port"/>
-         </xsl:apply-templates>
-         <xsl:apply-templates select="output">
-            <xsl:sort select="@primary" order="descending"/>
-            <xsl:sort select="@port"/>
-         </xsl:apply-templates>         
+         <xsl:apply-templates select="." mode="inputs"/>
+         <xsl:apply-templates select="." mode="outputs"/>
+         <xsl:apply-templates select="." mode="options"/>
       </details>
    </xsl:template>
-   
+
    <xsl:variable name="copy-button">
       <button class="cp" onclick="copyToClipboard(this.nextElementSibling)"
          onmouseover="this.nextElementSibling.classList.add('seeme')"
          onmouseout="this.nextElementSibling.classList.remove('seeme')">Copy</button>
    </xsl:variable>
-      
+
    <xsl:template match="declare-step" mode="syntax-map">
       <xsl:call-template name="syntax-block">
          <xsl:with-param name="codeblock">
@@ -119,20 +114,20 @@
          </pre>
       </div>
    </xsl:template>
-   
-   <xsl:template mode="syntax-map" match="declare-step/option[@required='true']" priority="10">
+
+   <xsl:template mode="syntax-map" match="declare-step/option[@required = 'true']" priority="10">
       <b>
-         <xsl:next-match/>         
-      </b> 
+         <xsl:next-match/>
+      </b>
    </xsl:template>
-   
-   
+
+
    <xsl:template match="declare-step/option" mode="syntax-map">
       <xsl:text>&#xA;  {@name}="</xsl:text>
       <span class="ss">[{ @as }]</span>
       <xsl:text>{ @select!(' ' || .) }"</xsl:text>
    </xsl:template>
-   
+
    <xsl:template match="declare-step/input" mode="syntax-map">
       <xsl:text>&#xA;  &lt;p:with-input</xsl:text>
       <xsl:for-each select="@*">
@@ -143,37 +138,41 @@
 
    <xsl:function name="zone:step-name" as="xs:string?">
       <xsl:param name="step" as="element(declare-step)"/>
-      <xsl:sequence select="$step ! substring-after(@type,'p:')"/>
+      <xsl:sequence select="$step ! substring-after(@type, 'p:')"/>
    </xsl:function>
-     
-   
-   <xsl:template match="declare-step[@library='standard']" mode="specification-link" priority="10">
+
+
+   <xsl:template match="declare-step[@library = 'standard']" mode="specification-link" priority="10">
       <xsl:param name="linktext">{ @type }</xsl:param>
-      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/3.0/steps/#c.{zone:step-name(.)}">
+      <a class="steplink speclink" target="spec"
+         href="https://spec.xproc.org/3.0/steps/#c.{zone:step-name(.)}">
          <xsl:sequence select="$linktext"/>
       </a>
       <xsl:call-template name="xprecref-link"/>
    </xsl:template>
-   
+
    <xsl:template match="declare-step" mode="specification-link">
       <xsl:param name="linktext">{ @type }</xsl:param>
-      <a class="steplink speclink" target="spec" href="https://spec.xproc.org/master/head/{@library}/#c.{zone:step-name(.)}">
+      <a class="steplink speclink" target="spec"
+         href="https://spec.xproc.org/master/head/{@library}/#c.{zone:step-name(.)}">
          <xsl:sequence select="$linktext"/>
       </a>
       <xsl:call-template name="xprecref-link"/>
-   </xsl:template>  
+   </xsl:template>
 
    <xsl:template name="xprecref-link">
       <!--Still getting some 404s -->
-      <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.{zone:step-name(.)}.html">XProcRef description</a>
+      <a class="steplink speclink" target="spec"
+         href="https://xprocref.org/3.1/p.{zone:step-name(.)}.html">XProcRef description</a>
    </xsl:template>
-      
 
-   <xsl:template match="declare-step" mode="internal-link">      
-      <a href="#{zone:step-name(.)}" class="steplink internal{ @library[.='standard']/' standard-step' } {
+
+   <xsl:template match="declare-step" mode="internal-link">
+      <a href="#{zone:step-name(.)}"
+         class="steplink internal{ @library[.='standard']/' standard-step' } {
          if (zone:morgana-supports(.)) then 'supported' else 'unsupported' }">{ @type }</a>
-   </xsl:template>  
-   
+   </xsl:template>
+
    <xsl:template match="declare-step/*">
       <p class="{local-name()}{ @primary[.='true']/' primary' }{ @required[.='true']/' required' }">
          <xsl:text>{ local-name() }</xsl:text>
@@ -184,7 +183,104 @@
          </xsl:for-each>
       </p>
    </xsl:template>
-    
+
+   <xsl:variable name="truestr" select="'true', 'yes', 'YES', 'y', 'Y', '1'"/>
+
+   <!-- @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ -->
+
+   
+
+   <xsl:template match="declare-step" mode="inputs">
+      <xsl:if test="exists(input)">
+         <div class="inputs framed">
+            <h3 class="h">Input{ input[2]/'s' }</h3>
+            <table class="frame">
+               <xsl:call-template name="port-key-line"/>
+               <xsl:apply-templates select="input" mode="#current">
+                  <xsl:sort select="@primary" order="descending"/>
+                  <xsl:sort select="@required" order="descending"/>
+                  <xsl:sort select="@port"/>
+               </xsl:apply-templates>
+            </table>
+         </div>
+      </xsl:if>
+   </xsl:template>
+
+   <xsl:template name="port-key-line">
+      <tr class="keyrow">
+         <th class="port key">port</th>
+         <th class="content-types key">content types</th>
+         <th class="sequence key">sequence?</th>
+         <th class="isprimary key">primary?</th>
+      </tr>
+   </xsl:template>
+
+   <xsl:template match="declare-step" mode="outputs">
+      <xsl:if test="exists(output)">
+         <div class="outputs framed">
+            <h3 class="h">Output{ output[2]/'s' }</h3>
+            <table class="frame">
+               <xsl:call-template name="port-key-line"/>
+               <xsl:apply-templates select="output" mode="#current">
+                  <xsl:sort select="@primary" order="descending"/>
+                  <xsl:sort select="@port"/>
+               </xsl:apply-templates>
+            </table>
+         </div>
+      </xsl:if>
+   </xsl:template>
+
+   <xsl:template match="input" mode="inputs">
+      <xsl:variable name="is-primary" select="@primary = 'true'"/>
+      <tr class="input row{ @required[.=$truestr]/' required' }{
+         if ($is-primary) then ' primary' else ' secondary'}">
+         <td class="port">{ @port } </td>
+         <td class="content-types">{ @content-types } </td>
+         <td class="sequence">{ (@sequence,'(false)')[1] } </td>
+         <td class="isprimary">{ if ( empty(../input except .) ) then '(true)' else 
+            (@primary,'(false)')[1] } </td>
+      </tr>
+   </xsl:template>
+   
+   <xsl:template match="output" mode="outputs">
+      <xsl:variable name="is-primary" select="@primary = 'true'"/>
+      <tr class="output row{ @required[.=$truestr]/' required' }{
+         if ($is-primary) then ' primary' else ' secondary'}">
+         <td class="port">{ @port } </td>
+         <td class="content-types">{ @content-types } </td>
+         <td class="sequence">{ (@sequence,'(false)')[1] } </td>
+         <td class="isprimary">{ if ( empty(../output except .) ) then '(true)' else 
+            (@primary,'(false)')[1] } </td>
+      </tr>
+   </xsl:template>
+   
+   <xsl:template match="declare-step" mode="options">
+      <xsl:if test="exists(option)">
+         <div class="options framed">
+            <h3 class="h">Option{ option[2]/'s' }</h3>
+            <table class="frame">
+               <tr class="keyrow">
+                  <th class="name key">name</th>
+                  <th class="datatype key">data type</th>
+                  <th class="default key">default</th>
+               </tr>
+               <xsl:apply-templates select="option" mode="#current"/>
+            </table>
+         </div>
+      </xsl:if>
+   </xsl:template>
+
+   <xsl:template match="option" mode="options" expand-text="true">
+      <tr class="row option{ @required[.=$truestr]/' required' }">
+         <td class="name">{ @name } </td>
+         <td class="datatype">{ @as } </td>
+         <td class="default{ @required[.=$truestr]/' required' }">{ if (@required=$truestr) then
+            'REQUIRED' else (@select,'()')[1] } </td>
+      </tr>
+   </xsl:template>
+
+   <!-- @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ ::: @ : @ -->
+   
    
    <xsl:template name="make-style" expand-text="false">
       <style xml:space="preserve">
@@ -197,7 +293,6 @@ main { max-width: 50em }
 
 div.linkout { float: right; font-size: 80% }
 
-.primary, .required { font-weight: bold }
 .ss { font-family: sans-serif; font-size: 75% }
 details.step { background-color: whitesmoke; outline: thin solid black; padding: 0.8em; margin-top: 1em }
 details.step.supported { background-color: #c6cadd }
@@ -208,8 +303,29 @@ pre.syntax-map { outline: thin solid black; background-color: white; padding: 1e
 pre.syntax-map.seeme { outline: medium dotted black; background-color: #a3b4ff  }
 div.syntax-block { max-width: fit-content }
 p.warning { font-style: italic }
-p.option, p.input, p.output { padding: 0.2em; border: thin solid inherit; width: fit-content; font-size: smaller } 
-p.option:hover, p.input:hover, p.output:hover { background-color: whitesmoke; outline: medium solid white } 
+
+div.framed { padding: 0.4em; border: thin solid black; margin-top: 2em; background-color: gainsboro }
+/* span all columns */
+div.framed .h { margin: 0.4em 0em } 
+
+table.frame { min-width: 60%; border-collapse: collapse;
+border-top: thin solid black; border-bottom: thin solid black }
+
+.frame {
+
+   th, td { border-left: thin solid black; border-right: thin solid black; padding: 0.4rem }
+   th { font-family: sans-serif; font-weight: normal }
+
+   .primary, .required { font-weight: bold }
+
+   .row:hover { background-color: whitesmoke; outline: medium solid white }
+
+   td.name, td.port, td.default { font-family: monospace; font-size: 120% }
+   .required { font-family: inherit }
+   .key { outline: none; background-color: darkblue; color: gainsboro;
+     font-family: sans-serif; font-size: smaller; font-weight: bold; border-bottom: thin solid black }
+
+}
 
 a { text-decoration: none; color: midnightblue }
 a:hover { text-decoration: underline }
@@ -223,7 +339,7 @@ div.linkout a:hover { outline: medium dotted steelblue }
 button.cp { float: right }
          </style>
    </xsl:template>
-   
+
    <xsl:template name="make-script" expand-text="false">
       <!-- replace with navigator.clipboard.writeText, which returns a promise - or not? our use is pretty secure     -->
       <script>
@@ -238,23 +354,39 @@ button.cp { float: right }
    <xsl:template name="lede">
       <h1>{ $page-title }</h1>
       <section id="introduction">
-         <p>This directory to XProc steps was generated by querying the specification documents. Because those documents have machined consistency
-            (having been maintained and produced in XProc), it is feasible for an automated, testable process to stitch them all together with links to them and to similarly derived documents, such as Erik Siegel's invaluable <a href="http://xprocref.org">XProcRef</a>.</p>
-         <p><i>Standard</i> steps in this list are the core atomic steps required by the <a href="https://spec.xproc.org/master/head/xproc/">XProc Specification</a> for all XProc engines.</p>
-         <p>Additionally the page lists all the steps defined in community specifications but not required for compliance.</p>
-         <p>At the top, find links for the core compound steps, <code>for-each</code>, <code>try/catch</code> etc.</p>
-         <p>The following documents define the optional, community-standard steps (and are also linked from their steps):</p>
+         <p>This directory to XProc steps was generated by querying the specification documents.
+            Because those documents have machined consistency (having been maintained and produced
+            in XProc), it is feasible for an automated, testable process to stitch them all together
+            with links to them and to similarly derived documents, such as Erik Siegel's invaluable
+               <a href="http://xprocref.org">XProcRef</a>.</p>
+         <p><i>Standard</i> steps in this list are the core atomic steps required by the <a
+               href="https://spec.xproc.org/master/head/xproc/">XProc Specification</a> for all
+            XProc engines.</p>
+         <p>Additionally the page lists all the steps defined in community specifications but not
+            required for compliance.</p>
+         <p>At the top, find links for the core compound steps, <code>for-each</code>,
+               <code>try/catch</code> etc.</p>
+         <p>The following documents define the optional, community-standard steps (and are also
+            linked from their steps):</p>
          <div id="specification-links">
             <!-- insertion point for specification links -->
          </div>
-         <p>The step list here is derived from the XProc code base and may show steps not yet added to the published specification, because still in process.</p>
+         <p>The step list here is derived from the XProc code base and may show steps not yet added
+            to the published specification, because still in process.</p>
          <details class="boxed">
             <summary>To use</summary>
-            <p>XProc Steps are shown with links to their definitions in libraries and references, at top right.</p>
-            <p>Visual indications (grey fading) show if a step is not implemented or not yet offered in <a href="https://www.xml-project.com/morganaxproc-iiise.html">MorganaXProc-IIIse</a>. Because this logic determining this property may fall behind the product offering, some diligence is also called for. (XML Calabash offerings are not yet so marked: please refer to <a href="https://www.xmlcalabash.com/">its documentation</a>.)</p>
-            <p>The <button>Copy</button> buttons provide for copying code blocks to the user's clipboard (on up-to-date browsers).</p>
+            <p>XProc Steps are shown with links to their definitions in libraries and references, at
+               top right.</p>
+            <p>Visual indications (grey fading) show if a step is not implemented or not yet offered
+               in <a href="https://www.xml-project.com/morganaxproc-iiise.html"
+                  >MorganaXProc-IIIse</a>. Because this logic determining this property may fall
+               behind the product offering, some diligence is also called for. (XML Calabash
+               offerings are not yet so marked: please refer to <a
+                  href="https://www.xmlcalabash.com/">its documentation</a>.)</p>
+            <p>The <button>Copy</button> buttons provide for copying code blocks to the user's
+               clipboard (on up-to-date browsers).</p>
          </details>
-            
+
       </section>
    </xsl:template>
 </xsl:stylesheet>
