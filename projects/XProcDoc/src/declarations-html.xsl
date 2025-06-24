@@ -193,7 +193,7 @@
    <xsl:template match="declare-step" mode="inputs">
       <xsl:if test="exists(input)">
          <div class="inputs framed">
-            <h3 class="h">Input{ input[2]/'s' }</h3>
+            <h3 class="h"><code>{ @type }</code> input{ input[2]/'s' }</h3>
             <table class="frame">
                <xsl:call-template name="port-key-line"/>
                <xsl:apply-templates select="input" mode="#current">
@@ -218,7 +218,7 @@
    <xsl:template match="declare-step" mode="outputs">
       <xsl:if test="exists(output)">
          <div class="outputs framed">
-            <h3 class="h">Output{ output[2]/'s' }</h3>
+            <h3 class="h"><code>{ @type }</code> output{ output[2]/'s' }</h3>
             <table class="frame">
                <xsl:call-template name="port-key-line"/>
                <xsl:apply-templates select="output" mode="#current">
@@ -257,7 +257,7 @@
    <xsl:template match="declare-step" mode="options">
       <xsl:if test="exists(option)">
          <div class="options framed">
-            <h3 class="h">Option{ option[2]/'s' }</h3>
+            <h3 class="h"><code>{ @type }</code> option{ option[2]/'s' }</h3>
             <table class="frame">
                <tr class="keyrow">
                   <th class="name key">name</th>
