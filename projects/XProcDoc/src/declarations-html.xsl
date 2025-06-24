@@ -231,27 +231,27 @@
    </xsl:template>
 
    <xsl:template match="input" mode="inputs">
-      <xsl:variable name="is-primary" select="@primary = 'true'"/>
+      <xsl:call-template name="make-io-row">
+         <xsl:with-param name="solo" select="empty(../input except .)"/>
+      </xsl:call-template>
+   </xsl:template>
+   
+   <xsl:template name="make-io-row">
+      <xsl:param name="solo" as="xs:boolean" select="false()"/>
+      <xsl:variable name="is-primary" select="@primary = 'true' or $solo"/>
       <tr class="input row{ @required[.=$truestr]/' required' }{
          if ($is-primary) then ' primary' else ' secondary'}">
          <td class="port">{ @port } </td>
          <td class="content-types">{ @content-types } </td>
-         <td class="sequence">{ (@sequence,'(false)')[1] } </td>
-         <td class="isprimary">{ if ( empty(../input except .) ) then '(true)' else 
-            (@primary,'(false)')[1] } </td>
+         <td class="sequence{ (@sequence/'',' inferred')[1] }">{ (@sequence,'(false)')[1] } </td>
+         <td class="isprimary{ (' inferred'[$solo],@primary/'',' inferred')[1] }">{ ('(true)'[$solo],@primary,'(false)')[1] } </td>
       </tr>
    </xsl:template>
    
    <xsl:template match="output" mode="outputs">
-      <xsl:variable name="is-primary" select="@primary = 'true'"/>
-      <tr class="output row{ @required[.=$truestr]/' required' }{
-         if ($is-primary) then ' primary' else ' secondary'}">
-         <td class="port">{ @port } </td>
-         <td class="content-types">{ @content-types } </td>
-         <td class="sequence">{ (@sequence,'(false)')[1] } </td>
-         <td class="isprimary">{ if ( empty(../output except .) ) then '(true)' else 
-            (@primary,'(false)')[1] } </td>
-      </tr>
+      <xsl:call-template name="make-io-row">
+         <xsl:with-param name="solo" select="empty(../output except .)"/>
+      </xsl:call-template>
    </xsl:template>
    
    <xsl:template match="declare-step" mode="options">
@@ -324,7 +324,7 @@ border-top: thin solid black; border-bottom: thin solid black }
    .required { font-family: inherit }
    .key { outline: none; background-color: darkblue; color: gainsboro;
      font-family: sans-serif; font-size: smaller; font-weight: bold; border-bottom: thin solid black }
-
+   .inferred { font-size: smaller; text-align: center; font-weight: normal }
 }
 
 a { text-decoration: none; color: midnightblue }
@@ -379,7 +379,7 @@ button.cp { float: right }
                top right.</p>
             <p>Visual indications (grey fading) show if a step is not implemented or not yet offered
                in <a href="https://www.xml-project.com/morganaxproc-iiise.html"
-                  >MorganaXProc-IIIse</a>. Because this logic determining this property may fall
+                  >MorganaXProc-IIIse</a>. Because the logic determining this property may fall
                behind the product offering, some diligence is also called for. (XML Calabash
                offerings are not yet so marked: please refer to <a
                   href="https://www.xmlcalabash.com/">its documentation</a>.)</p>
