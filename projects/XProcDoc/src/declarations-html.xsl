@@ -111,12 +111,11 @@
    
    <xsl:template match="declare-step/output" mode="syntax-map">
       <xsl:variable name="implicit" select="empty(../output except .)"/>
-      <xsl:variable name="stp" select="replace(../@type, '^p:', '')"/>
       <xsl:call-template name="syntax-block">
          <xsl:with-param name="codeblock">
             <span>
                <xsl:call-template name="add-flashing">
-                  <xsl:with-param name="idfr">{ $stp }-{ (@port,'result')[1] }-output</xsl:with-param>
+                  <xsl:with-param name="idfr">{ zone:step-name(..) }-{ (@port,'result')[1] }-output</xsl:with-param>
                </xsl:call-template>
                <xsl:text>&lt;p:with-input port="..." pipe="{@port[not($implicit)]}@DO_{ zone:step-name(parent::declare-step) }"/></xsl:text>
             </span>
@@ -137,8 +136,7 @@
 
    
    <xsl:template match="declare-step/option" mode="syntax-map">
-      <xsl:variable name="stp" select="replace(../@type,'^p:','')"/>
-      <xsl:variable name="idfr">{ $stp }-{ @name }-{ local-name() }</xsl:variable>
+      <xsl:variable name="idfr">{ zone:step-name(..) }-{ @name }-{ local-name() }</xsl:variable>
       <xsl:text>&#xA;  </xsl:text>
       <span>
          <xsl:call-template name="add-flashing">
@@ -155,8 +153,7 @@
    </xsl:template>
 
    <xsl:template match="declare-step/input" mode="syntax-map">
-      <xsl:variable name="stp" select="replace(../@type,'^p:','')"/>
-      <xsl:variable name="idfr">{ $stp }-{ (@port,'source')[1] }-input</xsl:variable>
+      <xsl:variable name="idfr">{ zone:step-name(..) }-{ (@port,'source')[1] }-input</xsl:variable>
       <xsl:text>&#xA;  </xsl:text>
       <span>
          <xsl:call-template name="add-flashing">
@@ -170,12 +167,12 @@
       </span>
    </xsl:template>
 
-   <xsl:function name="zone:step-name" as="xs:string?">
+   <xsl:function name="zone:step-name" as="xs:string">
       <xsl:param name="step" as="element(declare-step)"/>
-      <xsl:sequence select="$step ! substring-after(@type, 'p:')"/>
+      <xsl:sequence select="replace($step/@type,'^p:','')"/>
    </xsl:function>
-
-
+   
+   
    <xsl:template match="declare-step[@library = 'standard']" mode="specification-link" priority="10">
       <xsl:param name="linktext">{ @type }</xsl:param>
       <a class="steplink speclink" target="spec"
@@ -273,9 +270,8 @@
    <xsl:template name="make-io-row">
       <xsl:param name="solo" as="xs:boolean" select="false()"/>
       <xsl:variable name="is-primary" select="@primary = 'true' or $solo"/>
-      <xsl:variable name="stp" select="replace(../@type,'^p:','')"/>
       <xsl:variable name="ptn" select="( @port, self::output/'result', self::input/'source')[1]"/>
-      <xsl:variable name="idfr">{ $stp }-{ $ptn }-{ local-name() }</xsl:variable>
+      <xsl:variable name="idfr">{ zone:step-name(..) }-{ $ptn }-{ local-name() }</xsl:variable>
       <tr class="input row{ @required[.=$truestr]/' required' }{
          if ($is-primary) then ' primary' else ' secondary'}">
          <xsl:call-template name="add-flashing">
@@ -329,8 +325,7 @@
    </xsl:template>
    
    <xsl:template match="option" mode="options-table" expand-text="true">
-      <xsl:variable name="stp" select="replace(../@type,'^p:','')"/>
-      <xsl:variable name="idfr">{ $stp }-{ @name }-option</xsl:variable>
+      <xsl:variable name="idfr">{ zone:step-name(..) }-{ @name }-option</xsl:variable>
       <tr class="row option{ @required[.=$truestr]/' required' }">
          <xsl:call-template name="add-flashing">
             <xsl:with-param name="idfr" select="$idfr"/>
