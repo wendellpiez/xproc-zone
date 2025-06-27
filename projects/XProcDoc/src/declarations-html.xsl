@@ -355,7 +355,9 @@ div.linkout { float: right; font-size: 80% }
 
 .ss { font-family: sans-serif; font-size: 75% }
 details.step { background-color: whitesmoke; outline: thin solid black; padding: 0.8em; margin-top: 1em }
-details.step.supported { background-color: #c6cadd }
+
+details.step.supported { background-color: #d3dfeb }
+
 details.step *:last-child  { margin-bottom: 0em }
 .step summary { font-size: 130%; font-family: sans-serif }
 .boxed { outline: thin solid black; background-color: white; padding: 0.4em; max-width: fit-content }
@@ -364,12 +366,14 @@ pre.syntax-map.seeme { outline: medium dotted black; background-color: #a3b4ff  
 div.syntax-block { max-width: fit-content }
 p.warning { font-style: italic }
 
-div.framed { padding: 0.4em; border: thin outset black; margin-top: 2em; background-color: gainsboro }
+div.framed { padding: 0.4em; border: thin outset black; margin-top: 2em; background-color: #BECBD5;
+  display: grid; grid-template-columns: 2fr 3fr }
+  
 /* span all columns */
 div.framed .h { margin: 0.4em 0em } 
 
 table.frame { min-width: 60%; border-collapse: collapse; font-size: smaller;
-border-top: thin solid black; border-bottom: thin solid black }
+border-top: thin solid black; border-bottom: thin solid black; background-color: white }
 
 .frame {
 
@@ -380,7 +384,7 @@ border-top: thin solid black; border-bottom: thin solid black }
 
    td.name, td.port, td.default { font-family: monospace; font-size: 120% }
    .required { font-family: inherit }
-   .key { outline: none; background-color: darkblue; color: gainsboro;
+   .key { outline: none; background-color: #003153; color: gainsboro;
      font-family: sans-serif; font-size: smaller; font-weight: bold; border-bottom: thin solid black }
    .inferred { font-size: smaller; text-align: center; font-weight: normal }
 }
@@ -397,11 +401,11 @@ div.linkout a:hover { outline: medium dotted steelblue }
 button.cp { float: right }
 
 
-.brightened { background-color: #C2BCAB }
+.brightened { background-color: #d3cec2 }
 
-.row:hover { background-color: #C2BCAB }
+.row:hover { background-color: #d3cec2 }
 
-pre.syntax-map span:hover { background-color: #C2BCAB }
+pre.syntax-map span:hover { background-color: #d3cec2 }
 
          </style>
    </xsl:template>
