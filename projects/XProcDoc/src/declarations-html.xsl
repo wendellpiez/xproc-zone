@@ -176,7 +176,7 @@
    <xsl:template match="declare-step[@library = 'standard']" mode="specification-link" priority="10">
       <xsl:param name="linktext">{ @type }</xsl:param>
       <a class="steplink speclink" target="spec"
-         href="https://spec.xproc.org/3.0/steps/#c.{zone:step-name(.)}">
+         href="https://spec.xproc.org/3.1/steps/#c.{zone:step-name(.)}">
          <xsl:sequence select="$linktext"/>
       </a>
       <xsl:call-template name="xprecref-link"/>
