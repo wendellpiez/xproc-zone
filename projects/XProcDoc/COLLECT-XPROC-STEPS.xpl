@@ -53,6 +53,15 @@
       
       <p:load content-type="text/xml" href="{ $speclink }" message="[COLLECT-XPROC-STEPS] Loading { $speclink }"/>
       
+      
+      <p:xinclude/>
+      <!--<p:try>
+         <p:xinclude/>
+         <p:catch>
+            <p:identity/>
+         </p:catch>
+      </p:try>-->
+      
       <p:add-attribute match="p:declare-step" attribute-name="library" attribute-value="{$spec-key}"/> 
       <p:filter  select="//p:declare-step"/>
       
@@ -70,6 +79,6 @@
    <p:store href="out/xproc-steps.xml"  serialization="map{'indent' : true()}"
       message="[COLLECT-XPROC-STEPS] Storing out/xproc-steps.xml"/>
    
-   <p:sink message="[COLLECT-XPROC-STEPS] To produce HTML from this XML, run pipeline PRODUCE-STANDALONE-INDEX.xpl"/>
+   <p:sink message="[COLLECT-XPROC-STEPS] To produce HTML from this XML, run the pipeline PRODUCE-STEP-LIST.xpl"/>
    
 </p:declare-step>
