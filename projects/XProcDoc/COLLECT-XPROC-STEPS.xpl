@@ -48,13 +48,13 @@
       <p:variable name="spec-key" select="."/>
          
       <p:variable name="speclink" select="string(.)">
-         <p:inline>https://raw.githubusercontent.com/xproc/3.0-steps/master/step-{.}/src/main/xml/specification.xml</p:inline>
+         <p:inline>https://spec.xproc.org/3.1/{ . }/specification.xml</p:inline>
+         <!--<p:inline>https://raw.githubusercontent.com/xproc/3.0-steps/master/step-{.}/src/main/xml/specification.xml</p:inline>-->
       </p:variable>
       
-      <p:load content-type="text/xml" href="{ $speclink }" message="[COLLECT-XPROC-STEPS] Loading { $speclink }"/>
-      
-      
-      <p:xinclude/>
+      <p:load content-type="application/xml" href="{ $speclink }" message="[COLLECT-XPROC-STEPS] Loading { $speclink }"/>
+            
+      <!--<p:xinclude/>-->
       <!--<p:try>
          <p:xinclude/>
          <p:catch>
