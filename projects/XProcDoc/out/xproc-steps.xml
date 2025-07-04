@@ -156,6 +156,17 @@
               xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"/>
    </declare-step>
    <declare-step library="standard"
+                 type="p:encode">
+      <input port="source"/>
+      <output port="result"
+              content-types="application/xml"/>
+      <option name="encoding"
+              as="xs:string"
+              select="'base64'"/>
+      <option name="serialization"
+              as="map(xs:QName,item()*)?"/>
+   </declare-step>
+   <declare-step library="standard"
                  type="p:error">
       <input port="source"
              sequence="true"
@@ -173,7 +184,7 @@
              content-types="xml html"/>
       <output port="result"
               sequence="true"
-              content-types="text xml html"/>
+              content-types="text xml html json"/>
       <option name="select"
               required="true"
               as="xs:string"
@@ -341,6 +352,19 @@
               as="xs:anyURI?"/>
    </declare-step>
    <declare-step library="standard"
+                 type="p:message">
+      <input port="source"
+             sequence="true"/>
+      <output port="result"
+              sequence="true"/>
+      <option name="test"
+              as="xs:boolean"
+              select="true()"/>
+      <option name="select"
+              as="item()*"
+              required="true"/>
+   </declare-step>
+   <declare-step library="standard"
                  type="p:namespace-delete">
       <input port="source"
              content-types="xml html"/>
@@ -379,6 +403,8 @@
       <option name="wrapper"
               required="true"
               as="xs:QName"/>
+      <option name="attributes"
+              as="map(xs:QName, xs:anyAtomicType)?"/>
    </declare-step>
    <declare-step library="standard"
                  type="p:rename">
@@ -454,7 +480,7 @@
               sequence="true"
               content-types="any"/>
       <option name="duration"
-              as="xs:nonNegativeInteger"
+              as="xs:string"
               required="true"/>
    </declare-step>
    <declare-step library="standard"
@@ -690,22 +716,6 @@
               as="map(xs:QName, item()*)?"/>
    </declare-step>
    <declare-step library="standard"
-                 type="p:wrap-sequence">
-      <input port="source"
-             content-types="text xml html"
-             sequence="true"/>
-      <output port="result"
-              sequence="true"
-              content-types="application/xml"/>
-      <option name="wrapper"
-              required="true"
-              as="xs:QName"/>
-      <option name="group-adjacent"
-              as="xs:string?"
-              e:type="XPathExpression"
-              xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"/>
-   </declare-step>
-   <declare-step library="standard"
                  type="p:wrap">
       <input port="source"
              content-types="xml html"/>
@@ -723,6 +733,26 @@
               as="xs:string?"
               e:type="XPathExpression"
               xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"/>
+      <option name="attributes"
+              as="map(xs:QName, xs:anyAtomicType)?"/>
+   </declare-step>
+   <declare-step library="standard"
+                 type="p:wrap-sequence">
+      <input port="source"
+             content-types="text xml html"
+             sequence="true"/>
+      <output port="result"
+              sequence="true"
+              content-types="application/xml"/>
+      <option name="wrapper"
+              required="true"
+              as="xs:QName"/>
+      <option name="group-adjacent"
+              as="xs:string?"
+              e:type="XPathExpression"
+              xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"/>
+      <option name="attributes"
+              as="map(xs:QName, xs:anyAtomicType)?"/>
    </declare-step>
    <declare-step library="standard"
                  type="p:www-form-urldecode">

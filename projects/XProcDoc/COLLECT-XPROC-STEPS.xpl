@@ -7,8 +7,7 @@
 
    
    <!--<p:output serialization="map{'indent' : true()}" sequence="true"/>-->
-   <!--<p:variable name="step-defs" select="id('req-steps')/xi:include"/>-->
-
+   
    <!--The pipeline loads specification Docbook XML for XProc dynamically
    and pulls all the step declarations
    
@@ -19,7 +18,7 @@
 
    <p:for-each name="required-steps" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://docbook.org/ns/docbook">
       <p:with-input select="//section[@xml:id='req-steps']//p:declare-step">
-         <p:document href="https://spec.xproc.org/lastcall-2024-08/head/steps/specification.xml"
+         <p:document href="https://spec.xproc.org/master/head/steps/specification.xml"
             content-type="text/xml"/>
       </p:with-input>
       <p:add-attribute match="p:declare-step" attribute-name="library" attribute-value="standard"/> 
@@ -49,18 +48,9 @@
          
       <p:variable name="speclink" select="string(.)">
          <p:inline>https://spec.xproc.org/3.1/{ . }/specification.xml</p:inline>
-         <!--<p:inline>https://raw.githubusercontent.com/xproc/3.0-steps/master/step-{.}/src/main/xml/specification.xml</p:inline>-->
       </p:variable>
       
       <p:load content-type="application/xml" href="{ $speclink }" message="[COLLECT-XPROC-STEPS] Loading { $speclink }"/>
-            
-      <!--<p:xinclude/>-->
-      <!--<p:try>
-         <p:xinclude/>
-         <p:catch>
-            <p:identity/>
-         </p:catch>
-      </p:try>-->
       
       <p:add-attribute match="p:declare-step" attribute-name="library" attribute-value="{$spec-key}"/> 
       <p:filter  select="//p:declare-step"/>
