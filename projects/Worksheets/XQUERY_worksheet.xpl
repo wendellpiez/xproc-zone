@@ -10,7 +10,7 @@
       <p:inline content-type="text/plain">Hello World!</p:inline>
    </p:input>
    
-   <p:output port="result"/>
+   <p:output port="result" serialization="map { 'indent': true() }"/>
    
    <p:text-replace pattern="!" replacement="!!!"/>
    
@@ -21,9 +21,12 @@
          <!-- Without content-type p:inline assumes XML -->
          <p:inline content-type="text/plain">. || ' and Welcome!'</p:inline>
       </p:with-input>
-      <!-- What also works is XQuery that happens also to be XML ... such as
-         <p:with-input port="query">
-           <p:inline expand-text="false"><root>{ substring(.,2) }</p:inline>
+      <!--What also works is XQuery that happens also to be XML ... such as
+         (XQuery producing a 'root' element)-->
+      <!--<p:with-input port="query">
+         <p:inline expand-text="false">
+            <root>{ substring(.,2) }</root>
+         </p:inline>
       </p:with-input>-->
    </p:xquery>
    
