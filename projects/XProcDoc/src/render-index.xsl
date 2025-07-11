@@ -24,7 +24,7 @@
             <main class="xproc-index">
                 <xsl:for-each-group select="entry" group-by="@name">
                     <xsl:sort select="current-grouping-key()"/>
-                    <details class="elem">
+                    <details id="{ replace(current-grouping-key(),'^p:','') }" class="elem">
                         <summary class="head">{ current-grouping-key() }</summary>
                         <xsl:apply-templates select="current-group()"/>
                     </details>

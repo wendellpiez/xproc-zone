@@ -52,7 +52,6 @@ main.xproc-index { max-width: inherit;
 
 }
 
-
 .lab a { color: midnightblue }
 
             </style>
@@ -78,18 +77,18 @@ main.xproc-index { max-width: inherit;
       </p:with-input>
    </p:insert>
    
-   <p:insert position="last-child" match="html/body">
-      <p:with-input port="insertion">
-         <hr class="hr"/>
-         <footer class="in-a-row">
-            <!-- Add your name here! -->
-            <div><b><a href="{ ../index.html }">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
-            <div>
-               <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
-            </div>
-         </footer>
-      </p:with-input>
-   </p:insert>
+      <p:insert position="last-child" match="html/body">
+         <p:with-input port="insertion">
+            <hr class="hr"/>
+            <footer class="in-a-row">
+               <!-- Add your name here! -->
+               <div><b><a href="{ ../index.html }">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
+               <div>
+                  <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
+               </div>
+            </footer>
+         </p:with-input>
+      </p:insert>
    </p:declare-step>
    
 <!-- ADVENTURES AWAIT THE BOLD -->
@@ -98,7 +97,7 @@ main.xproc-index { max-width: inherit;
    <p:variable name="outdir" select="'../docs/xproc-lab'"/>
    
    <!-- Produces XHTML -->
-   <zone:index-repository-xproc/>
+   <zone:index-repository-xproc name="repo-index"/>
    
    <zone:xproc-lab-equipment name="equip-repo-index"/>
    
@@ -164,10 +163,36 @@ main.xproc-index { max-width: inherit;
       </p:with-input>
    </p:insert>
    
+   <p:variable name="known-steps" select="/descendant::details[@class='elem']">
+      <p:pipe step="repo-index"/>
+   </p:variable>
+   
+   <p:xslt parameters="map { 'index-elements': $known-steps }">
+      <p:with-input port="stylesheet">
+         <!--NOTE p:expand-text is false to turn off TVT evaluation inside -->
+         <p:inline expand-text="false">
+            <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+               xpath-default-namespace="http://www.w3.org/1999/xhtml">
+               <!-- $index-elements is a set of details with div[@class='entry'] children -->
+               <xsl:param name="index-elements" as="element()*" required="true"/>
+               <xsl:mode on-no-match="shallow-copy"/>
+               <xsl:template match="*[@class='linkout'][../../@id = $index-elements/@id]" expand-text="true">
+                  <xsl:variable name="myID" select="../../@id"/>
+                  <xsl:variable name="thisIndex" select="$index-elements[ @id = $myID ]"/>
+                  <xsl:variable name="lnkstr">example{ $thisIndex/div[@class='entry'][2]/'s' }</xsl:variable>
+                  <xsl:copy>
+                     <xsl:copy-of select="@*"/>
+                     <a class="steplink speclink" href="zone-xproc-index.html#{ $myID }">{ $lnkstr }</a>
+                     <xsl:apply-templates/>
+                  </xsl:copy>
+               </xsl:template>
+            </xsl:stylesheet>
+         </p:inline>
+      </p:with-input>
+   </p:xslt>
+   
    <p:namespace-delete prefixes="zone xs c"/>
    
-   <p:store href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."
-      />
-   
+   <p:store href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."/>
    
 </p:declare-step>

@@ -38,7 +38,7 @@
       <p:with-input port="stylesheet">
          <!--NOTE p:expand-text is false to turn off TVT evaluation inside -->
          <p:inline expand-text="false">
-            <xsl:stylesheet version="3.0">
+            <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><!-- xmlns:xsl declaration either/both here or at the top -->
                <xsl:template match="/*" expand-text="true"><!-- this is xsl:expand-text -->
                   <GREETINGS>Hello { string(.) }, Happy { format-date(current-date(),'[FNn]') }!</GREETINGS>
                </xsl:template>
