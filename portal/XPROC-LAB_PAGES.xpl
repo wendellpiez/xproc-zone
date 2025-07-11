@@ -110,7 +110,7 @@ main.xproc-index { max-width: inherit;
       </p:with-input>
    </p:insert>   
    
-   <p:store href="{ $outdir }/zone-xproc-index.html" message=" p:store: { $outdir }/zone-xproc-index.html ..."/>
+   <p:store serialization="map { 'indent': true() }" href="{ $outdir }/zone-xproc-index.html" message=" p:store: { $outdir }/zone-xproc-index.html ..."/>
    
    <!-- this is implicit but we put it here anyway -->
    <p:sink/>
@@ -193,6 +193,6 @@ main.xproc-index { max-width: inherit;
    
    <p:namespace-delete prefixes="zone xs c"/>
    
-   <p:store href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."/>
+   <p:store  serialization="map { 'indent': true() }" href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."/>
    
 </p:declare-step>

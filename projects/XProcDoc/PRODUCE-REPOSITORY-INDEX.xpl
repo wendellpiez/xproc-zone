@@ -9,7 +9,7 @@
         serialization="map{'indent': true() }" pipe="@make-index"/>-->
     <zone:index-repository-xproc/>
     
-    <p:store href="out/xproc-zone-xproc-index.html" message="[PRODUCE-REPOSITORY-INDEX] SAVED xproc-zone-element-index.html">
+    <p:store serialization="map { 'indent': true() }" href="out/xproc-zone-xproc-index.html" message="[PRODUCE-REPOSITORY-INDEX] SAVED xproc-zone-element-index.html">
         <p:with-input pipe="result"/>
     </p:store>
 
