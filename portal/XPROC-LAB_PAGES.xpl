@@ -11,6 +11,32 @@
    
    <p:import href="../projects/XProcDoc/src/index-repository-xproc.xpl"/>
    
+   <p:declare-step type="zone:html-ws-cleanup">
+      
+      <p:input  port="source"/>
+      <p:output port="result"/>
+      
+      <p:xslt>
+         <p:with-input port="stylesheet">
+            <p:inline expand-text="false">
+               <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                  xpath-default-namespace="http://www.w3.org/1999/xhtml">
+                  <xsl:mode on-no-match="shallow-copy"/>
+                  <xsl:preserve-space elements="pre i b emph strong span a"/>
+                  <xsl:strip-space elements="*"/>
+                  <xsl:template match="/* | /*/* | html/head/* | body/* |
+                     main/* | header/* | footer/* | section/* | details/* |
+                     div[empty(text()[normalize-space(.)])]/* | ul/* | ol/*">
+                     <xsl:text expand-text="true">&#xA;{ ancestor::*/'  ' }</xsl:text>
+                     <xsl:next-match/>
+                  </xsl:template>
+               </xsl:stylesheet>
+            </p:inline>
+         </p:with-input>
+      </p:xslt>
+
+   </p:declare-step>
+   
    <p:declare-step type="zone:xproc-lab-equipment">
       
       <p:input  port="source"/>
@@ -191,8 +217,10 @@ main.xproc-index { max-width: inherit;
       </p:with-input>
    </p:xslt>
    
+   <zone:html-ws-cleanup/>
+   
    <p:namespace-delete prefixes="zone xs c"/>
    
-   <p:store  serialization="map { 'indent': true() }" href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."/>
+   <p:store  serialization="map { 'indent': false() }" href="{ $outdir }/xproc-step-list.html" message=" p:store: { $outdir }/xproc-step-list.html ..."/>
    
 </p:declare-step>

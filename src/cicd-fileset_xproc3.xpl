@@ -24,11 +24,11 @@
       Listing any and all files in the repository subject to these Schematron tests under CI/CD.</p:documentation>
       
    <p:input port="source" sequence="true">
-      <!--<p:document href="../lib/GRAB-SAXON.xpl"/>
+      <p:document href="../lib/GRAB-SAXON.xpl"/>
       <p:document href="../lib/GRAB-SCHXSLT.xpl"/>
-      <p:document href="../lib/GRAB-XSPEC.xpl"/>-->
+      <p:document href="../lib/GRAB-XSPEC.xpl"/>
 
-      <!--<p:document href="../setup/hello.xpl"/>-->
+      <p:document href="../setup/hello.xpl"/>
       <p:document href="../portal/BUILD-PORTAL.xpl"/>
       <p:document href="../portal/src/portal-page.xpl"/>
 
