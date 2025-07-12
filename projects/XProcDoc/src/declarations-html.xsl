@@ -394,10 +394,9 @@ a:hover { text-decoration: underline }
 p.index a { display: inline-block; border: thin outset black; border-bottom: medium solid black; background-color: white; padding: 0.2em }
 p.index a:hover { text-decoration: underline; outline: medium solid grey }
 
-div.linkout a { padding: 0.4em; font-size: 80% }
+div.linkout a { padding: 0.4em; font-size: 80%; outline: thin solid steelblue; margin: 0em 0.1em }
 div.linkout a:hover { outline: medium dotted steelblue }
 
-.unsupported { color: grey }
 button.cp { float: right }
 
 
