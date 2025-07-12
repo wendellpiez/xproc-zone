@@ -32,7 +32,14 @@ button.cp { float: right }
 .entry p { margin: 0.2em; padding: 0.4em }
 .entry .signature { font-family: monospace; font-size: 128%; background-color: whitesmoke }
 
-         </style>
+</style>
+      <script xml:space="preserve">
+window.onload = function() {
+   let targetID = window.location.hash.substring(1);
+   document.getElementById(targetID).open = true;
+};
+
+</script>
       <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap"
             xmlns:c="http://www.w3.org/ns/xproc-step"

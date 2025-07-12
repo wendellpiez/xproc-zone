@@ -412,22 +412,25 @@ pre.syntax-map span:hover { background-color: #d3cec2 }
 
    <xsl:template name="make-script" expand-text="false">
       <!-- replace with navigator.clipboard.writeText, which returns a promise - or not? our use is pretty secure     -->
-      <script>
-         /* selects textarea#linkcopy and copies it to the system clipboard */
-         function copyToClipboard(block) {
-         window.getSelection().selectAllChildren(block);
-         document.execCommand('copy');
-         }
-         
-         function brightenOn(elemID) {
-         console.log('brightening' + elemID);
-         document.getElementById(elemID).classList.add('brightened');
-         }
-         
-         function brightenOff(elemID) {
-         console.log('unbrightening' + elemID);
-         document.getElementById(elemID).classList.remove('brightened');
-         }
+      <script xml:space="preserve">
+/* selects textarea#linkcopy and copies it to the system clipboard */
+function copyToClipboard(block) {
+   window.getSelection().selectAllChildren(block);
+   document.execCommand('copy');
+}
+
+function brightenOn(elemID) {
+   document.getElementById(elemID).classList.add('brightened');
+}
+
+function brightenOff(elemID) {
+   document.getElementById(elemID).classList.remove('brightened');
+}
+
+window.onload = function() {
+   let targetID = window.location.hash.substring(1);
+   document.getElementById(targetID).open = true;
+};
          
       </script>
    </xsl:template>

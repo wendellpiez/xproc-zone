@@ -70,6 +70,14 @@ button.cp { float: right }
 .entry p { margin: 0.2em; padding: 0.4em }
 .entry .signature { font-family: monospace; font-size: 128%; background-color: whitesmoke }
 
-         </style>
+</style>
+        <script xml:space="preserve">
+window.onload = function() {
+   let targetID = window.location.hash.substring(1);
+   document.getElementById(targetID).open = true;
+};
+
+</script>
+        
     </xsl:template>
 </xsl:stylesheet>
