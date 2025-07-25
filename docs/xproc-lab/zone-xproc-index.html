@@ -43,12 +43,12 @@ window.onload = function() {
       <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap"
             xmlns:c="http://www.w3.org/ns/xproc-step"
-            xmlns:zone="http://wendellpiez.com/xproc-zone/ns"/>
+            xmlns:zone="http://wendellpiez.com/ns/xproc-zone"/>
       <link rel="stylesheet"
             href="../site/zone-main.css"
             xmlns:c="http://www.w3.org/ns/xproc-step"
-            xmlns:zone="http://wendellpiez.com/xproc-zone/ns"/>
-      <style xml:space="preserve" type="text/css" xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+            xmlns:zone="http://wendellpiez.com/ns/xproc-zone"/>
+      <style xml:space="preserve" type="text/css" xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
 details#directory { padding-right: 1em; max-height: inherit; min-width: 20vw }
 #directory-listing { overflow-y: scroll; box-sizing: border-box; max-height: 80vh; margin-top: 0.6em }
@@ -87,12 +87,12 @@ main.xproc-index { max-width: inherit;
             href="../site/zed.svg"
             type="image/svg+xml"
             xmlns:c="http://www.w3.org/ns/xproc-step"
-            xmlns:zone="http://wendellpiez.com/xproc-zone/ns"/>
+            xmlns:zone="http://wendellpiez.com/ns/xproc-zone"/>
    </head>
    <body class="lab">
       <div id="bannerbar"
            xmlns:c="http://www.w3.org/ns/xproc-step"
-           xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+           xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
          <div id="pnav">
             <p>
                <a href="index.html">XProc Lab</a>
@@ -108,13 +108,21 @@ main.xproc-index { max-width: inherit;
       </div>
       <main class="xproc-index">
          <h1 xmlns:c="http://www.w3.org/ns/xproc-step"
-             xmlns:zone="http://wendellpiez.com/xproc-zone/ns">Index to XProc in the Zone</h1>
+             xmlns:zone="http://wendellpiez.com/ns/xproc-zone">Index to XProc in the Zone</h1>
          <p xmlns:c="http://www.w3.org/ns/xproc-step"
-            xmlns:zone="http://wendellpiez.com/xproc-zone/ns">This index is produced from the XProc source data using XProc.</p>
+            xmlns:zone="http://wendellpiez.com/ns/xproc-zone">This index is produced from the XProc source data using XProc.</p>
          <details class="elem panel"
                   id="add-attribute">
-            <summary class="head">p:add-attribute <span class="summary-count">⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:add-attribute <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L23">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L23">p:declare-step/p:add-attribute[@match='aside[div/@class='eg_block']']</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/COLLECT-XPROC-STEPS.xpl#L24">projects/XProcDoc/COLLECT-XPROC-STEPS.xpl</a>
@@ -166,14 +174,30 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="cast-content-type">
-            <summary class="head">p:cast-content-type <span class="summary-count">⬩⬩⬩</span>
+            <summary class="head">p:cast-content-type <span class="summary-count">⬩⬩⬩⬩⬩</span>
             </summary>
             <div class="entry">
                <p class="filepath">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L13">projects/XProcDoc/orbital-lifter.xpl</a>
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L13">projects/PlanetXProc/src/orbital-lifter.xpl</a>
                </p>
                <p class="signature">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L13">p:declare-step/p:cast-content-type</a>
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L13">p:declare-step/p:cast-content-type</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L17">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L17">p:declare-step/p:cast-content-type</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L17">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L17">p:declare-step/p:cast-content-type</a>
                </p>
             </div>
             <div class="entry">
@@ -261,8 +285,56 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="declare-step">
-            <summary class="head">p:declare-step <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:declare-step <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L2">projects/PlanetXProc/src/orbital-lifter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L2">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L2">projects/PlanetXProc/surface/make-page.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L2">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L2">projects/PlanetXProc/surface/starter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L2">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L2">p:declare-step</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/GRAB-FM6-22.xpl#L2">projects/USArmy_FM6-22/GRAB-FM6-22.xpl</a>
@@ -409,14 +481,6 @@ main.xproc-index { max-width: inherit;
             </div>
             <div class="entry">
                <p class="filepath">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L2">projects/XProcDoc/orbital-lifter.xpl</a>
-               </p>
-               <p class="signature">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L2">p:declare-step</a>
-               </p>
-            </div>
-            <div class="entry">
-               <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/PRODUCE-REPOSITORY-INDEX.xpl#L2">projects/XProcDoc/PRODUCE-REPOSITORY-INDEX.xpl</a>
                </p>
                <p class="signature">
@@ -500,8 +564,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="document">
-            <summary class="head">p:document <span class="summary-count">⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:document <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L24">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L24">p:declare-step/p:validate-with-relax-ng/p:with-input/p:document[@href]</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/GRAB-RESOURCES.xpl#L9">projects/USArmy_FM6-22/GRAB-RESOURCES.xpl</a>
@@ -722,8 +794,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="identity">
-            <summary class="head">p:identity <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:identity <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L20">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L20">p:declare-step/p:identity</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl#L18">projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl</a>
@@ -916,8 +996,24 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="import">
-            <summary class="head">p:import <span class="summary-count">⬩⬩⬩⬩</span>
+            <summary class="head">p:import <span class="summary-count">⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L9">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L9">p:declare-step/p:import[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L7">projects/PlanetXProc/surface/make-page.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L7">p:declare-step/p:import[@href]</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl#L27">projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl</a>
@@ -1126,8 +1222,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="input">
-            <summary class="head">p:input <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:input <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L9">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L9">p:declare-step/p:input[@port='source']</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl#L14">projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl</a>
@@ -1187,8 +1291,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="insert">
-            <summary class="head">p:insert <span class="summary-count">⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:insert <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L26">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L26">p:declare-step/p:insert[@match='html/head']</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl#L239">projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl</a>
@@ -1253,8 +1365,48 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="load">
-            <summary class="head">p:load <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:load <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L8">projects/PlanetXProc/src/orbital-lifter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L8">p:declare-step/p:load[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L11">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L11">p:declare-step/p:load[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L10">projects/PlanetXProc/surface/make-page.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L10">p:declare-step/p:load[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L5">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L5">p:declare-step/p:load[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L6">projects/PlanetXProc/surface/starter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L6">p:declare-step/p:load[@href]</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/GRAB-FM6-22.xpl#L12">projects/USArmy_FM6-22/GRAB-FM6-22.xpl</a>
@@ -1293,14 +1445,6 @@ main.xproc-index { max-width: inherit;
                </p>
                <p class="signature">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/COLLECT-XPROC-STEPS.xpl#L53">p:declare-step/p:for-each/p:load[@href]</a>
-               </p>
-            </div>
-            <div class="entry">
-               <p class="filepath">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L8">projects/XProcDoc/orbital-lifter.xpl</a>
-               </p>
-               <p class="signature">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L8">p:declare-step/p:load[@href]</a>
                </p>
             </div>
             <div class="entry">
@@ -1346,14 +1490,46 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="markdown-to-html">
-            <summary class="head">p:markdown-to-html <span class="summary-count">⬩</span>
+            <summary class="head">p:markdown-to-html <span class="summary-count">⬩⬩⬩⬩⬩</span>
             </summary>
             <div class="entry">
                <p class="filepath">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L11">projects/XProcDoc/orbital-lifter.xpl</a>
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L11">projects/PlanetXProc/src/orbital-lifter.xpl</a>
                </p>
                <p class="signature">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L11">p:declare-step/p:markdown-to-html</a>
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L11">p:declare-step/p:markdown-to-html</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L13">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L13">p:declare-step/p:markdown-to-html</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L13">projects/PlanetXProc/surface/make-page.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L13">p:declare-step/p:markdown-to-html</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L8">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L8">p:declare-step/p:markdown-to-html</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L9">projects/PlanetXProc/surface/starter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L9">p:declare-step/p:markdown-to-html</a>
                </p>
             </div>
          </details>
@@ -1499,8 +1675,24 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="output">
-            <summary class="head">p:output <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:output <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L6">projects/PlanetXProc/src/orbital-lifter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/orbital-lifter.xpl#L6">p:declare-step/p:output</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L11">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L11">p:declare-step/p:output</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl#L35">projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl</a>
@@ -1623,14 +1815,6 @@ main.xproc-index { max-width: inherit;
             </div>
             <div class="entry">
                <p class="filepath">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L6">projects/XProcDoc/orbital-lifter.xpl</a>
-               </p>
-               <p class="signature">
-                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/orbital-lifter.xpl#L6">p:declare-step/p:output</a>
-               </p>
-            </div>
-            <div class="entry">
-               <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/src/assemble-step-list.xpl#L23">projects/XProcDoc/src/assemble-step-list.xpl</a>
                </p>
                <p class="signature">
@@ -1743,8 +1927,40 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="store">
-            <summary class="head">p:store <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:store <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L46">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L46">p:declare-step/p:store[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L19">projects/PlanetXProc/surface/make-page.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page.xpl#L19">p:declare-step/p:store[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L16">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L16">p:declare-step/p:store[@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L12">projects/PlanetXProc/surface/starter.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/starter.xpl#L12">p:declare-step/p:store[@href]</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/GRAB-FM6-22.xpl#L13">projects/USArmy_FM6-22/GRAB-FM6-22.xpl</a>
@@ -1997,8 +2213,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="validate-with-relax-ng">
-            <summary class="head">p:validate-with-relax-ng <span class="summary-count">⬩</span>
+            <summary class="head">p:validate-with-relax-ng <span class="summary-count">⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L22">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L22">p:declare-step/p:validate-with-relax-ng</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl#L161">projects/USArmy_FM6-22/PRODUCE_FM6-22-chapter4.xpl</a>
@@ -2438,8 +2662,48 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="with-input">
-            <summary class="head">p:with-input <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:with-input <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L27">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L27">p:declare-step/p:insert/p:with-input[@port='insertion']</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L12">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L12">p:declare-step/p:xslt/p:with-input[@port='stylesheet'][@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L14">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L14">p:declare-step/p:xslt/p:with-input[@port='stylesheet'][@href]</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L23">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L23">p:declare-step/p:validate-with-relax-ng/p:with-input[@port='schema']</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L29">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L29">p:declare-step/p:xslt/p:with-input[@port='stylesheet'][@href]</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/GRAB-RESOURCES.xpl#L27">projects/USArmy_FM6-22/GRAB-RESOURCES.xpl</a>
@@ -2960,8 +3224,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="wrap">
-            <summary class="head">p:wrap <span class="summary-count">⬩⬩</span>
+            <summary class="head">p:wrap <span class="summary-count">⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L20">projects/PlanetXProc/surface/make-page-preview.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/make-page-preview.xpl#L20">p:declare-step/p:wrap[@match='div[@class='eg_block']']</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/src/assemble-step-list.xpl#L34">projects/XProcDoc/src/assemble-step-list.xpl</a>
@@ -3050,8 +3322,16 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="xinclude">
-            <summary class="head">p:xinclude <span class="summary-count">⬩</span>
+            <summary class="head">p:xinclude <span class="summary-count">⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L32">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L32">p:declare-step/p:xinclude</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/XProcDoc/xinclude-test.xpl#L9">projects/XProcDoc/xinclude-test.xpl</a>
@@ -3076,8 +3356,32 @@ main.xproc-index { max-width: inherit;
          </details>
          <details class="elem panel"
                   id="xslt">
-            <summary class="head">p:xslt <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
+            <summary class="head">p:xslt <span class="summary-count">⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩⬩</span>
             </summary>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L11">projects/PlanetXProc/surface/moresteps.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/moresteps.xpl#L11">p:declare-step/p:xslt</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L13">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L13">p:declare-step/p:xslt</a>
+               </p>
+            </div>
+            <div class="entry">
+               <p class="filepath">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L28">projects/PlanetXProc/surface/_enhance-md-html.xpl</a>
+               </p>
+               <p class="signature">
+                  <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/surface/_enhance-md-html.xpl#L28">p:declare-step/p:xslt</a>
+               </p>
+            </div>
             <div class="entry">
                <p class="filepath">
                   <a href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl#L21">projects/USArmy_FM6-22/OSCAL-WEBPUB_FM_6-22.xpl</a>
@@ -3247,10 +3551,10 @@ main.xproc-index { max-width: inherit;
       </main>
       <hr class="hr"
           xmlns:c="http://www.w3.org/ns/xproc-step"
-          xmlns:zone="http://wendellpiez.com/xproc-zone/ns"/>
+          xmlns:zone="http://wendellpiez.com/ns/xproc-zone"/>
       <footer class="in-a-row"
               xmlns:c="http://www.w3.org/ns/xproc-step"
-              xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+              xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
          <!-- Add your name here! -->
          <div>
             <b>

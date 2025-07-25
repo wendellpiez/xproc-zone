@@ -3,7 +3,7 @@
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns="http://www.w3.org/1999/xhtml" 
    exclude-inline-prefixes="#all"
-    xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+    xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
    <!-- Pipeline produces two HTML file outputs from OSCAL source, for demonstration -->
    

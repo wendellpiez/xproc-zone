@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xvrl="http://www.xproc.org/ns/xvrl"
    xmlns:svrl="http://purl.oclc.org/dsdl/svrl"

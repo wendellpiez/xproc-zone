@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
    <p:import href="src/assemble-step-list.xpl"/>
    

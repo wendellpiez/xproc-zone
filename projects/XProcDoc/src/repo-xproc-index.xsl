@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" expand-text="true" version="3.0"
     xmlns:p="http://www.w3.org/ns/xproc"
-    xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+    xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
     <xsl:template priority="1001" match="/*">
         <index>

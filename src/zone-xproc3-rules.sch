@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
    xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
    xmlns:p="http://www.w3.org/ns/xproc">
    
@@ -25,7 +25,7 @@
       A warning is given if the file is not listed in TEST-XPROC-SET.xpl for CI/CD runtime
       
       The XProc is version 3.0
-      The assigned type /*/@type should match the file name, in the http://wendellpiez.com/xproc-zone/ns namespace
+      The assigned type /*/@type should match the file name, in the http://wendellpiez.com/ns/xproc-zone namespace
       with prefix 'zone' (stay out of trouble)
       The name /*/@name should also match the file name
       
@@ -97,7 +97,7 @@
          <sch:let name="typename-given" value="@type/tokenize(., ':')[last()]"/>
          
          <sch:assert sqf:fix="sqf-repair-step-type" test="empty(@type) or $local or contains($basename, $typename-given) or contains($typename-given, $basename) or exists(/p:library)">Unexpected declared type <sch:value-of select="$typename-given"/> for the file named <sch:value-of select="$filename"/></sch:assert>
-         <sch:assert sqf:fix="sqf-repair-step-type" test="empty(@type) or $type-uri = 'http://wendellpiez.com/xproc-zone/ns'">XProc step @type is not given in namespace 'http://wendellpiez.com/xproc-zone/ns'</sch:assert>
+         <sch:assert sqf:fix="sqf-repair-step-type" test="empty(@type) or $type-uri = 'http://wendellpiez.com/ns/xproc-zone'">XProc step @type is not given in namespace 'http://wendellpiez.com/ns/xproc-zone'</sch:assert>
          <sch:assert sqf:fix="sqf-repair-step-name sqf-name-step-main" test="empty(@name) or (@name = ('main',$basename)) or exists(/p:library) or $local">XProc step @name does not match the file name '<sch:value-of select="$filename"/>'</sch:assert>
       </sch:rule>
       
@@ -161,10 +161,10 @@
       
       <sqf:fix id="sqf-repair-step-type">
          <sqf:description>
-            <sqf:title>Assign the file base name '<sch:value-of select="$basename"/>' as the nominal type, in namespace 'http://wendellpiez.com/xproc-zone/ns'</sqf:title>
+            <sqf:title>Assign the file base name '<sch:value-of select="$basename"/>' as the nominal type, in namespace 'http://wendellpiez.com/ns/xproc-zone'</sqf:title>
          </sqf:description>
          <sqf:add match="/*" node-type="attribute" select="'zone:' || $basename" target="type"/>
-         <sqf:add match="/*" node-type="attribute" select="'http://wendellpiez.com/xproc-zone/ns'" target="xmlns:zone"/>
+         <sqf:add match="/*" node-type="attribute" select="'http://wendellpiez.com/ns/xproc-zone'" target="xmlns:zone"/>
       </sqf:fix>
       
       <sqf:fix id="sqf-repair-step-name">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
-   query="http://wendellpiez.com/xproc-zone/ns" query-at="shout-function.xqm">
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
+   query="http://wendellpiez.com/ns/xproc-zone" query-at="shout-function.xqm">
 
    <!--  Inspired by https://github.com/xspec/xspec/blob/master/tutorial/xquery-tutorial.xspec -->
 

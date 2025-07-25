@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    type="zone:GRAB-NISO_STS-RNG"
-   name="GRAB-NISO_STS-RNG" xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+   name="GRAB-NISO_STS-RNG" xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
    
    <!-- /end prologue -->
    <!-- start subpipeline -->

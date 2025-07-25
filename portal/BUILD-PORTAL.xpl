@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
     version="3.0"
-    xmlns:zone="http://wendellpiez.com/xproc-zone/ns" type="zone:BUILD-PORTAL">
+    xmlns:zone="http://wendellpiez.com/ns/xproc-zone" type="zone:BUILD-PORTAL">
     
     <!-- This pipeline is also called from UPDATE-PUB.xpl -->
     

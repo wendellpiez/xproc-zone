@@ -2,7 +2,7 @@
 <p:library xmlns:p="http://www.w3.org/ns/xproc"
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    xmlns:x="http://www.jenitennison.com/xslt/xspec"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
    <!-- XProc 3.0 rendition of saxon-xslt-harness -->

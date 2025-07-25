@@ -4,30 +4,38 @@
 
 From a height you can see broader outlines.
 
-XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, in principle it can work with any kind of data.
+XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.
 
-XProc conceives of information processing in terms of the operations of *pipelines*. Expressed using XML format, an XProc pipeline is both a linguistic and computational artifact, and (in developers' minds) a discrete logical entity with an internal organization: a chain or branched structure. A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results"). This makes XProc an appropriate technology for building and supporting complex workflows in document production, data conversion, and information exchange.
+In XProc, information processing happens by means of *pipelines*. Expressed using XML format, an XProc pipeline is both a linguistic and computational artifact, and (in developers' minds) a discrete logical entity with an internal organization: a chain or branched structure.
+
+A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results").
+
+This makes XProc an appropriate technology for building and supporting complex workflows in document production, data conversion, and information exchange.
 
 ## Pipelines and steps
 
 - A pipeline is made of steps
-- A pipeline can also be defined with, or imported into, another pipeline, and used there as a step
-- XProc defines a set of standard, reusable step types for all processors, supporting many common operations
-- You can also design and use new steps in and with your own XProc
+- A pipeline can also be used as a step, when declared with or imported into another pipeline
+- XProc defines libraries of standard, reusable steps for all processors, supporting many common operations
+- You can also design and use new steps, in and with your own XProc
 
-[illustration: steps with steps]
+?surface/starter.xpl?
+
+?surface/make-page.xpl?
 
 ## How to write a pipeline
 
-A pipeline takes the form of an arrangement of steps.
+An XProc pipeline takes the form of an arrangement of steps.
 
-[Two illustrations: simple pipeline, also simple pipe with imported step]
+?surface/moresteps.xpl?
 
 We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.
 
 [Illustration: a more complex pipeline]
 
-# XProc from 40000 feet
+# XProc from Above
+
+
 ---
 
 ## I/O, ports and documents
@@ -35,7 +43,8 @@ We say 'arrangement' here since steps can accommodate as many inputs and outputs
 - Pipelines, and steps, can accept one or more designated inputs, or none - they can accept inputs provided at runtime, or find and load data sources, or both
 - Steps can also expose processing results as outputs, and also interact with your system, writing files on disk or communicating through other channels
 - The connections that an XProc step exposes for data are called its **ports**
-- The idea is that by means of its ports, we pass documents into steps and get documents out - and while XProc calls them **documents**, they can be any kind of data at all
+- By means of ports, we pass documents into steps and get documents out - and while XProc calls them **documents**, they can be any kind of data at all
+- A pipeline can be defined with ports for connecting with other steps, when used as a step in another pipeline
 - The *composability* of steps is key to the efficiency and power offered by XProc
 
 [illustration: validation step, w/ four ports]
@@ -44,7 +53,7 @@ We say 'arrangement' here since steps can accommodate as many inputs and outputs
 
 ## Steps with implicit port connections
 
-- XProc syntax is commonly *abbreviated* so you don't see ports that can be assumed to be there by the rules
+- XProc syntax is commonly abbreviated so you don't see ports that can be assumed to be there by the rules
 - This means most of the steps you use within a pipeline work together, in sequence -- *not* autonomously and independently of one another, even if this is the case with the pipeline that contains them.
 
 [illustrations: three steps in sequence, with and without ports showing]
@@ -108,17 +117,17 @@ The conventional names for the primary ports `source` (for input) and `result` (
 
 ## Reflection
 
-A step has no input ports may nonetheless have inputs or dependencies. It can still load documents and data from outside the pipeline. This is a design feature of the language, and not in itself wrong or ill-advised.
+A step with no input ports may nonetheless have inputs or dependencies, loading documents and data from outside the pipeline. This is a design feature of the language, and not in itself wrong or ill-advised.
 
-Similarly a useful steps may also have no output ports, or a port showing only something to for an operator to confirm operations at runtime, on a console or in a traceback.
+Similarly a useful step may also have no output ports, or a port showing only tracebacks to a user to confirm operations at runtime (for example, on a terminal). Nonetheless it can build web sites, write results of data conversions to online or offline data stores, etc. - and we call these "side effects" even when they are the point of the exercise.
 
-Nevetheless steps and pipelines may build web sites, write results of data conversions to disk, etc. - we call these "side effects" even when these are the point of the exercise.
+Then too, the entire reason to have ports is to pass data into and through the pipelines that declare them -- information sets that must start and end somewhere.
 
-This two-sided power - that it is both a declarative and functional language whose operations are entirely abstract, and also an information processing engine that reads and writes data, is key to what makes XProc useful.
+This two-sided power - that it is both a declarative and functional language whose operations are largely *abstracted*, and also an information processing engine that reads and writes data, is key to what makes XProc useful.
 
-Think of it as nested black boxes, with illumination that can be turned on.
+Think of it as nested black boxes, except with labeled hatches, and unlocked, with spot lighting and schematics available.
 
-We put it to work reading and transforming data - in specified, testable ways - but we think of it in abstract terms that enable most of the chores, especially related to memory and resource management, to be delegated to the processing engine to take care of.
+We put XProc to work reading and transforming data - in specified, testable ways - but we think of it in abstract terms that enable most of the chores (especially those related to memory and resource management) to be delegated to the processing engine to take care of.
 
 ---
 
@@ -153,6 +162,13 @@ Their values can be simple (string value flags) or complex (such as map objects,
 Its ports and options together provide an *interface* for using a step.
 
 Options can be set on steps using abbreviated syntax (attributes) or long syntax (`p:with-option`)
+
+---
+
+
+## Connectors
+
+There are a few elements in XProc that work not as steps, but to provide the connections between the steps - the connectors. p:inline p:empty p:document p:pipe 
 
 ---
 

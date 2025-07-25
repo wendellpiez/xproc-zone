@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
     xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+    xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
     type="zone:portal-page" name="portal-page">
 
     <p:option name="path-to-root" select="'.'"/>

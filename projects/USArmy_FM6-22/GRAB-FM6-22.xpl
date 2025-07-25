@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    type="zone:GRAB-FM6-22"
-   name="GRAB-FM6-22" xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+   name="GRAB-FM6-22" xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
    
    <!-- https://armypubs.army.mil/epubs/DR_pubs/DR_a/ARN43044-FM_6-22-002-WEB-5.pdf -->
    

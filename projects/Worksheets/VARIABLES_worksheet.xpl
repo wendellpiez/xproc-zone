@@ -2,7 +2,7 @@
 <p:declare-step
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns"
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
    xmlns:p="http://www.w3.org/ns/xproc" 
    version="3.0">
 

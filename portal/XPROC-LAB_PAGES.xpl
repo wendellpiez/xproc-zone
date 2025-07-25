@@ -3,7 +3,7 @@
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+   xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
 
 <!-- REQUIRES CONNECTIVITY - set your proxy server -->

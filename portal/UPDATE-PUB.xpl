@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
     version="3.0"
-    xmlns:zone="http://wendellpiez.com/xproc-zone/ns" type="zone:UPDATE-PUB">
+    xmlns:zone="http://wendellpiez.com/ns/xproc-zone" type="zone:UPDATE-PUB">
     
     
     <p:import href="BUILD-PORTAL.xpl"/>

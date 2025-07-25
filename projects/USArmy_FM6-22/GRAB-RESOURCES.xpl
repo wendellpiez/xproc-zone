@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
    xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0"
    type="zone:GRAB-RESOURCES"
-   name="GRAB-RESOURCES" xmlns:zone="http://wendellpiez.com/xproc-zone/ns">
+   name="GRAB-RESOURCES" xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
 
 <p:documentation>ZONE RULES HALL PASS - copy this p:document to ../../src/cicd-fileset_xproc3.xpl and remove this element</p:documentation>
 <p:documentation>
