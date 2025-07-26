@@ -9,7 +9,7 @@
 
   <!-- Applying an XSLT transformation using the nominated stylesheet -->
   <p:xslt>
-    <p:with-input port="stylesheet" href="html-enhance.xsl"/>
+    <p:with-input port="stylesheet" href="../src/html-enhance.xsl"/>
   </p:xslt>
   
   <!-- Saves a file in the ../out folder -->

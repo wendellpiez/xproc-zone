@@ -4,7 +4,7 @@
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
   
   <!--  Imports a pipeline (step declaration or library) -->
-  <p:import href="_enhance-md-html.xpl"/>
+  <p:import href="_make-orbital-markup.xpl"/>
   
   <!-- Loads a file as plain text -->
   <p:load href="../xproc-from-orbit.md" content-type="text/plain"/>
@@ -13,10 +13,10 @@
   <p:markdown-to-html/>
 
   <!-- Calls an imported step -->
-  <zone:enhance-md-html/>
+  <zone:make-orbital-markup/>
   
   <!-- Saves the result -->
-  <p:store href="../out/xproc-from-orbit.html"
-    serialization="map { 'method': 'xml', 'omit-xml-declaration': true() }"/>
+  <p:store href="../out/xproc-from-orbit.xml"
+    serialization="map { 'method': 'xml', 'omit-xml-declaration': true(), 'indent': true() }"/>
   
 </p:declare-step>

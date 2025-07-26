@@ -6,22 +6,20 @@
   
   <!-- Requires XML Calabash for p:markdown-to-html -->
   
-  <p:import href="_enhance-md-html.xpl"/>
+  <p:import href="_make-orbital-markup.xpl"/>
   
   <p:load href="../xproc-from-orbit.md" content-type="text/plain"/>
   
   <p:markdown-to-html/>
 
-  <zone:enhance-md-html/>
+  <zone:make-orbital-markup/>
+  
+  
   
   <p:cast-content-type content-type="application/xml"/>
   
   <!-- Designating the HTML namespace, unprefixed -->
-  <p:wrap match="div[@class='eg_block']" group-adjacent="true()"
-    wrapper="Q{{http://www.w3.org/1999/xhtml}}aside"/>
-
-  <p:add-attribute match="aside[div/@class='eg_block']"
-    attribute-name="class" attribute-value="eg_set"/>
+  
   
   <p:insert match="html/head" position="last-child">
     <p:with-input port="insertion" expand-text="false">
