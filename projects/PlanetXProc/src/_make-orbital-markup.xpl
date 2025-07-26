@@ -3,24 +3,24 @@
  type="zone:make-orbital-markup"
  xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
   
-  <!-- Accepts an XML (XHTML) document on 'source' port,
-       and enhances through an XSLT sequence -->
+  <!-- Accepts an XML (XHTML) document on 'source' port
+       and creates a clean XML representation of the data set -->
   
   <p:input port="source"/>
   
   <p:output/>
   
   <p:xslt>
-    <p:with-input port="stylesheet" href="../src/html-enhance.xsl"/>
+    <p:with-input port="stylesheet" href="html-enhance.xsl"/>
   </p:xslt>
   
   <p:xslt>
-    <p:with-input port="stylesheet" href="../src/html-resuscitate.xsl"/>
+    <p:with-input port="stylesheet" href="html-resuscitate.xsl"/>
   </p:xslt>
 
   <p:validate-with-relax-ng>
     <p:with-input port="schema">
-      <p:document href="../src/orbital-promoted.rnc"/>
+      <p:document href="orbital-promoted.rnc"/>
     </p:with-input>
   </p:validate-with-relax-ng>
 

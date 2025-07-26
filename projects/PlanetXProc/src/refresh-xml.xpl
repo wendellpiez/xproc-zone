@@ -17,6 +17,6 @@
   
   <!-- Saves the result -->
   <p:store href="../out/xproc-from-orbit.xml"
-    serialization="map { 'method': 'xml', 'omit-xml-declaration': true(), 'indent': true() }"/>
+    serialization="map { 'indent': true() }"/>
   
 </p:declare-step>

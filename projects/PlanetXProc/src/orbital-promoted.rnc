@@ -1,0 +1,31 @@
+default namespace = "http://www.tei-c.org/ns/1.0"
+namespace xi = "http://www.w3.org/2001/XInclude"
+
+# Started using Trang, worked by hand
+
+start = element body { \div+ }
+\div =
+  element div {
+    (\div
+     | element eg {
+       element xi:include {
+         attribute parse { 'text' }?,
+         attribute href { xsd:anyURI }
+     } }
+     | element head { text }
+     | element list {
+         element item { (text | code | emph | hi)+ }+
+       }
+     | element p { (text | code | emph | hi)+ })*
+  }
+emph =
+  element emph {
+    attribute rend { xsd:NCName },
+    xsd:NCName
+  }
+hi =
+  element hi {
+    attribute rend { xsd:NCName },
+    xsd:NCName
+  }
+code = element code { xsd:anyURI }

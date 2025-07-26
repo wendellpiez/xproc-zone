@@ -2,24 +2,23 @@
 <p:declare-step version="3.0"
   xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
-  xmlns="http://www.w3.org/1999/xhtml">
+  xmlns:tei="http://www.tei-c.org/ns/1.0"
+  xmlns="http://www.w3.org/1999/xhtml"
+   exclude-inline-prefixes="#all">
   
   <!-- Requires XML Calabash for p:markdown-to-html -->
   
-  <p:import href="_make-orbital-markup.xpl"/>
+  <p:load href="../out/xproc-from-orbit.xml"/>
   
-  <p:load href="../xproc-from-orbit.md" content-type="text/plain"/>
+  <!-- Scrubbing whitespace text around XInclude -->
+  <p:delete match="tei:eg/text()"/>
   
-  <p:markdown-to-html/>
-
-  <zone:make-orbital-markup/>
+  <p:xinclude/>
   
-  
-  
-  <p:cast-content-type content-type="application/xml"/>
-  
-  <!-- Designating the HTML namespace, unprefixed -->
-  
+  <!-- Renders back down into HTML again -->
+  <p:xslt>
+    <p:with-input port="stylesheet" href="../src/orbital-lander.xsl"/>
+  </p:xslt>
   
   <p:insert match="html/head" position="last-child">
     <p:with-input port="insertion" expand-text="false">
@@ -32,8 +31,6 @@ aside.eg_set { display: flex; gap: 0.7em;
 div.eg_block { flex: auto; max-width: fit-content;
   background-color: whitesmoke; border: medium solid midnightblue; padding: 0.3em;
   margin-top: 0.8em }
-
-div.eg_block h5:first-child { margin-top: 0em }
 
 p, ul { max-width: 54em }
 

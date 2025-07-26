@@ -19,15 +19,15 @@ This makes XProc an appropriate technology for building and supporting complex w
 - XProc defines libraries of standard, reusable steps for all processors, supporting many common operations
 - You can also design and use new steps, in and with your own XProc
 
-?surface/starter.xpl?
+?src/starter.xpl?
 
-?surface/make-page.xpl?
+?src/make-page.xpl?
 
 ## How to write a pipeline
 
 An XProc pipeline takes the form of an arrangement of steps.
 
-?surface/moresteps.xpl?
+?src/moresteps.xpl?
 
 We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.
 
