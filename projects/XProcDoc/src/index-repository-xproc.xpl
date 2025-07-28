@@ -11,12 +11,16 @@
     
     <!-- .. ... .. ... .. ... .. ... .. ... .. ... .. ... .. ... .. ... .. ... .. ... .. -->
 
-    <p:directory-list path="../.." max-depth="unbounded" include-filter="\.xpl$"/>
+    <p:directory-list path="../../.." max-depth="unbounded" include-filter="\.xpl$"/>
 
     <!-- Removing the top-level 'lib' directory to avoid indexing xpl files therein -->
-    <p:delete match="/c:directory/c:directory[@name='lib']"/>
-
-    <p:for-each>
+  <p:delete match="/c:directory/c:directory[@name='lib']"/>
+  
+  <!-- Not indexing these ... yet -->
+  <p:delete match="/c:directory/c:directory/c:directory[@name='PlanetXProc']"
+  message="NOTICE: not yet indexing XProc in PlanetXProc/ folder"/>
+  
+  <p:for-each>
         <p:with-input select="/descendant::c:file"/>
         <p:variable name="filepath" select="resolve-uri(/*/@name, base-uri(.))"/>
         <p:load href="{ $filepath }" message="LOADING { $filepath }" content-type="text/plain"/>

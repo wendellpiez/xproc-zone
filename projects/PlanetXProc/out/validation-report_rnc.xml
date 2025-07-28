@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.xproc.org/ns/xvrl">
+   <metadata>
+      <timestamp>2025-07-28T16:43:52.05-04:00</timestamp>
+      <document href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
+      <schema href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/src/orbital-promoted.rnc"
+              schematypens="http://relaxng.org/ns/structure/1.0"/>
+      <validator name="jing"/>
+   </metadata>
+   <digest fatal-error-count="0"
+           error-count="0"
+           warning-count="0"
+           info-count="0"
+           valid="true"/>
+</report>

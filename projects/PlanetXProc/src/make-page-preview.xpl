@@ -4,11 +4,18 @@
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
   xmlns:tei="http://www.tei-c.org/ns/1.0"
   xmlns="http://www.w3.org/1999/xhtml"
-   exclude-inline-prefixes="#all">
+  exclude-inline-prefixes="#all">
   
-  <!-- Requires XML Calabash for p:markdown-to-html -->
+  <!-- Run refresh-xml.xpl to refresh the XML production from Markdown source -->
   
-  <p:load href="../out/xproc-from-orbit.xml"/>
+  <p:load href="../out/xproc-from-orbit.xml" message="LOADING xproc-from-orbit.xml"/>
+  
+  <!-- Precautionary validation -->
+  <p:validate-with-relax-ng assert-valid="true">
+    <p:with-input port="schema">
+      <p:document href="orbital-promoted.rnc"/>
+    </p:with-input>
+  </p:validate-with-relax-ng>
   
   <!-- Scrubbing whitespace text around XInclude -->
   <p:delete match="tei:eg/text()"/>
@@ -38,6 +45,6 @@ p, ul { max-width: 54em }
     </p:with-input>
   </p:insert>
   
-  <p:store href="../out/xproc-from-orbit.html"/>
+  <p:store href="../out/xproc-from-orbit.html" message="SAVING ../out/xproc-from-orbit.html"/>
   
 </p:declare-step>

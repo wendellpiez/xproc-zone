@@ -11,10 +11,6 @@
   <p:output/>
   
   <p:xslt>
-    <p:with-input port="stylesheet" href="html-enhance.xsl"/>
-  </p:xslt>
-  
-  <p:xslt>
     <p:with-input port="stylesheet" href="html-resuscitate.xsl"/>
   </p:xslt>
 

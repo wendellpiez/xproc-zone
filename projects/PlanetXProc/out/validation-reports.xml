@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VALIDATION-REPORTS>
+   <report xmlns="http://www.xproc.org/ns/xvrl">
+      <metadata>
+         <timestamp>2025-07-28T16:43:34.13-04:00</timestamp>
+         <document href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
+         <schema href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/src/orbital-promoted.rnc"
+                 schematypens="http://relaxng.org/ns/structure/1.0"/>
+         <validator name="jing"/>
+      </metadata>
+      <digest fatal-error-count="0"
+              error-count="0"
+              warning-count="0"
+              info-count="0"
+              valid="true"/>
+   </report>
+   <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                           xmlns:schxslt="https://doi.org/10.5281/zenodo.1495494"
+                           xmlns:schxslt-api="https://doi.org/10.5281/zenodo.1495494#api"
+                           xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                           xmlns:tei="http://www.tei-c.org/ns/1.0"
+                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                           xmlns:error="https://doi.org/10.5281/zenodo.1495494#error">
+      <svrl:ns-prefix-in-attribute-values prefix="tei"
+                                          uri="http://www.tei-c.org/ns/1.0"/>
+      <svrl:metadata xmlns:dct="http://purl.org/dc/terms/"
+                     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+         <dct:creator>
+            <dct:Agent>
+               <skos:prefLabel>SAXON/HE 12.6</skos:prefLabel>
+            </dct:Agent>
+         </dct:creator>
+         <dct:created>2025-07-28T16:43:35.3054268-04:00</dct:created>
+         <dct:source>
+            <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/">
+               <dct:creator>
+                  <dct:Agent>
+                     <skos:prefLabel>SchXslt/1.10.1 SAXON/HE 12.6</skos:prefLabel>
+                     <schxslt.compile.typed-variables xmlns="https://doi.org/10.5281/zenodo.1495494#">true</schxslt.compile.typed-variables>
+                  </dct:Agent>
+               </dct:creator>
+               <dct:created>2025-07-28T16:43:35.2240908-04:00</dct:created>
+            </rdf:Description>
+         </dct:source>
+      </svrl:metadata>
+      <svrl:active-pattern documents="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
+      <svrl:fired-rule context="tei:ref[starts-with(@target,'http')]"/>
+      <!--WARNING: Rule for context "tei:ref" shadowed by preceding rule-->
+      <svrl:suppressed-rule context="tei:ref"/>
+      <svrl:fired-rule context="tei:ref"/>
+      <svrl:failed-assert location="/Q{http://www.tei-c.org/ns/1.0}body[1]/Q{http://www.tei-c.org/ns/1.0}div[2]/Q{http://www.tei-c.org/ns/1.0}div[11]/Q{http://www.tei-c.org/ns/1.0}p[4]/Q{http://www.tei-c.org/ns/1.0}ref[1]"
+                          test="resolve-uri(@target,base-uri(.)) =&gt; doc-available()">
+         <svrl:text>Not seeing file xproc-step-list.html named as ref/@target</svrl:text>
+      </svrl:failed-assert>
+   </svrl:schematron-output>
+</VALIDATION-REPORTS>

@@ -2,7 +2,7 @@
 
 > Material in draft!
 
-From a height you can see broader outlines.
+From a height the broader outlines come into view.
 
 XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.
 
@@ -19,9 +19,9 @@ This makes XProc an appropriate technology for building and supporting complex w
 - XProc defines libraries of standard, reusable steps for all processors, supporting many common operations
 - You can also design and use new steps, in and with your own XProc
 
-?src/starter.xpl?
+?src/starter.xpl? A simple pipeline with three steps
 
-?src/make-page.xpl?
+?src/refresh-xml.xpl?
 
 ## How to write a pipeline
 
@@ -30,6 +30,8 @@ An XProc pipeline takes the form of an arrangement of steps.
 ?src/moresteps.xpl?
 
 We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.
+
+?src/double-validate.xpl?
 
 [Illustration: a more complex pipeline]
 
@@ -47,14 +49,17 @@ We say 'arrangement' here since steps can accommodate as many inputs and outputs
 - A pipeline can be defined with ports for connecting with other steps, when used as a step in another pipeline
 - The *composability* of steps is key to the efficiency and power offered by XProc
 
-[illustration: validation step, w/ four ports]
+
+?src/refresh-xml.xpl?
+
+?src/_make-orbital-markup.xpl?
 
 ---
 
 ## Steps with implicit port connections
 
-- XProc syntax is commonly abbreviated so you don't see ports that can be assumed to be there by the rules
-- This means most of the steps you use within a pipeline work together, in sequence -- *not* autonomously and independently of one another, even if this is the case with the pipeline that contains them.
+- XProc syntax can be concise - once we make room in our heads and editors for all the tags - because it has rules for you don't see ports that can be assumed to be there by the rules
+- This means most of the steps you use within a pipeline will naturally operate in sequence, unless you specifically arrange to do things otherwise - we like to say they *snap together*
 
 [illustrations: three steps in sequence, with and without ports showing]
 
@@ -68,12 +73,9 @@ A step with two input ports is `p:xslt` - it accepts source documents on one por
 
 [illustration: three steps in sequence, including an xslt step]
 
-Steps have names and types. Their type is what you see (`add attribute`, `identity`, `xslt`) and what you use to call them. Since they are called by type, steps can be anonymous. ("What they do" is considered to depend on their type.)
+Steps have names and types. Their type is what you see (`p:add-attribute`, `identity`, `xslt`) and what you use to call them. Since they are called by type, steps can be anonymous, but it is also useful to give them names, with `@name`.
 
 When you use a step in a pipeline, however, you can also give it a name, this making it possible to connect other steps to it, out of sequence as well as in sequence.
-
-[../../docs/xproc-lab/zone-xproc-index.html#with-input](`p:with-input`) is the element to look at for this.
-
 
 ---
 
@@ -99,19 +101,16 @@ XProc steps can either invoke or embed instances of these declarative processing
 
 ## Looking at those ports
 
-Ports go only one direction - they are either **input**, or **output** (never both, neither or anything else).
+Ports go in only one direction: they are input or output, never both. (An `identity` step replicates its input on its output.)
 
-Any input port can be *primary* on its step, or *secondary*. (No 'tertiary'.) Same for output ports.
+The conventional name for the primary port is "source". The conventional name for the primary output port is "result". These names correspond with the uses of these terms in XSLT and XQuery.
 
-A step can have at most a single primary input port and primary output port. All input ports that are not primary, are secondary.
+So every port with an input is likely to have a 'source', while every port with an output is likely to have its 'result'.
+It is sometimes useful for a step to have input but no output - `p:sink` being the simple example.
 
-The primary input port is usually named `source` (by convention). Secondary ports commonly have names based on their role in the step (e.g., `schema`).
+The 'source' and 'result' ports can carry sequences when the steps on which they are defined say so - and when permitted to be sequences they may also be empty (have no documents bound to them): a sequence with no members, not a single.
 
-The primary output port is usually named `result` (by convention). Secondary output ports will also be given descriptive names (e.g., `report`).
-
-Either type of port can also accept sequences, that is to say, a step can be defined such that *multiple* documents are expected on a port. This is very useful in XProc with steps designed to sift, split or merge data streams, as well as providing opportunities for parallel processing.
-
-The conventional names for the primary ports `source` (for input) and `result` (for output) are handy because they correspond with other technical uses of those terms.
+Ports apart from 'source' and 'result' will be secondary, and will have names indicating their roles in the operation of their steps - a good example is a 'schema' secondary input port for a validation step, which a processor uses to provide the schema.
 
 ---
 
@@ -147,8 +146,14 @@ The pipeline is simple but the operations within any step can be arbitrarily com
 
 If processing requirements are too complex to address with a simple chain or sequence of steps, steps can be named and connections made to other steps, by binding to their ports by name.
 
-The XProc Index to XProc in the XProc Zone shows examples of [p:with-input](zone-xproc-index.html#with-input), to illustrate.
-  
+On any step, input is bound using `p:with-input`. If given a `@pipe` attribute, or provided with a `p:pipe` element, the connection is made to an output port on another step. Other connections can be made by using `p:document` (nominates a document to be read from the file system), `p:inline` (for literal XML contents to be used, either as is or as template for embedded expressions), `p:empty` (for an explicitly 'stopped' connection).
+
+A couple of these connectors can be added implicitly, using attributes as a shorthand notation in place of child elements. For example, an `@href` attribute is taken as shorthand for an element `p:document` with an `href`. If more than one document needs to be connected, the long syntax using elements is available.
+
+Similarly with pipe connectors. Instead of `p:pipe` designating a `@port` and a `@step`, the output port of the connected step can be indicated using shorthand notation, as `pipe="output_port@connected_step"`.
+
+(examples)
+      
 ---
 
 ## Options
@@ -162,13 +167,6 @@ Their values can be simple (string value flags) or complex (such as map objects,
 Its ports and options together provide an *interface* for using a step.
 
 Options can be set on steps using abbreviated syntax (attributes) or long syntax (`p:with-option`)
-
----
-
-
-## Connectors
-
-There are a few elements in XProc that work not as steps, but to provide the connections between the steps - the connectors. p:inline p:empty p:document p:pipe 
 
 ---
 

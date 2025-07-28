@@ -3,29 +3,47 @@ namespace xi = "http://www.w3.org/2001/XInclude"
 
 # Started using Trang, worked by hand
 
-start = element body { \div+ }
-\div =
+start = element body { _div_+ }
+
+_div_ =
   element div {
-    (\div
-     | element eg {
-       element xi:include {
-         attribute parse { 'text' }?,
-         attribute href { xsd:anyURI }
-     } }
+    (_div_
+     | _eg_
      | element head { text }
+     | element p { _inline_ }
      | element list {
-         element item { (text | code | emph | hi)+ }+
+         element item { _inline_ }+
        }
-     | element p { (text | code | emph | hi)+ })*
+     )*
   }
-emph =
+
+_eg_ = element eg { _xinclude_ }
+
+_xinclude_ =
+  element xi:include {
+    attribute parse { "text" }?,
+    attribute href { xsd:anyURI }
+  }
+
+_inline_ = ( text | _code_ | _emph_ | _hi_ | _ref_ )+
+
+_emph_ =
   element emph {
-    attribute rend { xsd:NCName },
-    xsd:NCName
+    attribute rend { text },
+    _inline_
   }
-hi =
+
+_hi_ =
   element hi {
-    attribute rend { xsd:NCName },
-    xsd:NCName
+    attribute rend { text },
+    _inline_
   }
-code = element code { xsd:anyURI }
+
+_code_ = element code { _inline_ }
+
+_ref_ =
+  element ref {
+    attribute target { xsd:anyURI },
+    _inline_
+  }
+

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+  xmlns:zone="http://wendellpiez.com/ns/xproc-zone"
+  stylesheet="html-resuscitate.xsl" run-as="external"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+  
+  <!-- Can be used to test both zone:well-nested and zone:well-nested-recursive -->
+  
+  <x:scenario label="Live example">
+    <x:context href="../../../portal/index.xhtml"/>
+    <x:call function="zone:well-nested">
+      <x:param
+        select="$x:context/(.//html:h1 | .//html:h2 | .//html:h3 | .//html:h4 | .//html:h5 | .//html:h6)"/>
+    </x:call>
+    <x:expect select="true()"
+      label="external file is well ordered"/>
+  </x:scenario>
+        
+  <x:scenario label="Check header nesting (okay)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+      </x:param>
+    </x:call>
+    <x:expect select="true()" label="one section, three deep"/>
+  </x:scenario>
+  <x:scenario label="Check header nesting (okay)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h3/>
+      </x:param>
+    </x:call>
+    <x:expect select="true()" label="a single third-level header"/>
+  </x:scenario>
+  <x:scenario label="Check header nesting (okay)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+      </x:param>
+    </x:call>
+    <x:expect select="true()" label="twelve headers, well ordered"/>
+  </x:scenario>
+
+  <x:scenario label="Check header nesting (BAD)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h1/>
+        <h2/>
+        <h5/>
+        <h2/>
+      </x:param>
+    </x:call>
+    <x:expect select="false()" label="skips from h2 to h5"/>
+  </x:scenario>
+  <x:scenario label="Check header nesting (BAD)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h3/>
+        <h1/>
+      </x:param>
+    </x:call>
+    <x:expect label="skips from h3 to h1" select="true()"/>
+  </x:scenario>
+  <x:scenario label="Check header nesting (BAD)">
+    <x:call function="zone:well-nested">
+      <x:param>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+        <h1/>
+        <h2/>
+        <h3/>
+        <h2/>
+        <h1/>
+        <h2/>
+        <h4/>
+        <h2/>
+      </x:param>
+    </x:call>
+    <x:expect label="skips from h2 to h4" select="false()"/>
+  </x:scenario>
+  
+</x:description>

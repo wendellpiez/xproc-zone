@@ -65,24 +65,24 @@
   
   <xsl:template match="eg"/>
 
-  <xsl:template match="eg[1]">
+  <xsl:template match="eg[empty(preceding-sibling::*[1]/self::eg)]">
     <aside class="eg_set">
       <xsl:apply-templates select="." mode="grab"/>
     </aside>
   </xsl:template>
   
-  
-  <xsl:template match="*" mode="grab"/>
-
   <xsl:template match="eg" mode="grab">
     <div class="eg_block">
       <pre>
         <xsl:apply-templates/>
       </pre>
     </div>
+    <!-- grab what is next -->
     <xsl:apply-templates select="following-sibling::*[1]" mode="grab"/>
-  </xsl:template>
+  </xsl:template>  
   
+  <!-- done grabbing -->
+  <xsl:template match="*" mode="grab"/>
   
   <xsl:template match="code">
     <code>
@@ -100,6 +100,12 @@
     <i>
       <xsl:apply-templates/>
     </i>
+  </xsl:template>
+  
+  <xsl:template match="link">
+    <a href="{ @target }">
+      <xsl:apply-templates/>
+    </a>
   </xsl:template>
   
 </xsl:stylesheet>
