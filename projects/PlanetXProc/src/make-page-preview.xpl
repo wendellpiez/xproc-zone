@@ -8,12 +8,12 @@
   
   <!-- Run refresh-xml.xpl to refresh the XML production from Markdown source -->
   
-  <p:load href="../out/xproc-from-orbit.xml" message="LOADING xproc-from-orbit.xml"/>
+  <p:load href="../xproc-from-orbit.xml" message="LOADING xproc-from-orbit.xml"/>
   
   <!-- Precautionary validation -->
   <p:validate-with-relax-ng assert-valid="true">
     <p:with-input port="schema">
-      <p:document href="orbital-promoted.rnc"/>
+      <p:document href="schemas/orbital-promoted.rnc"/>
     </p:with-input>
   </p:validate-with-relax-ng>
   
@@ -24,7 +24,7 @@
   
   <!-- Renders back down into HTML again -->
   <p:xslt>
-    <p:with-input port="stylesheet" href="../src/orbital-lander.xsl"/>
+    <p:with-input port="stylesheet" href="../src/xslt/orbital-lander.xsl"/>
   </p:xslt>
   
   <p:insert match="html/head" position="last-child">

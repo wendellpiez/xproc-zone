@@ -16,7 +16,7 @@
   <zone:make-orbital-markup/>
   
   <!-- Saves the result -->
-  <p:store href="../out/xproc-from-orbit.xml"
+  <p:store href="../xproc-from-orbit.xml" message="SAVING xproc-from-orbit.xml ..."
     serialization="map { 'indent': true() }"/>
   
 </p:declare-step>

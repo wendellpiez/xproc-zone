@@ -12,7 +12,7 @@
   <!-- Applying an XSLT transformation using the nominated stylesheet -->
   <p:xslt name="transforming">
     <p:with-input port="source" pipe="result@making-html"/>
-    <p:with-input port="stylesheet" href="../src/html-resuscitate.xsl"/>
+    <p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/>
   </p:xslt>
   
   <!-- Saves a file in the ../out folder -->

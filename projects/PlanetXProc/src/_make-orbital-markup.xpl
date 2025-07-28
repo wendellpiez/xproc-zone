@@ -11,12 +11,12 @@
   <p:output/>
   
   <p:xslt>
-    <p:with-input port="stylesheet" href="html-resuscitate.xsl"/>
+    <p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/>
   </p:xslt>
 
   <p:validate-with-relax-ng>
     <p:with-input port="schema">
-      <p:document href="orbital-promoted.rnc"/>
+      <p:document href="schemas/orbital-promoted.rnc"/>
     </p:with-input>
   </p:validate-with-relax-ng>
 

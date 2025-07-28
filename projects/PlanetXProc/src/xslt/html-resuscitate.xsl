@@ -71,7 +71,7 @@
   
   <xsl:template match="p[matches(.,'^\?')]" expand-text="true">
     <xsl:variable name="tag" select="tokenize(.,'\s+')[1] => replace('\?','')"/>
-    <xsl:assert test="('../' || $tag) => resolve-uri() => doc-available()">No XML document is to be found at { . }</xsl:assert>
+    <xsl:assert test="resolve-uri($tag, base-uri(.)) => doc-available()">No XML document is to be found at { . }</xsl:assert>
     <eg>
       <XI:include parse="text" href="../{ $tag }"/>
     </eg>

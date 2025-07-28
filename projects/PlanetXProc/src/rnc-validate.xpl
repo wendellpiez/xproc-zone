@@ -9,7 +9,7 @@
   
   <p:validate-with-relax-ng assert-valid="false">
     <p:with-input port="source" href="../out/xproc-from-orbit.xml"/>
-    <p:with-input port="schema" href="orbital-promoted.rnc"/>
+    <p:with-input port="schema" href="schemas/orbital-promoted.rnc"/>
   </p:validate-with-relax-ng>
 
   <!-- Picking up the 'report' port instead of default (primary) port ('result') -->

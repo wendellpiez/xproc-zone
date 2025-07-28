@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+   <div>
+      <head>XProc from Orbit</head>
+      <p>From a height the broader outlines come into view.</p>
+      <p>XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.</p>
+      <p>In XProc, information processing happens by means of <hi rend="italic">pipelines</hi>. Expressed using XML format, an XProc pipeline is both a linguistic and computational artifact, and (in developers' minds) a discrete logical entity with an internal organization: a chain or branched structure.</p>
+      <p>A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results").</p>
+      <p>This makes XProc an appropriate technology for building and supporting complex workflows in document production, data conversion, and information exchange.</p>
+      <div>
+         <head>Pipelines and steps</head>
+         <list>
+            <item>A pipeline is made of steps</item>
+            <item>A pipeline can also be used as a step, when declared with or imported into another pipeline</item>
+            <item>XProc defines libraries of standard, reusable steps for all processors, supporting many common operations</item>
+            <item>You can also design and use new steps, in and with your own XProc</item>
+         </list>
+         <eg>
+            <xi:include parse="text" href="../src/starter.xpl"/>
+         </eg>
+         <eg>
+            <xi:include parse="text" href="../src/refresh-xml.xpl"/>
+         </eg>
+      </div>
+      <div>
+         <head>How to write a pipeline</head>
+         <p>An XProc pipeline takes the form of an arrangement of steps.</p>
+         <eg>
+            <xi:include parse="text" href="../src/moresteps.xpl"/>
+         </eg>
+         <p>We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.</p>
+         <eg>
+            <xi:include parse="text" href="../src/double-validate.xpl"/>
+         </eg>
+         <p>[Illustration: a more complex pipeline]</p>
+      </div>
+   </div>
+   <div>
+      <head>XProc from Above</head>
+      <div>
+         <head>I/O, ports and documents</head>
+         <list>
+            <item>Pipelines, and steps, can accept one or more designated inputs, or none - they can accept inputs provided at runtime, or find and load data sources, or both</item>
+            <item>Steps can also expose processing results as outputs, and also interact with your system, writing files on disk or communicating through other channels</item>
+            <item>The connections that an XProc step exposes for data are called its <emph rend="bold">ports</emph>
+            </item>
+            <item>By means of ports, we pass documents into steps and get documents out - and while XProc calls them <emph rend="bold">documents</emph>, they can be any kind of data at all</item>
+            <item>A pipeline can be defined with ports for connecting with other steps, when used as a step in another pipeline</item>
+            <item>The <hi rend="italic">composability</hi> of steps is key to the efficiency and power offered by XProc</item>
+         </list>
+         <eg>
+            <xi:include parse="text" href="../src/refresh-xml.xpl"/>
+         </eg>
+         <eg>
+            <xi:include parse="text" href="../src/_make-orbital-markup.xpl"/>
+         </eg>
+      </div>
+      <div>
+         <head>Steps with implicit port connections</head>
+         <list>
+            <item>XProc syntax can be concise - once we make room in our heads and editors for all the tags - because it has rules for you don't see ports that can be assumed to be there by the rules</item>
+            <item>This means most of the steps you use within a pipeline will naturally operate in sequence, unless you specifically arrange to do things otherwise - we like to say they <hi rend="italic">snap together</hi>
+            </item>
+            <item>The XProc feature in play here is called the <ref target="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</ref>. The concept is simple. Any step with a primary input port that is not connected explicitly, will be bound to the primary output of the immediately preceding step.</item>
+            <item>This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence. Know your steps.</item>
+         </list>
+         <p>[illustrations: three steps in sequence, with and without ports showing]</p>
+         <eg>
+            <xi:include parse="text" href="../src/moresteps.xpl"/>
+         </eg>
+         <eg>
+            <xi:include parse="text" href="../src/moresteps-explicit.xpl"/>
+         </eg>
+      </div>
+      <div>
+         <head>Knowing your formats</head>
+         <p>XProc comes with native support for XML and JSON reading and parsing, for plain text inputs, and for inputs defined with regular grammars using <ref target="https://invisiblexml.org">Invisible XML (ixml)</ref>.</p>
+         <p>All of these types of data, and others, can be passed from one step to another, as long as the step can accommodate the given format or media type.</p>
+         <p>[illustration: a step showing some JSON]</p>
+      </div>
+      <div>
+         <head>Powerful embedded languages</head>
+         <p>XPath, XSLT and XQuery all play well with XProc, which is designed first and foremost to accommodate these kindred technologies.</p>
+         <p>XProc steps can either invoke or embed instances of these declarative processing languages, or others.</p>
+         <p>[illustration: a step showing some XQuery?]</p>
+      </div>
+      <div>
+         <head>Looking at those ports</head>
+         <p>Ports go in only one direction: they are input or output, never both. The <code>identity</code> step replicates its input on its output.</p>
+         <p>The conventional name for the primary port is "source". The conventional name for the primary output port is "result". These names correspond with the uses of these terms in XSLT and XQuery.</p>
+         <p>So every port with an input is likely to have a 'source', while every port with an output is likely to have its 'result'.</p>
+         <p>It is sometimes useful for a step to have input but no output - <code>p:sink</code> being the simple example. A few steps have no inputs or outputs, but only effects in the system, such as <code>p:file-touch</code> or <code>file:mk-dir</code> (for making a directory).</p>
+         <p>The 'source' and 'result' ports can carry sequences when the steps on which they are defined say so - and when permitted to be sequences they may also be empty (have no documents bound to them): a sequence with no members, not a single.</p>
+         <p>Ports apart from 'source' and 'result' will be secondary, and will have names indicating their roles in the operation of their steps - a good example is a 'schema' secondary input port for a validation step, which a processor uses to provide the schema.</p>
+      </div>
+      <div>
+         <head>Options</head>
+         <p>In addition to inputs and outputs (connection ports), steps can also have <emph rend="bold">options</emph>.</p>
+         <p>These provide runtime configurations when invoking steps and pipelines.</p>
+         <p>Their values can be simple (string value flags) or complex (such as map objects, or expressions to be evaluated).</p>
+         <p>Its ports and options together provide an <hi rend="italic">interface</hi> for using a step.</p>
+         <p>Options can be set on steps using abbreviated syntax (attributes) or long syntax (<code>p:with-option</code>)</p>
+         <p>[examples in both forms]</p>
+      </div>
+      <div>
+         <head>Minimal XProc</head>
+         <p>If your skills include XSLT, this might be all you ever need in XProc:</p>
+         <list>
+            <item>
+               <code>p:variable</code>
+            </item>
+            <item>
+               <code>p:load</code>
+            </item>
+            <item>
+               <code>p:store</code>
+            </item>
+            <item>
+               <code>p:xslt</code>
+            </item>
+            <item>
+               <code>@serialization</code>
+            </item>
+            <item>
+               <code>@message</code>
+            </item>
+         </list>
+         <p>Take another lesson on Day Two - learn to write a pipeline and use it as a step</p>
+         <list>
+            <item>
+               <code>p:declare-step</code>
+            </item>
+            <item>
+               <code>p:input</code> (and <code>p:with-input</code>)</item>
+            <item>
+               <code>p:output</code>
+            </item>
+            <item>
+               <code>p:option</code> and (<code>p:with-option</code>)</item>
+            <item>
+               <code>p:library</code>
+            </item>
+         </list>
+         <p>Three everyday utility steps</p>
+         <list>
+            <item>
+               <code>p:sink</code>
+            </item>
+            <item>
+               <code>p:cast-content-type</code>
+            </item>
+            <item>
+               <code>p:identity</code>
+            </item>
+         </list>
+         <p>
+            <ref target="xproc-step-list.html">Step list</ref>
+         </p>
+      </div>
+   </div>
+</body>
