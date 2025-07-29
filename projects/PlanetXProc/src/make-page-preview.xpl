@@ -22,7 +22,7 @@
   
   <p:xinclude/>
   
-  <!-- Renders back down into HTML again -->
+  <!-- Renders back down into HTML again, this time much nicer -->
   <p:xslt>
     <p:with-input port="stylesheet" href="../src/xslt/orbital-lander.xsl"/>
   </p:xslt>
@@ -31,12 +31,16 @@
     <p:with-input port="insertion" expand-text="false">
       <style type="text/css" xml:space="preserve">
 
-aside.eg_set { display: flex; gap: 0.7em;
+aside.fig_set { display: flex; gap: 0.7em;
     flex-flow: row wrap;
     align-items: flex-start; }
 
-div.eg_block { flex: auto; max-width: fit-content;
+div.fig_block { flex: auto; max-width: fit-content;
   background-color: whitesmoke; border: medium solid midnightblue; padding: 0.3em;
+  margin-top: 0.8em }
+
+pre.eg { max-width: fit-content;
+  background-color: white; border: thin inset steelblue; padding: 0.3em;
   margin-top: 0.8em }
 
 p, ul { max-width: 54em }

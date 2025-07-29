@@ -70,11 +70,17 @@
   </xsl:template>
   
   <xsl:template match="p[matches(.,'^\?')]" expand-text="true">
-    <xsl:variable name="tag" select="tokenize(.,'\s+')[1] => replace('\?','')"/>
-    <xsl:assert test="resolve-uri($tag, base-uri(.)) => doc-available()">No XML document is to be found at { . }</xsl:assert>
-    <eg>
-      <XI:include parse="text" href="../{ $tag }"/>
-    </eg>
+    <xsl:variable name="tag" select="tokenize(.,'\s+')[1]"/>
+    <xsl:variable name="fileref" select="replace($tag,'\?','')"/>
+    <xsl:assert test="resolve-uri($fileref, base-uri(.)) => doc-available()">No XML document is to be found at { . }</xsl:assert>
+    <figure source="{ $fileref }">
+      <xsl:for-each select="( substring-after(., $fileref) => replace('^\?\s*', '') )[matches(.,'\S')]">
+        <head type="gloss">{ . }</head>
+      </xsl:for-each>
+      <eg>
+        <XI:include parse="text" href="{ $fileref }"/>
+      </eg>
+    </figure>
   </xsl:template>
   
   <xsl:template match="p">

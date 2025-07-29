@@ -15,23 +15,32 @@
             <item>XProc defines libraries of standard, reusable steps for all processors, supporting many common operations</item>
             <item>You can also design and use new steps, in and with your own XProc</item>
          </list>
-         <eg>
-            <xi:include parse="text" href="../src/starter.xpl"/>
-         </eg>
-         <eg>
-            <xi:include parse="text" href="../src/refresh-xml.xpl"/>
-         </eg>
+         <figure source="src/starter.xpl">
+            <eg>
+               <xi:include parse="text" href="src/starter.xpl"/>
+            </eg>
+         </figure>
+         <figure source="src/refresh-xml.xpl">
+            <head type="gloss">Showing an imported step in a custom namespace</head>
+            <eg>
+               <xi:include parse="text" href="src/refresh-xml.xpl"/>
+            </eg>
+         </figure>
       </div>
       <div>
          <head>How to write a pipeline</head>
          <p>An XProc pipeline takes the form of an arrangement of steps.</p>
-         <eg>
-            <xi:include parse="text" href="../src/moresteps.xpl"/>
-         </eg>
+         <figure source="src/moresteps.xpl">
+            <eg>
+               <xi:include parse="text" href="src/moresteps.xpl"/>
+            </eg>
+         </figure>
          <p>We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.</p>
-         <eg>
-            <xi:include parse="text" href="../src/double-validate.xpl"/>
-         </eg>
+         <figure source="src/double-validate.xpl">
+            <eg>
+               <xi:include parse="text" href="src/double-validate.xpl"/>
+            </eg>
+         </figure>
          <p>[Illustration: a more complex pipeline]</p>
       </div>
    </div>
@@ -48,29 +57,36 @@
             <item>A pipeline can be defined with ports for connecting with other steps, when used as a step in another pipeline</item>
             <item>The <hi rend="italic">composability</hi> of steps is key to the efficiency and power offered by XProc</item>
          </list>
-         <eg>
-            <xi:include parse="text" href="../src/refresh-xml.xpl"/>
-         </eg>
-         <eg>
-            <xi:include parse="text" href="../src/_make-orbital-markup.xpl"/>
-         </eg>
+         <figure source="src/refresh-xml.xpl">
+            <eg>
+               <xi:include parse="text" href="src/refresh-xml.xpl"/>
+            </eg>
+         </figure>
+         <figure source="src/_make-orbital-markup.xpl">
+            <eg>
+               <xi:include parse="text" href="src/_make-orbital-markup.xpl"/>
+            </eg>
+         </figure>
       </div>
       <div>
          <head>Steps with implicit port connections</head>
          <list>
-            <item>XProc syntax can be concise - once we make room in our heads and editors for all the tags - because it has rules for you don't see ports that can be assumed to be there by the rules</item>
-            <item>This means most of the steps you use within a pipeline will naturally operate in sequence, unless you specifically arrange to do things otherwise - we like to say they <hi rend="italic">snap together</hi>
-            </item>
+            <item>XProc syntax can be fairly concise and clean - at least, as XML-based formats go - because it has sensible fallback rules and some nice ways of keeping syntax simple.</item>
+            <item>One consequence is that as long as steps in your pipeline are to be applied in sequence, we like to say they <hi rend="italic">snap together</hi>.</item>
             <item>The XProc feature in play here is called the <ref target="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</ref>. The concept is simple. Any step with a primary input port that is not connected explicitly, will be bound to the primary output of the immediately preceding step.</item>
-            <item>This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence. Know your steps.</item>
+            <item>This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.</item>
          </list>
          <p>[illustrations: three steps in sequence, with and without ports showing]</p>
-         <eg>
-            <xi:include parse="text" href="../src/moresteps.xpl"/>
-         </eg>
-         <eg>
-            <xi:include parse="text" href="../src/moresteps-explicit.xpl"/>
-         </eg>
+         <figure source="src/moresteps.xpl">
+            <eg>
+               <xi:include parse="text" href="src/moresteps.xpl"/>
+            </eg>
+         </figure>
+         <figure source="src/moresteps-explicit.xpl">
+            <eg>
+               <xi:include parse="text" href="src/moresteps-explicit.xpl"/>
+            </eg>
+         </figure>
       </div>
       <div>
          <head>Knowing your formats</head>
@@ -100,7 +116,20 @@
          <p>Their values can be simple (string value flags) or complex (such as map objects, or expressions to be evaluated).</p>
          <p>Its ports and options together provide an <hi rend="italic">interface</hi> for using a step.</p>
          <p>Options can be set on steps using abbreviated syntax (attributes) or long syntax (<code>p:with-option</code>)</p>
-         <p>[examples in both forms]</p>
+         <p>[examples in both forms. including an XSLT parameters example]</p>
+      </div>
+      <div>
+         <head>Foundations of XProc</head>
+         <p>The more you know, the better you feel.</p>
+         <list>
+            <item>XML syntax</item>
+            <item>XML namespaces</item>
+            <item>XPath (including XPath 3.0, 3.1) and XDM (XML Data Model)</item>
+            <item>XSLT, XQuery</item>
+            <item>REST and the web / URIs</item>
+            <item>schema technologies, standard vocabularies, validation and workflow</item>
+            <item>HTML/CSS/SVG, XSL-FO</item>
+         </list>
       </div>
       <div>
          <head>Minimal XProc</head>

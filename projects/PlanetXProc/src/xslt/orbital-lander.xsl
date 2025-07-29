@@ -63,26 +63,40 @@
     </li>
   </xsl:template>
   
-  <xsl:template match="eg"/>
+  <xsl:template match="figure"/>
 
-  <xsl:template match="eg[empty(preceding-sibling::*[1]/self::eg)]">
-    <aside class="eg_set">
+  <!-- First figure in a sequence provides a group for the sequence -->
+  <xsl:template priority="101" match="figure[empty(preceding-sibling::*[1]/self::figure)]">
+    <aside class="fig_set">
+      <!-- 'grab' mode will acquire the figure plus its successors in sequence -->
       <xsl:apply-templates select="." mode="grab"/>
     </aside>
   </xsl:template>
   
-  <xsl:template match="eg" mode="grab">
-    <div class="eg_block">
-      <pre>
-        <xsl:apply-templates/>
-      </pre>
+  <xsl:template match="figure" mode="grab" expand-text="true">
+    <div class="fig_block">
+      <h4>Example <a href="{ @source }">{ @source }</a></h4>      
+      <xsl:apply-templates/>
     </div>
-    <!-- grab what is next -->
+    <!-- Next, grab the next element
+         A figure matches this same template aka 'sibling recursion' -->
     <xsl:apply-templates select="following-sibling::*[1]" mode="grab"/>
   </xsl:template>  
   
   <!-- done grabbing -->
   <xsl:template match="*" mode="grab"/>
+  
+  <xsl:template match="figure/head" expand-text="true">
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="figure/eg">
+    <pre class="eg">
+      <xsl:apply-templates/>
+    </pre>
+  </xsl:template>
   
   <xsl:template match="code">
     <code>

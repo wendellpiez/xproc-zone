@@ -19,9 +19,9 @@ This makes XProc an appropriate technology for building and supporting complex w
 - XProc defines libraries of standard, reusable steps for all processors, supporting many common operations
 - You can also design and use new steps, in and with your own XProc
 
-?src/starter.xpl?
+?src/starter.xpl? A simple pipeline with three steps.
 
-?src/refresh-xml.xpl?
+?src/refresh-xml.xpl? Four steps, including an imported step named with a developer's (project) namespace.
 
 ## How to write a pipeline
 
@@ -58,10 +58,10 @@ We say 'arrangement' here since steps can accommodate as many inputs and outputs
 
 ## Steps with implicit port connections
 
-- XProc syntax can be concise - once we make room in our heads and editors for all the tags - because it has rules for you don't see ports that can be assumed to be there by the rules
-- This means most of the steps you use within a pipeline will naturally operate in sequence, unless you specifically arrange to do things otherwise - we like to say they *snap together*
+- XProc syntax can be fairly concise and clean - at least, as XML-based formats go - because it has sensible fallback rules and some nice ways of keeping syntax simple.
+- One consequence is that as long as steps in your pipeline are to be applied in sequence, we like to say they *snap together*.
 - The XProc feature in play here is called the [default readable port](https://spec.xproc.org/3.0/xproc/#connecting-the-drp). The concept is simple. Any step with a primary input port that is not connected explicitly, will be bound to the primary output of the immediately preceding step.
-- This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence. Know your steps.
+- This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.
 
 [illustrations: three steps in sequence, with and without ports showing]
 
@@ -120,7 +120,21 @@ Its ports and options together provide an *interface* for using a step.
 
 Options can be set on steps using abbreviated syntax (attributes) or long syntax (`p:with-option`)
 
-[examples in both forms]
+[examples in both forms. including an XSLT parameters example]
+
+---
+
+## Foundations of XProc
+
+The more you know, the better you feel.
+
+- XML syntax
+- XML namespaces
+- XPath (including XPath 3.0, 3.1) and XDM (XML Data Model)
+- XSLT, XQuery
+- REST and the web / URIs
+- schema technologies, standard vocabularies, validation and workflow
+- HTML/CSS/SVG, XSL-FO
 
 ---
 

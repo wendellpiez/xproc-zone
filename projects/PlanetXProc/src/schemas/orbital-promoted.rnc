@@ -3,19 +3,34 @@ namespace xi = "http://www.w3.org/2001/XInclude"
 
 # Started using Trang, worked by hand
 
+# Principles:
+#  - as tight as practically possible for this data set
+#  - familiar tagging relying on TEI semantics
+
+# To support purposes of *reusability*
+
 start = element body { _div_+ }
 
 _div_ =
   element div {
+    element head { text },
     (_div_
-     | _eg_
-     | element head { text }
+     | _figure_
      | element p { _inline_ }
      | element list {
          element item { _inline_ }+
        }
      )*
   }
+
+
+_figure_ =
+  element figure {
+    attribute source { xsd:anyURI },
+    element head { attribute type { 'gloss' }, 
+      text }?,
+    _eg_
+}
 
 _eg_ = element eg { _xinclude_ }
 
