@@ -89,8 +89,6 @@
     
     <p:delete match="/processing-instruction()"/>
     
-    <p:string-replace match="text()[normalize-space()]" replace="replace(string(.),'\s+',' ')"/>
-    
     <p:namespace-delete prefixes="c zone"/>
     
 </p:declare-step>

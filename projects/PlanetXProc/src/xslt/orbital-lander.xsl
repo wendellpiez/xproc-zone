@@ -6,6 +6,8 @@
   xpath-default-namespace="http://www.tei-c.org/ns/1.0"
   version="3.0">
   
+  <xsl:param name="noisy" select="false()"/>
+  
   <xsl:template match="/">
     <html>
        <head>
@@ -13,6 +15,11 @@
        </head>
       <xsl:apply-templates/>
     </html>
+  </xsl:template>
+  
+  <xsl:template match="*[$noisy]" priority="101">
+    <xsl:message expand-text="true">Matching { name(.) }</xsl:message>
+    <xsl:next-match/>
   </xsl:template>
   
   <xsl:template match="body">
@@ -75,7 +82,7 @@
   
   <xsl:template match="figure" mode="grab" expand-text="true">
     <div class="fig_block">
-      <h4>Example <a href="{ @source }">{ @source }</a></h4>      
+      <h4>Example <a class="eg" href="{ @source }">{ @source }</a></h4>      
       <xsl:apply-templates/>
     </div>
     <!-- Next, grab the next element
@@ -116,7 +123,7 @@
     </i>
   </xsl:template>
   
-  <xsl:template match="link">
+  <xsl:template match="ref">
     <a href="{ @target }">
       <xsl:apply-templates/>
     </a>

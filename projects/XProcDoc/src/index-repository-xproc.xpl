@@ -16,9 +16,8 @@
   <!-- Removing the top-level 'lib' directory to avoid indexing xpl files therein -->
   <p:delete match="/c:directory/c:directory[@name='lib']"/>
   
-  <!-- Not indexing these ... yet -->
-  <p:delete match="/c:directory/c:directory/c:directory[@name='PlanetXProc']"
-    message="NOTICE: not yet indexing XProc in PlanetXProc/ folder"/>
+  <!--<p:delete match="/c:directory/c:directory/c:directory[@name='PlanetXProc']"
+    message="NOTICE: not yet indexing XProc in PlanetXProc/ folder"/>-->
 
   <p:for-each>
     <p:with-input select="/descendant::c:file"/>

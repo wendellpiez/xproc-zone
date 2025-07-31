@@ -5,8 +5,7 @@
   
     <p:output serialization="map{ 'indent': true() }"/>
     
-    <p:load href="xproc-from-orbit.md"
-      content-type="text/plain"/>
+    <p:load href="../xproc-from-orbit.md" content-type="text/plain"/>
     
     <p:markdown-to-html/>
   

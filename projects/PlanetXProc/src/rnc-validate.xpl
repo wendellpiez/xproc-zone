@@ -8,7 +8,7 @@
   <!-- Hard-coded to validate ../out/xproc-from-orbit.xml with orbital-promoted.rnc -->
   
   <p:validate-with-relax-ng assert-valid="false">
-    <p:with-input port="source" href="../out/xproc-from-orbit.xml"/>
+    <p:with-input port="source" href="../xproc-from-orbit.xml"/>
     <p:with-input port="schema" href="schemas/orbital-promoted.rnc"/>
   </p:validate-with-relax-ng>
 

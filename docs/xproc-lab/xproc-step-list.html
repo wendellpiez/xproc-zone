@@ -91,6 +91,8 @@ window.onload = function() {
      <link rel="stylesheet" href="../site/zone-main.css"/>
      <style xml:space="preserve" type="text/css">
 
+details { padding: 0.4em }
+
 details#directory { padding-right: 1em; max-height: inherit; min-width: 20vw }
 #directory-listing { overflow-y: scroll; box-sizing: border-box; max-height: 80vh; margin-top: 0.6em }
 
@@ -510,6 +512,7 @@ main.xproc-index { max-width: inherit;
                  <table class="frame"><tr class="keyrow"><th class="name key">name</th><th class="datatype key">data type</th><th class="default key">default</th></tr><tr class="row option" id="encode-encoding-option-row" onmouseover="brightenOn('encode-encoding-option-syntax')" onmouseout="brightenOff('encode-encoding-option-syntax')"><td class="name">encoding </td><td class="datatype">xs:string </td><td class="default">'base64' </td></tr><tr class="row option" id="encode-serialization-option-row" onmouseover="brightenOn('encode-serialization-option-syntax')" onmouseout="brightenOff('encode-serialization-option-syntax')"><td class="name">serialization </td><td class="datatype">map(xs:QName,item()*)? </td><td class="default">() </td></tr></table></div></details>
            <details id="error" class="step  standard supported">
               <summary><div class="linkout">
+                    <a href="zone-xproc-index.html#error" class="steplink speclink">example</a>
                     <a class="steplink speclink" target="spec" href="https://spec.xproc.org/3.1/steps/#c.error"><b>standard</b> library</a>
                     <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.error.html">XProcRef description</a></div>p:error </summary>
               <div class="syntax-block">
@@ -1395,7 +1398,7 @@ main.xproc-index { max-width: inherit;
                  <table class="frame"><tr class="keyrow"><th class="name key">name</th><th class="datatype key">data type</th><th class="default key">default</th></tr><tr class="row option required" id="www-form-urlencode-parameters-option-row" onmouseover="brightenOn('www-form-urlencode-parameters-option-syntax')" onmouseout="brightenOff('www-form-urlencode-parameters-option-syntax')"><td class="name">parameters </td><td class="datatype">map(xs:string,xs:anyAtomicType+) </td><td class="default required">REQUIRED </td></tr></table></div></details>
            <details id="xinclude" class="step  standard supported">
               <summary><div class="linkout">
-                    <a href="zone-xproc-index.html#xinclude" class="steplink speclink">example</a>
+                    <a href="zone-xproc-index.html#xinclude" class="steplink speclink">examples</a>
                     <a class="steplink speclink" target="spec" href="https://spec.xproc.org/3.1/steps/#c.xinclude"><b>standard</b> library</a>
                     <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.xinclude.html">XProcRef description</a></div>p:xinclude </summary>
               <div class="syntax-block">
@@ -1797,6 +1800,7 @@ main.xproc-index { max-width: inherit;
            <h2>TEXT library</h2>
            <details id="markdown-to-html" class="step  unsupported">
               <summary><div class="linkout">
+                    <a href="zone-xproc-index.html#markdown-to-html" class="steplink speclink">examples</a>
                     <a class="steplink speclink" target="spec" href="https://spec.xproc.org/master/head/text/#c.markdown-to-html"><b>text</b> library</a>
                     <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.markdown-to-html.html">XProcRef description</a></div>p:markdown-to-html </summary>
               <p class="warning">Unsupported in MorganaXProc-IIIse</p>
@@ -1852,7 +1856,7 @@ main.xproc-index { max-width: inherit;
                  <table class="frame"><tr class="keyrow"><th class="name key">name</th><th class="datatype key">data type</th><th class="default key">default</th></tr><tr class="row option" id="validate-with-nvdl-assert-valid-option-row" onmouseover="brightenOn('validate-with-nvdl-assert-valid-option-syntax')" onmouseout="brightenOff('validate-with-nvdl-assert-valid-option-syntax')"><td class="name">assert-valid </td><td class="datatype">xs:boolean </td><td class="default">true() </td></tr><tr class="row option" id="validate-with-nvdl-parameters-option-row" onmouseover="brightenOn('validate-with-nvdl-parameters-option-syntax')" onmouseout="brightenOff('validate-with-nvdl-parameters-option-syntax')"><td class="name">parameters </td><td class="datatype">map(xs:QName,item()*)? </td><td class="default">() </td></tr><tr class="row option" id="validate-with-nvdl-report-format-option-row" onmouseover="brightenOn('validate-with-nvdl-report-format-option-syntax')" onmouseout="brightenOff('validate-with-nvdl-report-format-option-syntax')"><td class="name">report-format </td><td class="datatype">xs:string </td><td class="default">'xvrl' </td></tr></table></div></details>
            <details id="validate-with-relax-ng" class="step  supported">
               <summary><div class="linkout">
-                    <a href="zone-xproc-index.html#validate-with-relax-ng" class="steplink speclink">example</a>
+                    <a href="zone-xproc-index.html#validate-with-relax-ng" class="steplink speclink">examples</a>
                     <a class="steplink speclink" target="spec" href="https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng"><b>validation</b> library</a>
                     <a class="steplink speclink" target="spec" href="https://xprocref.org/3.1/p.validate-with-relax-ng.html">XProcRef description</a></div>p:validate-with-relax-ng </summary>
               <div class="syntax-block">

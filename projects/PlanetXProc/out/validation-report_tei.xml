@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.xproc.org/ns/xvrl">
    <metadata>
-      <timestamp>2025-07-28T16:43:52.05-04:00</timestamp>
-      <document href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
-      <schema href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/src/orbital-promoted.rnc"
+      <timestamp>2025-07-29T15:12:24.7-04:00</timestamp>
+      <document href="file:///C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/src/tei-all-validate.xpl"/>
+      <schema href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"
               schematypens="http://relaxng.org/ns/structure/1.0"/>
       <validator name="jing"/>
    </metadata>

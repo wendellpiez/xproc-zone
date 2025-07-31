@@ -48,6 +48,8 @@
          <link rel="stylesheet" href="../site/zone-main.css"/>
          <style type="text/css" xml:space="preserve">
 
+details { padding: 0.4em }
+
 details#directory { padding-right: 1em; max-height: inherit; min-width: 20vw }
 #directory-listing { overflow-y: scroll; box-sizing: border-box; max-height: 80vh; margin-top: 0.6em }
 

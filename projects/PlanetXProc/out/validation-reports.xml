@@ -2,8 +2,8 @@
 <VALIDATION-REPORTS>
    <report xmlns="http://www.xproc.org/ns/xvrl">
       <metadata>
-         <timestamp>2025-07-28T18:01:48.52-04:00</timestamp>
-         <document href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
+         <timestamp>2025-07-30T12:32:07.66-04:00</timestamp>
+         <document href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/xproc-from-orbit.xml"/>
          <schema href="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/src/schemas/orbital-promoted.rnc"
                  schematypens="http://relaxng.org/ns/structure/1.0"/>
          <validator name="jing"/>
@@ -15,6 +15,7 @@
               valid="true"/>
    </report>
    <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                           xmlns:xi="http://www.w3.org/2001/XInclude"
                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                            xmlns:schxslt="https://doi.org/10.5281/zenodo.1495494"
                            xmlns:schxslt-api="https://doi.org/10.5281/zenodo.1495494#api"
@@ -24,6 +25,8 @@
                            xmlns:error="https://doi.org/10.5281/zenodo.1495494#error">
       <svrl:ns-prefix-in-attribute-values prefix="tei"
                                           uri="http://www.tei-c.org/ns/1.0"/>
+      <svrl:ns-prefix-in-attribute-values prefix="xi"
+                                          uri="http://www.w3.org/2001/XInclude"/>
       <svrl:metadata xmlns:dct="http://purl.org/dc/terms/"
                      xmlns:skos="http://www.w3.org/2004/02/skos/core#">
          <dct:creator>
@@ -31,7 +34,7 @@
                <skos:prefLabel>SAXON/HE 12.6</skos:prefLabel>
             </dct:Agent>
          </dct:creator>
-         <dct:created>2025-07-28T18:01:49.4704689-04:00</dct:created>
+         <dct:created>2025-07-30T12:32:08.8572275-04:00</dct:created>
          <dct:source>
             <rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/">
                <dct:creator>
@@ -40,21 +43,23 @@
                      <schxslt.compile.typed-variables xmlns="https://doi.org/10.5281/zenodo.1495494#">true</schxslt.compile.typed-variables>
                   </dct:Agent>
                </dct:creator>
-               <dct:created>2025-07-28T18:01:49.3968131-04:00</dct:created>
+               <dct:created>2025-07-30T12:32:08.7658429-04:00</dct:created>
             </rdf:Description>
          </dct:source>
       </svrl:metadata>
-      <svrl:active-pattern documents="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/out/xproc-from-orbit.xml"/>
+      <svrl:active-pattern documents="file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/projects/PlanetXProc/xproc-from-orbit.xml"/>
+      <svrl:fired-rule context="xi:include"/>
+      <svrl:fired-rule context="xi:include"/>
+      <svrl:fired-rule context="xi:include"/>
+      <svrl:fired-rule context="xi:include"/>
+      <svrl:fired-rule context="xi:include"/>
       <svrl:fired-rule context="tei:ref[starts-with(@target,'http')]"/>
       <!--WARNING: Rule for context "tei:ref" shadowed by preceding rule-->
       <svrl:suppressed-rule context="tei:ref"/>
+      <svrl:fired-rule context="xi:include"/>
+      <svrl:fired-rule context="xi:include"/>
       <svrl:fired-rule context="tei:ref[starts-with(@target,'http')]"/>
       <!--WARNING: Rule for context "tei:ref" shadowed by preceding rule-->
       <svrl:suppressed-rule context="tei:ref"/>
-      <svrl:fired-rule context="tei:ref"/>
-      <svrl:failed-assert location="/Q{http://www.tei-c.org/ns/1.0}body[1]/Q{http://www.tei-c.org/ns/1.0}div[2]/Q{http://www.tei-c.org/ns/1.0}div[7]/Q{http://www.tei-c.org/ns/1.0}p[4]/Q{http://www.tei-c.org/ns/1.0}ref[1]"
-                          test="resolve-uri(@target,base-uri(.)) =&gt; doc-available()">
-         <svrl:text>Not seeing file xproc-step-list.html named as ref/@target</svrl:text>
-      </svrl:failed-assert>
    </svrl:schematron-output>
 </VALIDATION-REPORTS>

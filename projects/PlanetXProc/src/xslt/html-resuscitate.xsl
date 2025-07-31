@@ -11,10 +11,19 @@
 
   <!-- Makes HTML produced by html-enhance.xsl and converts it into a friendlier notation-->
   
-  <xsl:mode on-no-match="shallow-copy"/>
+  <xsl:mode on-no-match="fail"/>
 
   <!-- The namespace alias helps us avoid unwanted interventions -->
   <xsl:namespace-alias stylesheet-prefix="XI" result-prefix="xi"/>
+  
+  <!-- Because processing fails on unmatched nodes -->
+  <xsl:template match="/">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="text()">
+    <xsl:value-of select="."/>
+  </xsl:template>
   
   <xsl:template match="html">
     <xsl:assert test="zone:well-nested(//h1 | //h2 | //h3 | //h4 | //h5)">Header elements in source are not well nested.</xsl:assert>
@@ -72,7 +81,7 @@
   <xsl:template match="p[matches(.,'^\?')]" expand-text="true">
     <xsl:variable name="tag" select="tokenize(.,'\s+')[1]"/>
     <xsl:variable name="fileref" select="replace($tag,'\?','')"/>
-    <xsl:assert test="resolve-uri($fileref, base-uri(.)) => doc-available()">No XML document is to be found at { . }</xsl:assert>
+    <xsl:assert test="resolve-uri($fileref, base-uri(.)) => doc-available()">No XML document is to be found at { $fileref }</xsl:assert>
     <figure source="{ $fileref }">
       <xsl:for-each select="( substring-after(., $fileref) => replace('^\?\s*', '') )[matches(.,'\S')]">
         <head type="gloss">{ . }</head>

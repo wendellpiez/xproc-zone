@@ -3,16 +3,17 @@
   xmlns:p="http://www.w3.org/ns/xproc">
   
   <!-- Reads an XML document -->
-  <p:load href="../out/xproc-from-orbit.xml"/>
+  <p:load href="../xproc-from-orbit.xml"/>
   
-  <!-- A validation step with two input ports,  'source' and 'schema'
-       and two output ports, 'result' and 'report' -->
-  <p:validate-with-relax-ng name="TEI-structures" assert-valid="false">
+  <!-- A validation step with two input ports, 'source' and 'schema'
+       and two output ports, 'result' and 'report'
+       sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng-->  
+  <p:validate-with-relax-ng     assert-valid="false" name="TEI-structures">
     <p:with-input port="schema" href="schemas/orbital-promoted.rnc"/>
   </p:validate-with-relax-ng>
   
   <!-- Another validation step with similar ports -->
-  <p:validate-with-schematron name="other-regularities" assert-valid="false">
+  <p:validate-with-schematron   assert-valid="false" name="other-regularities">
     <p:with-input port="schema" href="schemas/orbital-stability.sch"/>
   </p:validate-with-schematron>
   
