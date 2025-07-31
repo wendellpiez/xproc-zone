@@ -9,17 +9,19 @@
        and two output ports, 'result' and 'report'
        sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng-->  
   <p:validate-with-relax-ng     assert-valid="false" name="TEI-structures">
+    <!-- 'source' port is picked up implicitly -->
     <p:with-input port="schema" href="schemas/orbital-promoted.rnc"/>
   </p:validate-with-relax-ng>
   
   <!-- Another validation step with similar ports -->
   <p:validate-with-schematron   assert-valid="false" name="other-regularities">
+    <!-- 'source' comes from the preceding step's 'result' -->
     <p:with-input port="schema" href="schemas/orbital-stability.sch"/>
   </p:validate-with-schematron>
   
   <p:wrap-sequence wrapper="VALIDATION-REPORTS">
     <p:with-input>
-      <!-- Connecting to the 'report' output ports from earlier steps -->
+      <!-- Reading in 'report' output ports from earlier steps -->
       <p:pipe port="report" step="TEI-structures"/>
       <p:pipe port="report" step="other-regularities"/>
     </p:with-input>

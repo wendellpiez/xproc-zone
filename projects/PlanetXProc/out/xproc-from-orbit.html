@@ -45,7 +45,7 @@ pre.eg { max-width: fit-content; font-size: larger;
       <h2>XProc from Orbit</h2>
       <p>XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.</p>
       <p>As a language, XProc describes <b>pipelines</b>. A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results").</p>
-      <p>Use XProc to build support complex workflows in document production, data conversion, and information exchange.</p>
+      <p>Use XProc to build and support complex workflows in document production, data conversion, and information exchange.</p>
       <section>
          <h3>Pipelines and steps</h3>
          <ul>
@@ -136,17 +136,19 @@ pre.eg { max-width: fit-content; font-size: larger;
        and two output ports, 'result' and 'report'
        sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  
   &lt;p:validate-with-relax-ng     assert-valid="false" name="TEI-structures"&gt;
+    &lt;!-- 'source' port is picked up implicitly --&gt;
     &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;
   &lt;/p:validate-with-relax-ng&gt;
   
   &lt;!-- Another validation step with similar ports --&gt;
   &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;
+    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;
     &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;
   &lt;/p:validate-with-schematron&gt;
   
   &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;
     &lt;p:with-input&gt;
-      &lt;!-- Connecting to the 'report' output ports from earlier steps --&gt;
+      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;
       &lt;p:pipe port="report" step="TEI-structures"/&gt;
       &lt;p:pipe port="report" step="other-regularities"/&gt;
     &lt;/p:with-input&gt;
@@ -185,17 +187,19 @@ pre.eg { max-width: fit-content; font-size: larger;
        and two output ports, 'result' and 'report'
        sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  
   &lt;p:validate-with-relax-ng     assert-valid="false" name="TEI-structures"&gt;
+    &lt;!-- 'source' port is picked up implicitly --&gt;
     &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;
   &lt;/p:validate-with-relax-ng&gt;
   
   &lt;!-- Another validation step with similar ports --&gt;
   &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;
+    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;
     &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;
   &lt;/p:validate-with-schematron&gt;
   
   &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;
     &lt;p:with-input&gt;
-      &lt;!-- Connecting to the 'report' output ports from earlier steps --&gt;
+      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;
       &lt;p:pipe port="report" step="TEI-structures"/&gt;
       &lt;p:pipe port="report" step="other-regularities"/&gt;
     &lt;/p:with-input&gt;
@@ -214,7 +218,7 @@ pre.eg { max-width: fit-content; font-size: larger;
          <p>The conventional name for the primary <i>input</i> port is <code>source</code>. The conventional name for the primary <i>output</i> port is <code>result</code>. These names correspond with the uses of these terms in XSLT and XQuery.</p>
          <p>It is sometimes useful for a step to have output but no input (like <code>p:load</code>), or input with no output (like <code>p:sink</code>). And not all steps produce modifications of inputs among their outputs. For example, <code>p:directory-list</code> has no input but produces XML on its <code>result</code> port listing the contents of a file system directory.</p>
          <p>The <code>source</code> and <code>result</code> ports can carry <i>sequences</i> when they are defined as such on their steps - and when permitted to be sequences they may also be <i>empty</i>, with no documents bound to them.</p>
-         <p>Unlike the primary ports (likely named <code>source</code> and <code>result</code>), secondary ports are given names indicating the roles they play for their steps. Good examples include the <code>schema</code> secondary input port on validation steps, which a processor uses to provide a schema, or the <code>insertion</code> port on the <code>p:insert</code> step, for the data to be inserted.</p>
+         <p>While the the primary ports will ordinarily be named <code>source</code> and <code>result</code>, the names of secondary ports may be less generic, to indicate what roles they play for their steps. For example, validation steps all have a <code>schema</code> secondary input port, for their schemas; the <code>p:insert</code> step has an <code>insertion</code> port for the data to be inserted, and so forth.</p>
       </section>
       <section>
          <h3>Steps with implicit port connections</h3>
@@ -317,6 +321,7 @@ pre.eg { max-width: fit-content; font-size: larger;
   &lt;p:variable name="cit" select="."/&gt;
 
   &lt;!-- Makes an XDM sequence from the array contained in the map --&gt;
+  &lt;!-- New in XPath 3.1, the ? lookup operator returns a value from a map by its key (property name) --&gt;
   &lt;p:variable name="contribs" select="array:flatten($cit?contributors)"/&gt;
 
   &lt;p:identity&gt;
@@ -394,7 +399,7 @@ pre.eg { max-width: fit-content; font-size: larger;
          <ul>
             <li>XML syntax</li>
             <li>XML namespaces</li>
-            <li>XPath (including XPath 3.0, 3.1) and XDM (XML Data Model)</li>
+            <li>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</li>
             <li>XSLT, XQuery</li>
             <li>REST and the web / URIs</li>
             <li>schema technologies, standard vocabularies, validation and workflow</li>

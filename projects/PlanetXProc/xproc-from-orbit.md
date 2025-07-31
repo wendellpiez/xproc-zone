@@ -6,7 +6,7 @@ XProc is a data processing technology for digital data. While it is an XML-based
 
 As a language, XProc describes **pipelines**. A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results").
 
-Use XProc to build support complex workflows in document production, data conversion, and information exchange.
+Use XProc to build and support complex workflows in document production, data conversion, and information exchange.
 
 ---
 
@@ -62,7 +62,7 @@ It is sometimes useful for a step to have output but no input (like `p:load`), o
 
 The `source` and `result` ports can carry *sequences* when they are defined as such on their steps - and when permitted to be sequences they may also be *empty*, with no documents bound to them.
 
-Unlike the primary ports (likely named `source` and `result`), secondary ports are given names indicating the roles they play for their steps. Good examples include the `schema` secondary input port on validation steps, which a processor uses to provide a schema, or the `insertion` port on the `p:insert` step, for the data to be inserted.
+While the the primary ports will ordinarily be named `source` and `result`, the names of secondary ports may be less generic, to indicate what roles they play for their steps. For example, validation steps all have a `schema` secondary input port, for their schemas; the `p:insert` step has an `insertion` port for the data to be inserted, and so forth.
 
 ---
 
@@ -126,7 +126,7 @@ The more you know, the better you feel.
 
 - XML syntax
 - XML namespaces
-- XPath (including XPath 3.0, 3.1) and XDM (XML Data Model)
+- XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)
 - XSLT, XQuery
 - REST and the web / URIs
 - schema technologies, standard vocabularies, validation and workflow

@@ -34,6 +34,7 @@
   <p:variable name="cit" select="."/>
 
   <!-- Makes an XDM sequence from the array contained in the map -->
+  <!-- New in XPath 3.1, the ? lookup operator returns a value from a map by its key (property name) -->
   <p:variable name="contribs" select="array:flatten($cit?contributors)"/>
 
   <p:identity>
