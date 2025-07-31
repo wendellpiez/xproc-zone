@@ -142,6 +142,9 @@
          <p>If your skills include XSLT, this might be all you ever need in XProc:</p>
          <list>
             <item>
+               <code>p:declare-step</code>
+            </item>
+            <item>
                <code>p:variable</code>
             </item>
             <item>
@@ -163,15 +166,17 @@
          <p>Take another lesson on Day Two - learn to write a pipeline and use it as a step</p>
          <list>
             <item>
-               <code>p:declare-step</code>
+               <code>p:declare-step/@type</code>
             </item>
             <item>
-               <code>p:input</code> (and <code>p:with-input</code>)</item>
+               <code>p:input</code> and <code>p:with-input</code>
+            </item>
             <item>
                <code>p:output</code>
             </item>
             <item>
-               <code>p:option</code> and (<code>p:with-option</code>)</item>
+               <code>p:option</code> and <code>p:with-option</code>
+            </item>
             <item>
                <code>p:library</code>
             </item>

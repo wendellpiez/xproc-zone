@@ -138,6 +138,7 @@ The more you know, the better you feel.
 
 If your skills include XSLT, this might be all you ever need in XProc:
 
+  - `p:declare-step`
   - `p:variable`
   - `p:load`
   - `p:store`
@@ -147,10 +148,10 @@ If your skills include XSLT, this might be all you ever need in XProc:
 
 Take another lesson on Day Two - learn to write a pipeline and use it as a step
 
-  - `p:declare-step`
-  - `p:input` (and `p:with-input`)
+  - `p:declare-step/@type`
+  - `p:input` and `p:with-input`
   - `p:output`
-  - `p:option` and (`p:with-option`)
+  - `p:option` and `p:with-option`
   - `p:library`
 
 Three everyday utility steps
