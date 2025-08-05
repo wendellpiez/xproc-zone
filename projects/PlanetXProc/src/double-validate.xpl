@@ -8,8 +8,8 @@
   <!-- A validation step with two input ports, 'source' and 'schema'
        and two output ports, 'result' and 'report'
        sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng-->  
-  <p:validate-with-relax-ng     assert-valid="false" name="TEI-structures">
-    <!-- 'source' port is picked up implicitly -->
+  <p:validate-with-relax-ng assert-valid="false" name="TEI-structures">
+    <!-- 'source' port is picked up implicitly; explicitly declare 'schema' port -->
     <p:with-input port="schema" href="schemas/orbital-promoted.rnc"/>
   </p:validate-with-relax-ng>
   

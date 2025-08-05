@@ -7,12 +7,12 @@
   <!-- If the processor supports the step, Markdown is converted to HTML -->
   <p:markdown-to-html/>
 
-  <!-- Applying an XSLT transformation using the nominated stylesheet -->
+  <!-- Applying an XSLT transformation using the indicated stylesheet -->
   <p:xslt>
     <p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/>
   </p:xslt>
   
-  <!-- Saves a file in the ../out folder -->
+  <!-- Saves a file in the ../out/ folder -->
   <p:store href="../out/xproc-from-orbit.html"/>
   
 </p:declare-step>

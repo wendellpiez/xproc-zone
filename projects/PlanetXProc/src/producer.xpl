@@ -3,19 +3,19 @@
   xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
   
-  <!--  Not a step, this imports another pipeline (step declaration or library) -->
+  <!-- Step 0: Not really a step, this imports another pipeline (step declaration or library) -->
   <p:import href="_make-orbital-markup.xpl"/>
   
   <!-- Step 1: Loads a file as plain text -->
   <p:load href="../xproc-from-orbit.md" content-type="text/plain"/>
 
-  <!-- Makes HTML, if possible (supported in XML Calabash) -->
+  <!-- Step 2: Makes HTML, if possible (supported in XML Calabash) -->
   <p:markdown-to-html/>
 
-  <!-- Calls an imported step -->
+  <!-- Step 3: Calls an imported step -->
   <zone:make-orbital-markup/>
   
-  <!-- Saves the result -->
+  <!-- Step 4: Saves the result -->
   <p:store href="../xproc-from-orbit.xml" message="SAVING xproc-from-orbit.xml ..."
     serialization="map { 'indent': true() }"/>
   
