@@ -32,7 +32,6 @@ An XProc pipeline takes the form of an arrangement of steps.
 We say “arrangement” here since steps can accommodate as many inputs and outputs as needed.
 
 ?src/double-validate.xpl?
-<!--- WAP: The double-validate.xpl pgm is included twice. Once HERE, once THERE -->
 
 ---
 
@@ -46,11 +45,10 @@ We say “arrangement” here since steps can accommodate as many inputs and out
 - Steps can also expose processing results as outputs, and also interact with your system, writing files on disk or communicating through other channels
 - The connecting points on an XProc step are called its **ports**
 - By means of ports, we pass documents into steps and get documents out - and while XProc calls them **documents**, they can be pretty much any kind of data
-- When a pipeline is used as a step in another pipeline it can be defined with ports for connecting with other steps
+- When a pipeline is used as a step in another pipeline it can be defined with ports for connecting to other steps
 - The *composability* of steps — i.e., the ability to break down large problems into small steps, and to combine the steps (including complete pipelines) in whatever order needed — is key to the efficiency and power offered by XProc
 
-?src/double-validate.xpl? This pipeline validates its input twice and collects validation reports into a single document.
-<!--- WAP: The double-validate.xpl pgm is included twice. Once HERE, once THERE -->
+?src/double-validate.xpl? This pipeline (same example) validates its input twice and collects validation reports into a single document.
 
 ---
 
@@ -64,7 +62,7 @@ It is sometimes useful for a step to have output but no input (like `p:load`), o
 
 The `source` and `result` ports can carry *sequences* when they are defined as such on their steps - and when permitted to be sequences they may also be *empty*, with no documents bound to them.
 
-While the the primary ports will ordinarily be named `source` and `result`, the names of secondary ports may be less generic, to indicate what roles they play for their steps. For example, validation steps all have a `schema` secondary input port, for their schemas; the `p:insert` step has an `insertion` port for the data to be inserted, and so forth.
+While the the primary ports will ordinarily be named `source` and `result`, the names of secondary ports are usually more specifically functional, to indicate what roles they play for their steps. For example, validation steps all have a `schema` secondary input port, for their schemas; the `p:insert` step has an `insertion` port for the data to be inserted, and so forth. If an input port is named `stylesheet`, you have some idea of what the step might do.
 
 ---
 
@@ -86,7 +84,7 @@ This works well, with the caveat that steps that have no input ports don’t con
 
 ## Knowing your formats
 
-XProc comes with native support for reading and parsing XML, JSON, or inputs defined with regular grammars using [Invisible XML (ixml)](https://invisiblexml.org), and for reading in any plain text inputs.
+XProc comes with native support for reading and parsing XML, HTML, JSON, and text-based formats, including inputs defined with regular grammars using [Invisible XML (ixml)](https://invisiblexml.org).
 
 All of these types of data, and others, can be passed from one step to another, as long as both steps can accommodate the given format or media type.
 
@@ -110,13 +108,13 @@ In addition to inputs and outputs (connection ports), steps can also have **opti
 
 These provide runtime configurations when invoking steps and pipelines.
 
-For some steps, certain options are required, for example to designate which nodes to delete on a `p:delete` step (using the `match` option).
+For some steps, certain options are required: for example, to designate which nodes to delete on a `p:delete` step a `match` option must be set.
 
 Values assigned to options can be simple (string value flags) or complex (such as map objects, or expressions to be evaluated).
 
 Its ports and options together provide an *interface* for using a step.
 
-Options can be set on steps using abbreviated syntax (attributes) or long syntax (`p:with-option`)
+Options can be set on steps using long syntax (`p:with-option`), but they are more commonly set using attributes. One example: the `parameters` attribute on a `p:xslt` step, which is used to send runtime stylesheet parameters (bound to a map object) into an XSLT transformation. 
 
 ?src/test-landing.xpl? Parameters are sent to the stylesheet using an XProc option (in attribute syntax).
 <!--- WAP: Which bit in test-landing is an option? -->
@@ -164,3 +162,5 @@ Three everyday utility steps
   - `p:identity`
 
 ---
+
+wap/ 2025 July and August with help from AG, SB and NTW
