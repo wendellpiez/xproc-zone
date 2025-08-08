@@ -123,6 +123,12 @@
     </i>
   </xsl:template>
   
+  <xsl:template match="q">
+    <q>
+      <xsl:apply-templates/>
+    </q>
+  </xsl:template>
+  
   <xsl:template match="ref">
     <a href="{ @target }">
       <xsl:apply-templates/>

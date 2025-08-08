@@ -3,7 +3,7 @@
    <div>
       <head>XProc from Orbit</head>
       <p>XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.</p>
-      <p>As a language, XProc describes <emph rend="bold">pipelines</emph>. A pipeline combines a sequence or set of processes and applies them to specified inputs (â€œsourcesâ€�) to create outputs (â€œresultsâ€�).</p>
+      <p>As a language, XProc describes <emph rend="bold">pipelines</emph>. A pipeline combines a sequence or set of processes and applies them to specified inputs (<q>sources</q>) to create outputs (<q>results</q>).</p>
       <p>Use XProc to build and support complex workflows in document production, data conversion, and information exchange.</p>
       <div>
          <head>Pipelines and steps</head>
@@ -20,7 +20,7 @@
             </eg>
          </figure>
          <figure source="src/producer.xpl">
-            <head type="gloss">A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the â€œzone:â€� namespace.</head>
+            <head type="gloss">A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the zone: namespace.</head>
             <eg>
                <xi:include parse="text" href="src/producer.xpl"/>
             </eg>
@@ -34,7 +34,7 @@
                <xi:include parse="text" href="src/moresteps.xpl"/>
             </eg>
          </figure>
-         <p>We say â€œarrangementâ€� here since steps can accommodate as many inputs and outputs as needed.</p>
+         <p>We say <q>arrangement</q> here since steps can accommodate as many inputs and outputs as needed.</p>
          <figure source="src/double-validate.xpl">
             <eg>
                <xi:include parse="text" href="src/double-validate.xpl"/>
@@ -130,8 +130,9 @@
          <list>
             <item>XML syntax</item>
             <item>XML namespaces</item>
-            <item>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</item>
             <item>XSLT, XQuery</item>
+            <item>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</item>
+            <item>Plain text and Unicode</item>
             <item>REST and the web / URIs</item>
             <item>schema technologies, standard vocabularies, validation and workflow</item>
             <item>HTML/CSS/SVG, XSL-FO</item>
@@ -193,7 +194,6 @@
                <code>p:identity</code>
             </item>
          </list>
-         <p>wap/ 2025 July and August with help from AG, SB and NTW</p>
       </div>
    </div>
 </body>

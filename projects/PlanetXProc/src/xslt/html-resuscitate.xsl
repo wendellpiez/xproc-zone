@@ -37,7 +37,10 @@
   </xsl:template>
   
   <xsl:template match="hr"/>
-   
+  
+  <!-- Dropping signature line -->
+  <xsl:template match="p[starts-with(.,'/wap')]"/>
+  
   <xsl:template match="body">
     <body>
       <xsl:for-each-group select="*" group-starting-with="h1">
@@ -121,6 +124,12 @@
     <hi rend="italic">
       <xsl:apply-templates/>
     </hi>
+  </xsl:template>
+  
+  <xsl:template match="q">
+    <q>
+      <xsl:apply-templates/>
+    </q>
   </xsl:template>
   
   <xsl:template match="code">

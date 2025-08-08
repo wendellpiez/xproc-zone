@@ -3,7 +3,8 @@
   xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone">
   
-  <!-- Step 0: Not really a step, this imports another pipeline (step declaration or library) -->
+  <!-- Step 0: Not really a step, this imports a pipeline
+       (with a step declaration) or library (with a set of them) -->
   <p:import href="_make-orbital-markup.xpl"/>
   
   <!-- Step 1: Loads a file as plain text -->

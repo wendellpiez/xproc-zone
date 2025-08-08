@@ -40,7 +40,7 @@ _xinclude_ =
     attribute href { xsd:anyURI }
   }
 
-_inline_ = ( text | _code_ | _emph_ | _hi_ | _ref_ )+
+_inline_ = ( text | _code_ | _emph_ | _hi_ | _q_ | _ref_ )+
 
 _emph_ =
   element emph {
@@ -55,6 +55,8 @@ _hi_ =
   }
 
 _code_ = element code { _inline_ }
+
+_q_ = element q { _inline_ }
 
 _ref_ =
   element ref {

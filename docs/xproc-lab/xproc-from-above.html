@@ -198,7 +198,7 @@ pre.eg { max-width: fit-content; font-size: larger;
                xmlns="">
          <summary>XProc from Orbit</summary>
          <p xmlns="http://www.w3.org/1999/xhtml">XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.</p>
-         <p xmlns="http://www.w3.org/1999/xhtml">As a language, XProc describes <b>pipelines</b>. A pipeline combines a sequence or set of processes and applies them to specified inputs ("sources") to create outputs ("results").</p>
+         <p xmlns="http://www.w3.org/1999/xhtml">As a language, XProc describes <b>pipelines</b>. A pipeline combines a sequence or set of processes and applies them to specified inputs (<q>sources</q>) to create outputs (<q>results</q>).</p>
          <p xmlns="http://www.w3.org/1999/xhtml">Use XProc to build and support complex workflows in document production, data conversion, and information exchange.</p>
          <details>
             <summary>Pipelines and steps</summary>
@@ -206,7 +206,7 @@ pre.eg { max-width: fit-content; font-size: larger;
                <li>A pipeline is made of steps</li>
                <li>A pipeline can also be used as a step, when declared with or imported into another pipeline</li>
                <li>XProc defines libraries of standard, reusable steps for all processors, supporting many common operations</li>
-               <li>You can also design and use new steps, in and with your own XProc</li>
+               <li>You can also design and use new steps, in and with your own XProc script</li>
             </ul>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
@@ -214,50 +214,53 @@ pre.eg { max-width: fit-content; font-size: larger;
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/starter.xpl">src/starter.xpl</a>
                   </h4>
-                  <p>A simple pipeline with three steps.</p>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;
-  &lt;!-- A pipeline is defined with p:declare-step --&gt;
-  
-  &lt;!-- First, reads a file from the file system --&gt;
-  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;
-  
-  &lt;!-- Does its best to produce HTML from Markdown input --&gt;
-  &lt;p:markdown-to-html/&gt;
+                  <p>A very simple pipeline with three steps.</p>
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;&#xD;
+  &lt;!-- A pipeline is defined with p:declare-step --&gt;&#xD;
+  &#xD;
+  &lt;!-- First step reads a file from the file system --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;&#xD;
+  &#xD;
+  &lt;!-- Second step does its best to produce HTML from Markdown input --&gt;&#xD;
+  &lt;p:markdown-to-html/&gt;&#xD;
+&#xD;
+  &lt;!-- Third step saves the result --&gt;&#xD;
+  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;&#xD;
+  &#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-  &lt;!-- Saves the result --&gt;
-  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;
-  
-&lt;/p:declare-step&gt;
             </pre>
                </div>
                <div class="fig_block">
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/producer.xpl">src/producer.xpl</a>
                   </h4>
-                  <p>Four steps, including an imported step named with a developer's (project) namespace.</p>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0"
-  xmlns:p="http://www.w3.org/ns/xproc"
-  xmlns:zone="http://wendellpiez.com/ns/xproc-zone"&gt;
-  
-  &lt;!--  Not a step, this imports another pipeline (step declaration or library) --&gt;
-  &lt;p:import href="_make-orbital-markup.xpl"/&gt;
-  
-  &lt;!-- Step 1: Loads a file as plain text --&gt;
-  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;
+                  <p>A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the zone: namespace.</p>
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0"&#xD;
+  xmlns:p="http://www.w3.org/ns/xproc"&#xD;
+  xmlns:zone="http://wendellpiez.com/ns/xproc-zone"&gt;&#xD;
+  &#xD;
+  &lt;!-- Step 0: Not really a step, this imports a pipeline&#xD;
+       (with a step declaration) or library (with a set of them) --&gt;&#xD;
+  &lt;p:import href="_make-orbital-markup.xpl"/&gt;&#xD;
+  &#xD;
+  &lt;!-- Step 1: Loads a file as plain text --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;&#xD;
+&#xD;
+  &lt;!-- Step 2: Makes HTML, if possible (supported in XML Calabash) --&gt;&#xD;
+  &lt;p:markdown-to-html/&gt;&#xD;
+&#xD;
+  &lt;!-- Step 3: Calls an imported step --&gt;&#xD;
+  &lt;zone:make-orbital-markup/&gt;&#xD;
+  &#xD;
+  &lt;!-- Step 4: Saves the result --&gt;&#xD;
+  &lt;p:store href="../xproc-from-orbit.xml" message="SAVING xproc-from-orbit.xml ..."&#xD;
+    serialization="map { 'indent': true() }"/&gt;&#xD;
+  &#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-  &lt;!-- Makes HTML, if possible (supported in XML Calabash) --&gt;
-  &lt;p:markdown-to-html/&gt;
-
-  &lt;!-- Calls an imported step --&gt;
-  &lt;zone:make-orbital-markup/&gt;
-  
-  &lt;!-- Saves the result --&gt;
-  &lt;p:store href="../xproc-from-orbit.xml" message="SAVING xproc-from-orbit.xml ..."
-    serialization="map { 'indent': true() }"/&gt;
-  
-&lt;/p:declare-step&gt;
             </pre>
                </div>
             </aside>
@@ -271,67 +274,69 @@ pre.eg { max-width: fit-content; font-size: larger;
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/moresteps.xpl">src/moresteps.xpl</a>
                   </h4>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;
-  
-  &lt;!-- Reads a file as plain text --&gt;
-  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;
-  
-  &lt;!-- If the processor supports the step, Markdown is converted to HTML --&gt;
-  &lt;p:markdown-to-html/&gt;
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;&#xD;
+  &#xD;
+  &lt;!-- Reads a file as plain text --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;&#xD;
+  &#xD;
+  &lt;!-- If the processor supports the step, Markdown is converted to HTML --&gt;&#xD;
+  &lt;p:markdown-to-html/&gt;&#xD;
+&#xD;
+  &lt;!-- Applying an XSLT transformation using the indicated stylesheet --&gt;&#xD;
+  &lt;p:xslt&gt;&#xD;
+    &lt;p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/&gt;&#xD;
+  &lt;/p:xslt&gt;&#xD;
+  &#xD;
+  &lt;!-- Saves a file in the ../out/ folder --&gt;&#xD;
+  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;&#xD;
+  &#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-  &lt;!-- Applying an XSLT transformation using the nominated stylesheet --&gt;
-  &lt;p:xslt&gt;
-    &lt;p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/&gt;
-  &lt;/p:xslt&gt;
-  
-  &lt;!-- Saves a file in the ../out folder --&gt;
-  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;
-  
-&lt;/p:declare-step&gt;
             </pre>
                </div>
             </aside>
-            <p xmlns="http://www.w3.org/1999/xhtml">We say 'arrangement' here since steps can accommodate as many inputs and outputs as needed, connecting together.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">We say <q>arrangement</q> here since steps can accommodate as many inputs and outputs as needed.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
                <div class="fig_block">
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/double-validate.xpl">src/double-validate.xpl</a>
                   </h4>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0"
-  xmlns:p="http://www.w3.org/ns/xproc"&gt;
-  
-  &lt;!-- Reads an XML document --&gt;
-  &lt;p:load href="../xproc-from-orbit.xml"/&gt;
-  
-  &lt;!-- A validation step with two input ports, 'source' and 'schema'
-       and two output ports, 'result' and 'report'
-       sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  
-  &lt;p:validate-with-relax-ng     assert-valid="false" name="TEI-structures"&gt;
-    &lt;!-- 'source' port is picked up implicitly --&gt;
-    &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;
-  &lt;/p:validate-with-relax-ng&gt;
-  
-  &lt;!-- Another validation step with similar ports --&gt;
-  &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;
-    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;
-    &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;
-  &lt;/p:validate-with-schematron&gt;
-  
-  &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;
-    &lt;p:with-input&gt;
-      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;
-      &lt;p:pipe port="report" step="TEI-structures"/&gt;
-      &lt;p:pipe port="report" step="other-regularities"/&gt;
-    &lt;/p:with-input&gt;
-  &lt;/p:wrap-sequence&gt;
-  
-  &lt;!-- Saving the combined report --&gt;
-  &lt;p:store href="../out/validation-reports.xml" serialization="map { 'indent': true() }"/&gt;
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0"&#xD;
+  xmlns:p="http://www.w3.org/ns/xproc"&gt;&#xD;
+  &#xD;
+  &lt;!-- Reads an XML document --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.xml"/&gt;&#xD;
+  &#xD;
+  &lt;!-- A validation step with two input ports, 'source' and 'schema'&#xD;
+       and two output ports, 'result' and 'report'&#xD;
+       sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  &#xD;
+  &lt;p:validate-with-relax-ng assert-valid="false" name="TEI-structures"&gt;&#xD;
+    &lt;!-- 'source' port is picked up implicitly; explicitly declare 'schema' port --&gt;&#xD;
+    &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;&#xD;
+  &lt;/p:validate-with-relax-ng&gt;&#xD;
+  &#xD;
+  &lt;!-- Another validation step with similar ports --&gt;&#xD;
+  &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;&#xD;
+    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;&#xD;
+    &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;&#xD;
+  &lt;/p:validate-with-schematron&gt;&#xD;
+  &#xD;
+  &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;&#xD;
+    &lt;p:with-input&gt;&#xD;
+      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;&#xD;
+      &lt;p:pipe port="report" step="TEI-structures"/&gt;&#xD;
+      &lt;p:pipe port="report" step="other-regularities"/&gt;&#xD;
+    &lt;/p:with-input&gt;&#xD;
+  &lt;/p:wrap-sequence&gt;&#xD;
+  &#xD;
+  &lt;!-- Saving the combined report --&gt;&#xD;
+  &lt;p:store href="../out/validation-reports.xml" serialization="map { 'indent': true() }"/&gt;&#xD;
+&#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-&lt;/p:declare-step&gt;
             </pre>
                </div>
             </aside>
@@ -339,7 +344,7 @@ pre.eg { max-width: fit-content; font-size: larger;
       </details>
       <details class="panel"
                xmlns="">
-         <summary>XProc From 40,000 Feet</summary>
+         <summary>XProc from 40,000 Feet</summary>
          <details>
             <summary>I/O, ports and documents</summary>
             <ul xmlns="http://www.w3.org/1999/xhtml">
@@ -348,8 +353,8 @@ pre.eg { max-width: fit-content; font-size: larger;
                <li>The connecting points on an XProc step are called its <b>ports</b>
                </li>
                <li>By means of ports, we pass documents into steps and get documents out - and while XProc calls them <b>documents</b>, they can be pretty much any kind of data</li>
-               <li>A pipeline can be defined with ports for connecting with other steps, when used as a step in another pipeline</li>
-               <li>The <i>composability</i> of steps is key to the efficiency and power offered by XProc</li>
+               <li>When a pipeline is used as a step in another pipeline it can be defined with ports for connecting to other steps</li>
+               <li>The <i>composability</i> of steps â€” i.e., the ability to break down large problems into small steps, and to combine the steps (including complete pipelines) in whatever order needed â€” is key to the efficiency and power offered by XProc</li>
             </ul>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
@@ -357,40 +362,41 @@ pre.eg { max-width: fit-content; font-size: larger;
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/double-validate.xpl">src/double-validate.xpl</a>
                   </h4>
-                  <p>This pipeline validates its input twice and collects validation reports into a single document.</p>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0"
-  xmlns:p="http://www.w3.org/ns/xproc"&gt;
-  
-  &lt;!-- Reads an XML document --&gt;
-  &lt;p:load href="../xproc-from-orbit.xml"/&gt;
-  
-  &lt;!-- A validation step with two input ports, 'source' and 'schema'
-       and two output ports, 'result' and 'report'
-       sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  
-  &lt;p:validate-with-relax-ng     assert-valid="false" name="TEI-structures"&gt;
-    &lt;!-- 'source' port is picked up implicitly --&gt;
-    &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;
-  &lt;/p:validate-with-relax-ng&gt;
-  
-  &lt;!-- Another validation step with similar ports --&gt;
-  &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;
-    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;
-    &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;
-  &lt;/p:validate-with-schematron&gt;
-  
-  &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;
-    &lt;p:with-input&gt;
-      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;
-      &lt;p:pipe port="report" step="TEI-structures"/&gt;
-      &lt;p:pipe port="report" step="other-regularities"/&gt;
-    &lt;/p:with-input&gt;
-  &lt;/p:wrap-sequence&gt;
-  
-  &lt;!-- Saving the combined report --&gt;
-  &lt;p:store href="../out/validation-reports.xml" serialization="map { 'indent': true() }"/&gt;
+                  <p>This pipeline (same example) validates its input twice and collects validation reports into a single document.</p>
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0"&#xD;
+  xmlns:p="http://www.w3.org/ns/xproc"&gt;&#xD;
+  &#xD;
+  &lt;!-- Reads an XML document --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.xml"/&gt;&#xD;
+  &#xD;
+  &lt;!-- A validation step with two input ports, 'source' and 'schema'&#xD;
+       and two output ports, 'result' and 'report'&#xD;
+       sc https://spec.xproc.org/master/head/validation/#c.validate-with-relax-ng--&gt;  &#xD;
+  &lt;p:validate-with-relax-ng assert-valid="false" name="TEI-structures"&gt;&#xD;
+    &lt;!-- 'source' port is picked up implicitly; explicitly declare 'schema' port --&gt;&#xD;
+    &lt;p:with-input port="schema" href="schemas/orbital-promoted.rnc"/&gt;&#xD;
+  &lt;/p:validate-with-relax-ng&gt;&#xD;
+  &#xD;
+  &lt;!-- Another validation step with similar ports --&gt;&#xD;
+  &lt;p:validate-with-schematron   assert-valid="false" name="other-regularities"&gt;&#xD;
+    &lt;!-- 'source' comes from the preceding step's 'result' --&gt;&#xD;
+    &lt;p:with-input port="schema" href="schemas/orbital-stability.sch"/&gt;&#xD;
+  &lt;/p:validate-with-schematron&gt;&#xD;
+  &#xD;
+  &lt;p:wrap-sequence wrapper="VALIDATION-REPORTS"&gt;&#xD;
+    &lt;p:with-input&gt;&#xD;
+      &lt;!-- Reading in 'report' output ports from earlier steps --&gt;&#xD;
+      &lt;p:pipe port="report" step="TEI-structures"/&gt;&#xD;
+      &lt;p:pipe port="report" step="other-regularities"/&gt;&#xD;
+    &lt;/p:with-input&gt;&#xD;
+  &lt;/p:wrap-sequence&gt;&#xD;
+  &#xD;
+  &lt;!-- Saving the combined report --&gt;&#xD;
+  &lt;p:store href="../out/validation-reports.xml" serialization="map { 'indent': true() }"/&gt;&#xD;
+&#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-&lt;/p:declare-step&gt;
             </pre>
                </div>
             </aside>
@@ -401,38 +407,39 @@ pre.eg { max-width: fit-content; font-size: larger;
             <p xmlns="http://www.w3.org/1999/xhtml">The conventional name for the primary <i>input</i> port is <code>source</code>. The conventional name for the primary <i>output</i> port is <code>result</code>. These names correspond with the uses of these terms in XSLT and XQuery.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">It is sometimes useful for a step to have output but no input (like <code>p:load</code>), or input with no output (like <code>p:sink</code>). And not all steps produce modifications of inputs among their outputs. For example, <code>p:directory-list</code> has no input but produces XML on its <code>result</code> port listing the contents of a file system directory.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">The <code>source</code> and <code>result</code> ports can carry <i>sequences</i> when they are defined as such on their steps - and when permitted to be sequences they may also be <i>empty</i>, with no documents bound to them.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">While the the primary ports will ordinarily be named <code>source</code> and <code>result</code>, the names of secondary ports may be less generic, to indicate what roles they play for their steps. For example, validation steps all have a <code>schema</code> secondary input port, for their schemas; the <code>p:insert</code> step has an <code>insertion</code> port for the data to be inserted, and so forth.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">While the the primary ports will ordinarily be named <code>source</code> and <code>result</code>, the names of secondary ports are usually more specifically functional, to indicate what roles they play for their steps. For example, validation steps all have a <code>schema</code> secondary input port, for their schemas; the <code>p:insert</code> step has an <code>insertion</code> port for the data to be inserted, and so forth. If an input port is named <code>stylesheet</code>, you have some idea of what the step might do.</p>
          </details>
          <details>
             <summary>Steps with implicit port connections</summary>
             <p xmlns="http://www.w3.org/1999/xhtml">XProc syntax can be fairly concise and clean - at least, as XML-based formats go - because it has sensible fallback rules and some nice ways of keeping syntax simple.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">One important example: as long as steps in your pipeline are to be applied in sequence, their connections do not have to be shown. It has been suggested they <i>snap together</i>.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">The XProc feature in play here is called the <a href="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</a>. The concept is simple. Any step with a primary input port that is not connected explicitly, will be bound to the primary output of the immediately preceding step.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">The XProc feature in play here is called the <a href="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</a>. The concept is simple. Any step with a primary input port that is not connected explicitly is bound to the primary output of the immediately preceding step.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">This works well, with the caveat that steps that have no input ports donâ€™t connect like this, even when given in sequence - and steps with no output ports canâ€™t be connected as inputs at all. Know your steps.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
                <div class="fig_block">
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/moresteps.xpl">src/moresteps.xpl</a>
                   </h4>
-                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;
-  
-  &lt;!-- Reads a file as plain text --&gt;
-  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;
-  
-  &lt;!-- If the processor supports the step, Markdown is converted to HTML --&gt;
-  &lt;p:markdown-to-html/&gt;
+                  <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;p:declare-step version="3.0" xmlns:p="http://www.w3.org/ns/xproc"&gt;&#xD;
+  &#xD;
+  &lt;!-- Reads a file as plain text --&gt;&#xD;
+  &lt;p:load href="../xproc-from-orbit.md" content-type="text/plain"/&gt;&#xD;
+  &#xD;
+  &lt;!-- If the processor supports the step, Markdown is converted to HTML --&gt;&#xD;
+  &lt;p:markdown-to-html/&gt;&#xD;
+&#xD;
+  &lt;!-- Applying an XSLT transformation using the indicated stylesheet --&gt;&#xD;
+  &lt;p:xslt&gt;&#xD;
+    &lt;p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/&gt;&#xD;
+  &lt;/p:xslt&gt;&#xD;
+  &#xD;
+  &lt;!-- Saves a file in the ../out/ folder --&gt;&#xD;
+  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;&#xD;
+  &#xD;
+&lt;/p:declare-step&gt;&#xD;
 
-  &lt;!-- Applying an XSLT transformation using the nominated stylesheet --&gt;
-  &lt;p:xslt&gt;
-    &lt;p:with-input port="stylesheet" href="xslt/html-resuscitate.xsl"/&gt;
-  &lt;/p:xslt&gt;
-  
-  &lt;!-- Saves a file in the ../out folder --&gt;
-  &lt;p:store href="../out/xproc-from-orbit.html"/&gt;
-  
-&lt;/p:declare-step&gt;
             </pre>
                </div>
                <div class="fig_block">
@@ -473,7 +480,7 @@ pre.eg { max-width: fit-content; font-size: larger;
          </details>
          <details>
             <summary>Knowing your formats</summary>
-            <p xmlns="http://www.w3.org/1999/xhtml">XProc comes with native support for XML and JSON reading and parsing, for plain text inputs, and for inputs defined with regular grammars using <a href="https://invisiblexml.org">Invisible XML (ixml)</a>.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">XProc comes with native support for reading and parsing XML, HTML, JSON, and text-based formats, including inputs defined with regular grammars using <a href="https://invisiblexml.org">Invisible XML (ixml)</a>.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">All of these types of data, and others, can be passed from one step to another, as long as both steps can accommodate the given format or media type.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
@@ -537,7 +544,7 @@ pre.eg { max-width: fit-content; font-size: larger;
          </details>
          <details>
             <summary>Powerful embedded languages</summary>
-            <p xmlns="http://www.w3.org/1999/xhtml">XPath, XSLT and XQuery all play well with XProc, which is designed first and foremost to accommodate these kindred technologies.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">XPath, XSLT, and XQuery all play well with XProc, which is designed first and foremost to accommodate these kindred technologies.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">XProc steps can either invoke or embed instances of these declarative processing languages, or others.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
@@ -571,10 +578,10 @@ pre.eg { max-width: fit-content; font-size: larger;
             <summary>Options</summary>
             <p xmlns="http://www.w3.org/1999/xhtml">In addition to inputs and outputs (connection ports), steps can also have <b>options</b>.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">These provide runtime configurations when invoking steps and pipelines.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">For some steps, certain options are required, for example to designate which nodes to delete on a <code>p:delete</code> step (using the <code>match</code> option).</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">For some steps, certain options are required: for example, to designate which nodes to delete on a <code>p:delete</code> step a <code>match</code> option must be set.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Values assigned to options can be simple (string value flags) or complex (such as map objects, or expressions to be evaluated).</p>
             <p xmlns="http://www.w3.org/1999/xhtml">Its ports and options together provide an <i>interface</i> for using a step.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">Options can be set on steps using abbreviated syntax (attributes) or long syntax (<code>p:with-option</code>)</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">Options can be set on steps using long syntax (<code>p:with-option</code>), but they are more commonly set using attributes. One example: the <code>parameters</code> attribute on a <code>p:xslt</code> step, which is used to send runtime stylesheet parameters (bound to a map object) into an XSLT transformation.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
                <div class="fig_block">
@@ -609,8 +616,9 @@ pre.eg { max-width: fit-content; font-size: larger;
             <ul xmlns="http://www.w3.org/1999/xhtml">
                <li>XML syntax</li>
                <li>XML namespaces</li>
-               <li>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</li>
                <li>XSLT, XQuery</li>
+               <li>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</li>
+               <li>Plain text and Unicode</li>
                <li>REST and the web / URIs</li>
                <li>schema technologies, standard vocabularies, validation and workflow</li>
                <li>HTML/CSS/SVG, XSL-FO</li>

@@ -44,7 +44,7 @@ pre.eg { max-width: fit-content; font-size: larger;
     </main><section>
       <h2>XProc from Orbit</h2>
       <p>XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.</p>
-      <p>As a language, XProc describes <b>pipelines</b>. A pipeline combines a sequence or set of processes and applies them to specified inputs (â€œsourcesâ€�) to create outputs (â€œresultsâ€�).</p>
+      <p>As a language, XProc describes <b>pipelines</b>. A pipeline combines a sequence or set of processes and applies them to specified inputs (<q>sources</q>) to create outputs (<q>results</q>).</p>
       <p>Use XProc to build and support complex workflows in document production, data conversion, and information exchange.</p>
       <section>
          <h3>Pipelines and steps</h3>
@@ -73,13 +73,14 @@ pre.eg { max-width: fit-content; font-size: larger;
 
             </pre>
          </div><div class="fig_block"><h4>Example <a class="eg" href="../src/producer.xpl">src/producer.xpl</a></h4>
-            <p>A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the â€œzone:â€� namespace.</p>
+            <p>A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the zone: namespace.</p>
             <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
 &lt;p:declare-step version="3.0"&#xD;
   xmlns:p="http://www.w3.org/ns/xproc"&#xD;
   xmlns:zone="http://wendellpiez.com/ns/xproc-zone"&gt;&#xD;
   &#xD;
-  &lt;!-- Step 0: Not really a step, this imports another pipeline (step declaration or library) --&gt;&#xD;
+  &lt;!-- Step 0: Not really a step, this imports a pipeline&#xD;
+       (with a step declaration) or library (with a set of them) --&gt;&#xD;
   &lt;p:import href="_make-orbital-markup.xpl"/&gt;&#xD;
   &#xD;
   &lt;!-- Step 1: Loads a file as plain text --&gt;&#xD;
@@ -126,7 +127,7 @@ pre.eg { max-width: fit-content; font-size: larger;
 
             </pre>
          </div></aside>
-         <p>We say â€œarrangementâ€� here since steps can accommodate as many inputs and outputs as needed.</p>
+         <p>We say <q>arrangement</q> here since steps can accommodate as many inputs and outputs as needed.</p>
          <aside class="fig_set"><div class="fig_block"><h4>Example <a class="eg" href="../src/double-validate.xpl">src/double-validate.xpl</a></h4>
             <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
 &lt;p:declare-step version="3.0"&#xD;
@@ -405,8 +406,9 @@ pre.eg { max-width: fit-content; font-size: larger;
          <ul>
             <li>XML syntax</li>
             <li>XML namespaces</li>
-            <li>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</li>
             <li>XSLT, XQuery</li>
+            <li>XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)</li>
+            <li>Plain text and Unicode</li>
             <li>REST and the web / URIs</li>
             <li>schema technologies, standard vocabularies, validation and workflow</li>
             <li>HTML/CSS/SVG, XSL-FO</li>
@@ -468,7 +470,6 @@ pre.eg { max-width: fit-content; font-size: larger;
                <code>p:identity</code>
             </li>
          </ul>
-         <p>wap/ 2025 July and August with help from AG, SB and NTW</p>
       </section>
    </section>
   </body>

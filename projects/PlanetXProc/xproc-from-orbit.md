@@ -4,7 +4,7 @@
 
 XProc is a data processing technology for digital data. While it is an XML-based technology using XML syntax, it can work with many kinds of data, including common text-based formats such as JSON.
 
-As a language, XProc describes **pipelines**. A pipeline combines a sequence or set of processes and applies them to specified inputs (“sources”) to create outputs (“results”).
+As a language, XProc describes **pipelines**. A pipeline combines a sequence or set of processes and applies them to specified inputs (<q>sources</q>) to create outputs (<q>results</q>).
 
 Use XProc to build and support complex workflows in document production, data conversion, and information exchange.
 
@@ -19,7 +19,7 @@ Use XProc to build and support complex workflows in document production, data co
 
 ?src/starter.xpl? A very simple pipeline with three steps.
 
-?src/producer.xpl? A imple four-step pipeline that includes an imported step. The imported step’s name is in the developer’s (project) namespace, in this case the “zone:” namespace.
+?src/producer.xpl? A imple four-step pipeline that includes an imported step. The imported step’s name is in the developer’s (project) namespace, in this case the `zone:` namespace.
 
 ---
 
@@ -29,7 +29,7 @@ An XProc pipeline takes the form of an arrangement of steps.
 
 ?src/moresteps.xpl?
 
-We say “arrangement” here since steps can accommodate as many inputs and outputs as needed.
+We say <q>arrangement</q> here since steps can accommodate as many inputs and outputs as needed.
 
 ?src/double-validate.xpl?
 
@@ -127,8 +127,9 @@ The more you know, the better you feel.
 
 - XML syntax
 - XML namespaces
-- XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)
 - XSLT, XQuery
+- XPath (including XPath 3.0, 3.1) and XDM (XQuery and XPath Data Model)
+- Plain text and Unicode
 - REST and the web / URIs
 - schema technologies, standard vocabularies, validation and workflow
 - HTML/CSS/SVG, XSL-FO
@@ -163,4 +164,4 @@ Three everyday utility steps
 
 ---
 
-wap/ 2025 July and August with help from AG, SB and NTW
+<!-- wap/ 2025 July and August with help from AG, SB and NTW -->
