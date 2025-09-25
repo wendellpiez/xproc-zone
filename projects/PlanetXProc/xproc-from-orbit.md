@@ -15,11 +15,11 @@ Use XProc to build and support complex workflows in document production, data co
 - A pipeline is made of steps
 - A pipeline can also be used as a step, when declared with or imported into another pipeline
 - XProc defines libraries of standard, reusable steps for all processors, supporting many common operations
-- You can also design and use new steps, in and with your own XProc script
+- You can also design and use new steps, in and with your own XProc
 
 ?src/starter.xpl? A very simple pipeline with three steps.
 
-?src/producer.xpl? A imple four-step pipeline that includes an imported step. The imported step’s name is in the developer’s (project) namespace, in this case the `zone:` namespace.
+?src/producer.xpl? A simple four-step pipeline that includes an imported step. The imported step's name is in the developer's (project) namespace, in this case the `zone:` namespace.
 
 ---
 
@@ -74,7 +74,7 @@ One important example: as long as steps in your pipeline are to be applied in se
 
 The XProc feature in play here is called the [default readable port](https://spec.xproc.org/3.0/xproc/#connecting-the-drp). The concept is simple. Any step with a primary input port that is not connected explicitly is bound to the primary output of the immediately preceding step.
 
-This works well, with the caveat that steps that have no input ports don’t connect like this, even when given in sequence - and steps with no output ports can’t be connected as inputs at all. Know your steps.
+This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.
 
 ?src/moresteps.xpl?
 
@@ -117,7 +117,6 @@ Its ports and options together provide an *interface* for using a step.
 Options can be set on steps using long syntax (`p:with-option`), but they are more commonly set using attributes. One example: the `parameters` attribute on a `p:xslt` step, which is used to send runtime stylesheet parameters (bound to a map object) into an XSLT transformation. 
 
 ?src/test-landing.xpl? Parameters are sent to the stylesheet using an XProc option (in attribute syntax).
-<!--- WAP: Which bit in test-landing is an option? -->
 
 ---
 

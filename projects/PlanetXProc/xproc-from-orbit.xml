@@ -11,7 +11,7 @@
             <item>A pipeline is made of steps</item>
             <item>A pipeline can also be used as a step, when declared with or imported into another pipeline</item>
             <item>XProc defines libraries of standard, reusable steps for all processors, supporting many common operations</item>
-            <item>You can also design and use new steps, in and with your own XProc script</item>
+            <item>You can also design and use new steps, in and with your own XProc</item>
          </list>
          <figure source="src/starter.xpl">
             <head type="gloss">A very simple pipeline with three steps.</head>
@@ -20,7 +20,7 @@
             </eg>
          </figure>
          <figure source="src/producer.xpl">
-            <head type="gloss">A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the zone: namespace.</head>
+            <head type="gloss">A simple four-step pipeline that includes an imported step. The imported step's name is in the developer's (project) namespace, in this case the zone: namespace.</head>
             <eg>
                <xi:include parse="text" href="src/producer.xpl"/>
             </eg>
@@ -75,7 +75,7 @@
          <p>XProc syntax can be fairly concise and clean - at least, as XML-based formats go - because it has sensible fallback rules and some nice ways of keeping syntax simple.</p>
          <p>One important example: as long as steps in your pipeline are to be applied in sequence, their connections do not have to be shown. It has been suggested they <hi rend="italic">snap together</hi>.</p>
          <p>The XProc feature in play here is called the <ref target="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</ref>. The concept is simple. Any step with a primary input port that is not connected explicitly is bound to the primary output of the immediately preceding step.</p>
-         <p>This works well, with the caveat that steps that have no input ports donâ€™t connect like this, even when given in sequence - and steps with no output ports canâ€™t be connected as inputs at all. Know your steps.</p>
+         <p>This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.</p>
          <figure source="src/moresteps.xpl">
             <eg>
                <xi:include parse="text" href="src/moresteps.xpl"/>
