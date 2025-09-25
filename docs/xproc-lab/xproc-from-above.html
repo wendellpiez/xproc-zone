@@ -206,7 +206,7 @@ pre.eg { max-width: fit-content; font-size: larger;
                <li>A pipeline is made of steps</li>
                <li>A pipeline can also be used as a step, when declared with or imported into another pipeline</li>
                <li>XProc defines libraries of standard, reusable steps for all processors, supporting many common operations</li>
-               <li>You can also design and use new steps, in and with your own XProc script</li>
+               <li>You can also design and use new steps, in and with your own XProc</li>
             </ul>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
@@ -236,7 +236,7 @@ pre.eg { max-width: fit-content; font-size: larger;
                   <h4>Example <a class="eg"
                         href="https://github.com/wendellpiez/xproc-zone/blob/main/projects/PlanetXProc/src/producer.xpl">src/producer.xpl</a>
                   </h4>
-                  <p>A imple four-step pipeline that includes an imported step. The imported stepâ€™s name is in the developerâ€™s (project) namespace, in this case the zone: namespace.</p>
+                  <p>A simple four-step pipeline that includes an imported step. The imported step's name is in the developer's (project) namespace, in this case the zone: namespace.</p>
                   <pre class="eg">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
 &lt;p:declare-step version="3.0"&#xD;
   xmlns:p="http://www.w3.org/ns/xproc"&#xD;
@@ -414,7 +414,7 @@ pre.eg { max-width: fit-content; font-size: larger;
             <p xmlns="http://www.w3.org/1999/xhtml">XProc syntax can be fairly concise and clean - at least, as XML-based formats go - because it has sensible fallback rules and some nice ways of keeping syntax simple.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">One important example: as long as steps in your pipeline are to be applied in sequence, their connections do not have to be shown. It has been suggested they <i>snap together</i>.</p>
             <p xmlns="http://www.w3.org/1999/xhtml">The XProc feature in play here is called the <a href="https://spec.xproc.org/3.0/xproc/#connecting-the-drp">default readable port</a>. The concept is simple. Any step with a primary input port that is not connected explicitly is bound to the primary output of the immediately preceding step.</p>
-            <p xmlns="http://www.w3.org/1999/xhtml">This works well, with the caveat that steps that have no input ports donâ€™t connect like this, even when given in sequence - and steps with no output ports canâ€™t be connected as inputs at all. Know your steps.</p>
+            <p xmlns="http://www.w3.org/1999/xhtml">This works well, with the caveat that steps that have no input ports don't connect like this, even when given in sequence - and steps with no output ports can't be connected as inputs at all. Know your steps.</p>
             <aside class="fig_set"
                    xmlns="http://www.w3.org/1999/xhtml">
                <div class="fig_block">
