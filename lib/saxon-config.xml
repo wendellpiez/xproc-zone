@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://saxon.sf.net/ns/configuration"
+  edition="HE"
+  label="Generic Saxon-HE Configuration">
+  
+<!--edition="EE"
+  licenseFileLocation="[ file:/// path to your license ]"
+  label="M1CC Saxon-EE Configuration">-->
+<!-- https://www.saxonica.com/html/documentation12/configuration/configuration-file/index.html -->
+<!-- example link to a Saxon license in the file system using URI 'file:' notation:
+       licenseFileLocation="file:///C:/Users/driver/Documents/Admin/Saxonica/licenses/saxon-license.lic" -->
+
+  <xslt disableXslEvaluate="true"
+        enableAssertions="true"/>
+  
+  <!-- not available in Saxon-HE <serialization method="xml" indent="yes"
+    saxon:indent-spaces="2" xmlns:saxon="http://saxon.sf.net/"/>-->
+  
+</configuration>

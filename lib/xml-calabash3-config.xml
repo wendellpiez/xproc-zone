@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:xml-calabash xmlns:cc="https://xmlcalabash.com/ns/configuration"
+  licensed="false" saxon-configuration="saxon-config.xml">
+  <!-- https://docs.xmlcalabash.com/userguide/current/configuration.html -->
+  <!-- To use with licensed Saxon:
+   - copy the Saxon-EE or Saxon-PE .jar into XML Calabash lib folder
+   - edit saxon-config.xml as described in Saxon docs--> 
+  <cc:threading/>
+  
+  <!-- Must specify FOP or we don't get the configuration-->
+  
+  <!--currently the value of @xsl-formatter appears to have no effect
+      and UserConfig is ignored in any case even if it is set for FOP -->
+  <cc:paged-media xsl-formatter="https://xmlcalabash.com/paged-media/xsl-formatter/fop"
+    UserConfig="fop.xconf"/>
+</cc:xml-calabash>

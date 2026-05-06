@@ -17,7 +17,7 @@ $morgana_download = "https://sourceforge.net/projects/morganaxproc-iiise/files/$
 Write-Host "Looking for Morgana at $morgana_download"
 
 # Check if Morgana zip file exists
-if (-not (Test-Path -Path "$morgana.xzip")) {
+if (-not (Test-Path -Path "$morgana.zip")) {
     Write-Host "Downloading Morgana XProc III SE ..."
     Invoke-WebRequest -UserAgent "Wget" -Uri "$morgana_download" -OutFile "$morgana.zip" -ErrorAction:Stop
 
