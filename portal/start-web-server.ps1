@@ -3,4 +3,5 @@
 # Suggestion (as Administrator): Install-Module -Name Pode
 # There are some hoops to jump through
 
-Start-PodeStaticServer -Port 8080
+Set-Location ..\docs
+Start-PodeStaticServer -FileBrowser -Port 8888

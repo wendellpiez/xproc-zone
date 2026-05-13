@@ -31,7 +31,7 @@
             <hr class="hr"/>
             <footer class="in-a-row">
                 <!-- Add your name here! -->
-                <div><b><a href="{ $path-to-root}">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025</div>
+                <div><b><a href="{ $path-to-root}">XProc Zone</a></b> was designed and built by Wendell&#xA0;Piez, 2025-2026</div>
                 <div>
                     <a href="https://github.com/wendellpiez/xproc-zone">Clone the Zone</a>
                 </div>
