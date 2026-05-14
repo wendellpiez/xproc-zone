@@ -1,4 +1,4 @@
-# This script attempts to download MorganaXProcIII
+ # This script attempts to download MorganaXProcIII
 
 # Create the 'lib' directory if it doesn't exist
 if (-not (Test-Path -Path "../lib")) {
@@ -23,13 +23,17 @@ if (-not (Test-Path -Path "$ZIPFILE")) {
     Invoke-WebRequest -UserAgent "Wget" -Uri "$RELEASES/$VERSION/$ZIPFILE" -OutFile "$ZIPFILE" -ErrorAction:Stop
     Write-Host "Downloaded $ZIPFILE ..."
     
-    # Unzip the downloaded file
-    Expand-Archive -Path "$ZIPFILE" -DestinationPath "." -Force
-    Write-Host "XML Calabash is available - next, try executing a pipeline ..."
-    # Remove-Item __MACOSX -Recurse
 } else {
-    Write-Host "You have $ZIPFILE in directory lib -- please remove or rename, or unzip in place"
+    Write-Host "You have $ZIPFILE in directory lib -- proceeding to rebuild XMLCalabash in ..\lib directory"
+    # pausing to wait for a keystroke -
+    [void]$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
+
+# Unzip the downloaded file
+Expand-Archive -Path "$ZIPFILE" -DestinationPath "." -Force
+Rename-Item -Path "xmlcalabash-$VERSION" -NewName "XMLCalabash"
+Write-Host "XML Calabash is available - next, try executing a pipeline ..."
+# Remove-Item __MACOSX -Recurse
 
 Write-Host "Hint: ./xc.sh smoketest/TEST-XPROC3.xpl (Linux/WSL) or xc.ps1 smoketest\TEST-XPROC3.xpl (Windows CMD)"
 # Return to the previous location

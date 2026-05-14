@@ -20,7 +20,7 @@ pushd lib > /dev/null
 #   - lib/GRAB-SAXON.xpl
 # - change reference string in next line
 
-morgana=MorganaXProc-IIIse-1.6.4
+morgana=MorganaXProc-IIIse-1.8.9
 
 morgana_download="https://sourceforge.net/projects/morganaxproc-iiise/files/${morgana}/${morgana}.zip/download"
 

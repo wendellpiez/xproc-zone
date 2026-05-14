@@ -12,12 +12,12 @@
    
    <p:variable name="download-path" select="'https://www.saxonica.com/download'"/>
    
-   <p:variable name="jarfile" select="'saxon-he-12.6.jar'"/>
+   <p:variable name="jarfile" select="'saxon-he-12.8.jar'"/>
    
-   <p:variable name="zip-name"  select="'SaxonHE12-6J.zip'"/>
+   <p:variable name="zip-name"  select="'SaxonHE12-8J.zip'"/>
    
    <!-- => is the XPath 'arrow operator' https://www.w3.org/TR/xpath-31/#id-arrow-operator -->
-   <p:variable name="target-dir" select="'../lib/MorganaXProc-IIIse-1.6.4/MorganaXProc-IIIse_lib' => resolve-uri()"/>
+   <p:variable name="target-dir" select="'../lib/MorganaXProc-IIIse/MorganaXProc-IIIse_lib' => resolve-uri()"/>
    
    <p:variable name="prefix" select="'[DOWNLOAD-SAXON]'"/>
    

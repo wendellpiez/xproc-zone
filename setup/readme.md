@@ -1,40 +1,66 @@
 # Local XProc Setup
 
-This folder provides scripts and utilities for setting up a local installation of a conformant XProc 3.0 processor, either or both Morgana XProc IIIse or XML Calabash.
+Need help, have an update or a correction? [please make an Issue](https://github.com/usnistgov/oscal-xproc3/issues) or (better) [a PR](https://github.com/usnistgov/oscal-xproc3/pulls).
+
+Instructions (updated from time to time) on installing
+
+- XML Calabash - an XProc 3.0/3.1 processor developed by Norm Walsh (Saxonica)
+- Morgana XProc IIIse - another XProc 3.0/3.1 processor by Achim Berndzen (xmlProject)
+- PowerXML - experimental Powershell wrapper for either (both) the forementioned (the Turnout)
+
+XProc pipelines (other things being equal) can be run with any **one** of these - you do not need any, or all. (The variables will be around the edges with respect to the features sets of the processors.)
 
 Because any conformant XProc 3.0/3.1 setup should work with pipelines in this repository, you should otherwise and also feel free to use any installation and configuration you have (including XProc applications under development) and report back interesting findings.
-See [THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md) for licensing information on the products and open-source initiatives - of special interest when you plan to modify or extend the Zone.
 
-Third-party software applications today may come with XProc support: use one of the approaches described here if you have no such tool and no interest in acquiring one.
+Keep in mind these are all moving targets and at some time soon the information here will be out of date.
+
+See [THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md) for licensing information on the products and open-source initiatives - of special interest when you plan to modify or extend the Zone.
 
 ## Using Powershell - PowerXML XProc/XSLT
 
-Some users might prefer a Powershell-native execution framework, offering a choice of processors (Morgana IIIse or XML Calabash) and bundling their dependencies.
+A Powershell-native execution framework, offering a choice of processors (Morgana IIIse or XML Calabash) and bundling their dependencies, [PowerXML](https://github.com/theturnout/powerxml) provides package management along with a runtime API for XProc and XSLT, including both Morgana and XML Calabash as XProc processor options.
 
-[PowerXML](https://github.com/theturnout/powerxml) is a Powershell-based application wrapper providing XSLT and XProc capabilities, which includes both Morgana and XML Calabash as XProc processor options. It was developed at theturnout.org for internal use but is available for experiment. (If you use this tool, please also support this effort.) No warranty is offered.
-
-Powershell has its own dependencies as does any tool, as documented: the tradeoff is that PowerXML can offer everything packaged together in a way that makes deployment simple for the script writer (if anything can be 'simple' in a shell scripting language).
+PowerXML has been developed for internal use at theturnout.org          at theturnout.org, but is available for experiment. For Powershell users, this gives you a no-fuss installation offering both major processors along with Saxon (for XSLT) and a couple of other tools (for XSD support).
 
 ## Using Java 
 
-If Powershell is not your thing, you can run XProc directly from the command line. Download one or both processors (utilities are offered here), and try them out.
+If Powershell is not your thing, or if you need closer control over versioning in the toolset, you can run XProc directly using Java from the command line. Scripts in the repository provide shells for executing either XML Calabash or Morgana IIIse, whichever is available.
+
+- `xc.bat` - DOS batch file running XML Calabash (installed in `lib`)
+- `xc.ps1` - Windows Powershell script running XML Calabash
+- `xz.bat` - DOS batch file running Morgana IIIse (installed in `lib`)
+- `xz.sh`  - bash shell for Morgana IIIse
+
+A bash shell script for XML Calabash or a Powershell script for Morgana can be contrived from these as well.
+
+In this folder (setup) are also scripts for downloading and unpackaging the respective libraries:
+- `setup-morgana.sh` (bash) or `setup-morgana.ps1` (Powershell) to set up Morgana
+- `setup-xml-calabash.ps1` to set up XML Calabash (again with apologies, as bash users will have to figure it out)
+
+Download one or both processors (download utilities are offered here), and try them out.
+
+### Which do I pick?
+
+At time of writing, the Morgana installation weighs 20MB unzipped. The XML Calabash installation (with all included `.jar` files) weighs 180MB. XML Calabash seeks to be all-in-one, whereas Morgana seeks to be lean-but-extensible.
 
 Use Morgana if:
 
 - You want something fast, lightweight and conformant
 - You are considering upgrading to Morgana IIIee, for its performance, extensibility and product support
+- You want your installation to be as small as possible and don't mind the extra work that entails (installing libraries)
 
 Use XML Calabash if:
 
-- You need features that don't come with 'vanilla' Morgana IIIse such as iXML or XSL-FO
+- You need features that don't come with freely-distributed Morgana IIIse, such as XSL-FO or `p:markdown-to-html` (or you can't say you won't need them and prefer to have them in case)
+- You want to acquire everything together rather than installing extra libraries for some features
 
-(Morgana can use an open-source iXML processor, but [it needs setup](https://www.xml-project.com/manual/ch02.html#configuration_s1_1_s2_7).)
- 
-Use both if:
+Use *both* if:
 
-- You are troubleshooting a deep problem and wish to rule out processor bugs as a possible cause
-- You want to test for actual portability, not just portability in principle
+- You plan to test for actual portability, not just portability in principle
+- You wish to be able to rule out processor bugs (by cross-testing) when diagnosing deep problems
 - You are building an XProc engine and wish to compare against other implementations known to be conformant
+
+Finally, being able to call on expert assistance from someone who knows is a good reason to use either processor.
 
 ### Set up Morgana
 
@@ -51,37 +77,41 @@ Morgana can be downloaded from  https://sourceforge.net/projects/morganaxproc-ii
     - Create the directory if necessary
     - Take care to place in the repository `lib`, not in a project folder's `lib`.
 
+In the `lib` folder is also the [Morgana configuration file](../lib/morgana-config.xml), which can be consulted and edited to switch out or add available libraries.
+
+The [Morgana IIIse User Manual](https://www.xml-project.com/manual/index.html) also provides installation and configuration help.
+
+With Morgana in place, you can proceed to run pipelines using only basic capabilities. Since you probably need XSLT and possibly other features, your next step might be to download libraries (using XProc) as follows:
+
 #### Drop in Saxon-HE
 
-The utility pipeline [lib/GRAB-SAXON.xpl](lib/GRAB-SAXON.xpl) is provided to download and extract Saxon-HE for Morgana.
+Other capabilities described here may not be essential but XSLT is more or less a *sine qua non* for XProc. It comes with support built in for XSLT 1.0. For XSLT 3.0 you want the open-source Saxon-HE engine.
 
-Or, by hand - for version 12.3 (or adjusted for a version 12.x), download Saxon-HE 12.3 at https://www.saxonica.com/download/SaxonHE12-3J.zip
+The utility pipeline [lib/GRAB-SAXON.xpl](lib/DOWNLOAD-SAXON.xpl) is provided to download and extract Saxon-HE for Morgana.
 
-  - Unzip and copy `saxon-he-12.3.jar` into the new `MorganaXProc-IIIse-{version}/MorganaXProc-IIIse_lib`
+Or, download Saxon-HE 12.8 (or other version if/as needed) at https://www.saxonica.com/download/SaxonHE12-8J.zip
+
+  - Unzip and copy `saxon-he-12.8.jar` into the new `MorganaXProc-IIIse/MorganaXProc-IIIse_lib`
   - Take care no other versions of Saxon are present (which might conflict)
   - Discard the rest if unwanted - keeping the zip file intact for the license information etc.
 
-(TODO May 2026 - this download can be updated to Saxon 12.8 ...)
+If you wish to run a licensed copy of a more capable Saxon (with its optimizations and extensions), this is possible! using either XProc engine, with a configuration. But this goes beyond the (open-source) edge of the Zone.
 
-##### Note on Saxon versions (in Morgana)
+#### Acquire SchXSLT OR SchXSLT2 for Schematron support
 
-We have successfully run with versions Saxon-HE 12.3 and 12.5, with the runtime flag ` -xslt-connector=saxon12-3` when invoking Morgana. ([As noted on the Morgana web site](https://www.xml-project.com/manual/ch02.html#configuration_s1_1_s2_2) this configuration should be forward compatible).
+If you want to be able to run ISO Schematron for validation, use one of these libraries (well-tested or newer-and-nicer).
 
-We are also doing our best to track versions of Saxon -- as you may see if GRAB-SAXON actually grabs a later version -- be that as may be, developers who have success with later versions and reasons to need a Saxon upgrade should [please make an Issue](https://github.com/usnistgov/oscal-xproc3/issues) or (better) [a PR](https://github.com/usnistgov/oscal-xproc3/pulls).
+Use SchXSLT if you are also using XSpec, which wants the same library; SchXSLT2 if not.
 
-#### Acquire SchXSLT for Schematron support
+Use [DOWNLOAD-SCHXSLT2.xpl](DOWNLOAD-SCHXSLT2.xpl) to pull down SchXSLT2 and [DOWNLOAD-SCHXSLT.xpl](DOWNLOAD-SCHXSLT.xpl) for older SchXSLT. 
 
-Use [lib/GRAB-SCHXSLT.xpl](lib/GRAB-SCHXSLT.xpl) to pull down SchXSLT.
-
-Or, by hand - find [David Maus's SchXSLT](https://github.com/schxslt/schxslt) on Github. The [distribution you want](https://github.com/schxslt/schxslt/releases/download/v1.9.5/schxslt-1.9.5-xproc.zip) provides XProc support.
-
-(TODO May 2026 - update?)
+Or, by hand - find [David Maus's SchXSLT](https://codeberg.org/SchXslt) on Codeberg. You want the distribution file that provides XProc support.
 
 #### Acquire XSpec for XSpec support
 
-Use [lib/GRAB-XSPEC.xpl](lib/GRAB-XSPEC.xpl) to pull down XSpec.
+Use [DOWNLOAD-XSPEC.xpl](DOWNLOAD-XSPEC.xpl) to pull down XSpec, and [DOWNLOAD-SCHXSLT.xpl](DOWNLOAD-SCHXSLT.xpl) to acquire SchXSLT (a dependency).
 
-(TODO May 2026 - update?)
+This is an older XSpec - the new XSpec on deck (at writing), XSpec 4.0, will not require the SchXSLT component.
 
 #### Skip these downloads
 
@@ -100,6 +130,12 @@ As an alternative, a [Powershell script to set up XML Calabash](setup-xml-calaba
 XML Calabash is a little simpler to set up since it comes all-in-one with its dependencies included.
 
 If you can't run this script you can follow what it does by hand - essentially, download XML Calabash and unzip into the correct location.
+
+#### XSpec and XML Calabash
+
+The same distribution of XSpec described above also works with XML Calabash.
+
+Saxon-HE and Schematron come with XML Calabash and do not require separate downloads.
 
 ### Check your paths
 
@@ -134,6 +170,7 @@ If the smoke tests work, but a pipeline does not function correctly, any problem
 XProc being XML-centric, you will typically see information about errors and warnings in XML format. While this arguably compromises their legibility on the screen, generally speaking the messages embedded are fairly helpful. And this XML is very useful for other purposes, as it can be captured and processed.
 
 Any problems with any pipelines on this site (or any pipelines not otherwise called out in documentation or comments) can be [reported](https://github.com/wendellpiez/xproc-zone/issues). Of course, if your aim is to learn XProc and related tech, we also hope you are looking at useful error messages very soon - signposts on your journey.
+
 ### TBD - Dynamic PowerXML - DPX
 
 (Conceptual and unrealized)
@@ -161,22 +198,6 @@ assign handling to output ports
 show pipeline internals?
 capture runtime messages
 execute
-
-### Notes
-
-Enable the module from a console command prompt by importing it:
-
-> Import-Module path/to/PowerXML/powerxml.psm1 -Force
-
-(The `-Force` setting enables a clean import over any earlier module of the same name.)
-
-With the module imported, commands work like this:
-
-```
->  Transform-XML -Pipeline ".\smoketest\TEST-XSLT.xpl"
-```
-
-This can also be done in a Powershell script (when there is time to learn).
 
 ---
 

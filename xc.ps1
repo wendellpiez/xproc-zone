@@ -23,7 +23,7 @@ $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 # The main jar file finds the others
 # According to https://docs.xmlcalabash.com/userguide/current/running.html
 
-$XML_CALABASH_JAR = Join-Path $scriptPath "lib\xmlcalabash-$XML_CALABASH_VERSION\xmlcalabash-app-$XML_CALABASH_VERSION.jar"
+$XML_CALABASH_JAR = Join-Path $scriptPath "lib\XMLCalabash\xmlcalabash-app-$XML_CALABASH_VERSION.jar"
 $XML_CALABASH_CONFIG = Join-Path $scriptPath "lib\xml-calabash3-config.xml"
 
 # To set the console encoding

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="3.0">
 
-   <!-- SchXSLT is at https://github.com/schxslt/schxslt
+  <!-- SchXSLT is archived at https://codeberg.org/SchXslt/schxslt/
         It is an XSLT-based Schematron processor -->
    
    <!-- /end prologue -->
    <!-- start subpipeline -->
    
-   <p:variable name="download-path" select="'https://github.com/schxslt/schxslt/releases/download/v1.10.1'"/>
+   <p:variable name="download-path" select="'https://codeberg.org/SchXslt/schxslt/releases/download/v1.10.1'"/>
    <!--<p:variable name="download-path" select="'.'"/>-->
    <p:variable name="archive-basename"  select="'schxslt-1.10.1'"/>
    
    <p:variable name="libdir" select="resolve-uri('../lib/', static-base-uri())"/>
-   
    
    <p:variable name="zip-name"  select="$archive-basename || '-xproc.zip'"/>
    <p:variable name="target-dir" select="resolve-uri($archive-basename, $libdir)"/>
