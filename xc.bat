@@ -7,3 +7,4 @@ set VERSION=3.0.45
 
 call java -Dfile.encoding=COMPAT -jar %~P0\lib\XMLCalabash\xmlcalabash-app-%VERSION%.jar -c:%~P0\lib\xml-calabash3-config.xml %*
 
+pause

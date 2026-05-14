@@ -2,42 +2,57 @@
 
 Need help, have an update or a correction? [please make an Issue](https://github.com/usnistgov/oscal-xproc3/issues) or (better) [a PR](https://github.com/usnistgov/oscal-xproc3/pulls).
 
-Instructions (updated from time to time) on installing
+This page offers instructions (updated from time to time) on using utilities provided to install
 
-- XML Calabash - an XProc 3.0/3.1 processor developed by Norm Walsh (Saxonica)
-- Morgana XProc IIIse - another XProc 3.0/3.1 processor by Achim Berndzen (xmlProject)
-- PowerXML - experimental Powershell wrapper for either (both) the forementioned (the Turnout)
+- [XML Calabash](https://docs.xmlcalabash.com/) - an XProc 3.0/3.1 processor developed by Norm Walsh ([Saxonica](https://www.saxonica.com/welcome/welcome.xml))
+- [Morgana XProc IIIse](https://www.xml-project.com/morganaxproc-iiise.html) - another XProc 3.0/3.1 processor by Achim Berndzen ([xmlProject](https://www.xml-project.com/))
+- [PowerXML](https://github.com/theturnout/powerxml) - experimental Powershell wrapper for either (both) the forementioned (the [Turnout](https://turnout.rocks/))
 
-XProc pipelines (other things being equal) can be run with any **one** of these - you do not need any, or all. (The variables will be around the edges with respect to the features sets of the processors.)
+XProc pipelines (other things being equal) can be run with any **one** of these - you do not need any, or all. (The variables will be around the edges with respect to the feature sets of the processors.)
 
-Because any conformant XProc 3.0/3.1 setup should work with pipelines in this repository, you should otherwise and also feel free to use any installation and configuration you have (including XProc applications under development) and report back interesting findings.
+Because any conformant XProc 3.0/3.1 setup should work with pipelines in this repository, also feel free to use any installation and configuration you have (including XProc applications under development) and report back interesting findings.
 
 Keep in mind these are all moving targets and at some time soon the information here will be out of date.
 
 See [THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md) for licensing information on the products and open-source initiatives - of special interest when you plan to modify or extend the Zone.
 
-## Using Powershell - PowerXML XProc/XSLT
+## How to run XProc pipelines?
 
-A Powershell-native execution framework, offering a choice of processors (Morgana IIIse or XML Calabash) and bundling their dependencies, [PowerXML](https://github.com/theturnout/powerxml) provides package management along with a runtime API for XProc and XSLT, including both Morgana and XML Calabash as XProc processor options.
+Having the capability puts you one step away from running the pipelines - next what?
 
-PowerXML has been developed for internal use at theturnout.org          at theturnout.org, but is available for experiment. For Powershell users, this gives you a no-fuss installation offering both major processors along with Saxon (for XSLT) and a couple of other tools (for XSD support).
+Using scripts offered, you can run pipelines using appropriate arguments (varying per processor). It is especially easy to run a standalone pipeline (so called because it requires no runtime bindings or options to work), such as (using a batch script):
 
-## Using Java 
+```
+> xc.bat ./path/to/PIPELINE.xpl
+```
 
-If Powershell is not your thing, or if you need closer control over versioning in the toolset, you can run XProc directly using Java from the command line. Scripts in the repository provide shells for executing either XML Calabash or Morgana IIIse, whichever is available.
+where `PIPELINE.xpl` is an XProc file.
 
-- `xc.bat` - DOS batch file running XML Calabash (installed in `lib`)
-- `xc.ps1` - Windows Powershell script running XML Calabash
-- `xz.bat` - DOS batch file running Morgana IIIse (installed in `lib`)
-- `xz.sh`  - bash shell for Morgana IIIse
+Do we really live this way? Yes, we do, until we no longer have to. Some day XProc may be available in tools you use every day casually, with no extra effort and no console window.
 
-A bash shell script for XML Calabash or a Powershell script for Morgana can be contrived from these as well.
+For those who really can't stand the command line, alternatives today (2026) include:
 
-In this folder (setup) are also scripts for downloading and unpackaging the respective libraries:
+- Using a batch file or script file to support drag and drop in the GUI (this has been demonstrated on Windows)
+- Creating a file association between XProc files and a script or batch file invoking an engine, so it runs on **File Open**
+- Skipping the scripts and downloads and acquiring a commercial product that supports XProc - (oXygen XML has nice [trial license](https://www.oxygenxml.com/xml_editor/register.html) on request)
+
+
+## Downloading PowerXML - XProc/XSLT in Powershell
+
+A Powershell-native execution framework, offering a choice of processors (Morgana IIIse or XML Calabash) and bundling their dependencies, [PowerXML](https://github.com/theturnout/powerxml) provides package management along with a runtime API for XProc and XSLT, including both Morgana and XML Calabash as XProc processor options. (It bundles Java and C distributions as needed, and may require dependencies on your machine.)
+
+PowerXML has been developed for internal use at [theturnout.org](theturnout.org), and is kindly made available to XProc users for experiment. For Powershell users, this gives you a no-fuss installation offering both major processors along with Saxon (for XSLT) and a couple of other tools (for XSD support).
+
+To use PowerXML, navigate to the [code repository](https://github.com/theturnout/powerxml) and follow the instructions provided.
+
+## Downloading and using a Java-based engine 
+
+If Powershell is not your thing, or if you need closer control over versioning in the toolset, another alternative is to run XProc directly using Java from the command line. Scripts in the repository provide shells for executing either XML Calabash or Morgana IIIse, whichever you decide to make available.
+
+In this folder (setup) can be found scripts for downloading and unpackaging the respective libraries:
+
 - `setup-morgana.sh` (bash) or `setup-morgana.ps1` (Powershell) to set up Morgana
 - `setup-xml-calabash.ps1` to set up XML Calabash (again with apologies, as bash users will have to figure it out)
-
-Download one or both processors (download utilities are offered here), and try them out.
 
 ### Which do I pick?
 
@@ -64,20 +79,20 @@ Finally, being able to call on expert assistance from someone who knows is a goo
 
 ### Set up Morgana
 
+Run a script to download Morgana. Then run XProc pipelines to install its dependencies for extended capabilities: XSLT 3.0; Schematron; XSpec.
+
 With Java and `bash`, run `./setup-morgana.sh` to set up. `curl` and `unzip` must be available on your command line.
 
 Alternatively, with Windows Powershell and Java, run `setup-morgana.ps1`.
 
-Or, by hand --
-
-Morgana can be downloaded from  https://sourceforge.net/projects/morganaxproc-iiise/files
+Alternatively, Morgana can be downloaded from [its repository]( https://sourceforge.net/projects/morganaxproc-iiise/files).
 
   - Get the latest `.zip`, don't worry about source code
-  - Unzip it into a top-level `lib` directory
-    - Create the directory if necessary
-    - Take care to place in the repository `lib`, not in a project folder's `lib`.
+  - Unzip it into the repository (top-level) `lib` directory (not a project `lib`)
+    - Then you can use the scripts unaltered
+    - Though you should still inspect and adjust them
 
-In the `lib` folder is also the [Morgana configuration file](../lib/morgana-config.xml), which can be consulted and edited to switch out or add available libraries.
+In the `lib` folder is also the [Morgana configuration file](../lib/morgana-config.xml), which can be consulted and edited to switch out or add available libraries for Morgana.
 
 The [Morgana IIIse User Manual](https://www.xml-project.com/manual/index.html) also provides installation and configuration help.
 
@@ -144,6 +159,31 @@ The scripts [xz.sh](xz.sh) and [xz.bat](xz.bat) call scripts in the Morgana dist
 Same for the scripts [xc.bat](xc.bat) and [xc.ps1](xc.ps1) calling XML Calabash.
 
 See [Morgana documentation](https://www.xml-project.com/manual/index.html) for more support on running Morgana and XProc, including [Saxon configuration](https://www.xml-project.com/manual/ch02.html#configuration_s1_1_s2_2).
+
+Similarly, [XML Calabash](https://docs.xmlcalabash.com/userguide/current/index.html) has its own set of special capabilities
+
+## How to run XProc (more detail)
+
+At the repository root, four scripts are offered, all of which do the same thing - invoke an XProc engine to execute an XProc pipeline. Use the one that works best on your system.
+
+- `xc.bat` - DOS batch file running XML Calabash (installed in `lib`)
+- `xc.ps1` - Windows Powershell script running XML Calabash
+- `xz.bat` - DOS batch file running Morgana IIIse (installed in `lib`)
+- `xz.sh`  - bash shell for Morgana IIIse
+
+A bash shell script for XML Calabash or a Powershell script for Morgana can be contrived from these as well.
+
+As described above, there are many other ways ...
+
+### Why all these options?
+
+There is no single way to run commodity software, by definition. The options offered are not the only or "correct" options. Powershell and `bash` alternatives have their own advantages, and these are only a few. YMMV.
+
+### Hints and tips
+
+Consider putting the repository path on your system PATH for greater convenience using the command line to run pipelines.
+
+On a Windows system it is also possible to associate an entire file type (such as `*.xpl`) with a a `bat` file executable - offering a convenient way to run standalone XProc pipelines requiring no special runtime settings, with the **Open** choice on the context menu (right click on file) in Explorer.
 
 ## Try your own XProc engine
 
