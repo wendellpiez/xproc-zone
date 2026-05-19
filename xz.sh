@@ -2,9 +2,6 @@
 
 # This script attempts to run MorganaXProcIII
 
-# TODO: harden so this can be run from anywhere
-# TODO: test in a GUI for drag-and-drop support on simple XProcs (no args)
-
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 MORGANA="${SCRIPT_DIR}/lib/MorganaXProc-IIIse/Morgana.sh"
 

@@ -13,6 +13,16 @@
   
   <!--currently the value of @xsl-formatter appears to have no effect
       and UserConfig is ignored in any case even if it is set for FOP -->
-  <cc:paged-media xsl-formatter="https://xmlcalabash.com/paged-media/xsl-formatter/fop"
-    UserConfig="fop.xconf"/>
+  <!--<cc:paged-media xsl-formatter="https://xmlcalabash.com/paged-media/xsl-formatter/fop"
+    UserConfig="/C:/Users/ xxx /Documents/Projects/Github/xproc-zone/lib/fop.xconf"/>-->
+  <!--file:/C:/Users/wapie/Documents/Projects/Github/xproc-zone/lib/fop.xconf-->
+
+  <!-- So instead, an AVT in @UserConfig provides for finding the file relative to this configuration file -->
+  <!-- Thanks to ndw for this creative solution and see also
+       https://codeberg.org/xmlcalabash/xmlcalabash3/issues/711 -->
+<!--  <cc:paged-media xsl-formatter="https://xmlcalabash.com/paged-media/xsl-formatter/fop"
+    UserConfig="{ 'fop.xconf' => resolve-uri(base-uri(.)  => substring-after('file:') }"/>-->
+  <!--<cc:paged-media xsl-formatter="https://xmlcalabash.com/paged-media/xsl-formatter/fop"
+    UserConfig="{substring-after(resolve-uri('fop.xconf', base-uri(.)), 'file:')}"/>-->
+  
 </cc:xml-calabash>

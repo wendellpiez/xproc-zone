@@ -9,16 +9,21 @@ if (-not (Test-Path -Path "../lib")) {
 Push-Location -Path "../lib"
 
 # XML Calabash version
-
 # https://codeberg.org/xmlcalabash/xmlcalabash3/releases/download/3.0.45/xmlcalabash-3.0.45.zip
 
-$VERSION = "3.0.45"
+$VERSION = "3.0.47"
 $RELEASES = "https://codeberg.org/xmlcalabash/xmlcalabash3/releases/download"
 $ZIPFILE = "xmlcalabash-$VERSION.zip"
 
+# Check if folder is already there, balk if so
+if (Test-Path -Path "XMLCalabash") {
+    Write-Host "You have an XMLCalabash folder in your ../lib - please remove or rename it to proceed ..."
+    Pop-Location
+    Return
+}
 
 # Check if we already got one
-if (-not (Test-Path -Path "$ZIPFILE")) {
+elseif (-not (Test-Path -Path "$ZIPFILE")) {
     Write-Host "Looking for XML Calabash version $VERSION from releases page $RELEASES ..."
     Invoke-WebRequest -UserAgent "Wget" -Uri "$RELEASES/$VERSION/$ZIPFILE" -OutFile "$ZIPFILE" -ErrorAction:Stop
     Write-Host "Downloaded $ZIPFILE ..."
@@ -29,7 +34,7 @@ if (-not (Test-Path -Path "$ZIPFILE")) {
     [void]$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
-# Unzip the downloaded file
+# Unzip the file
 Expand-Archive -Path "$ZIPFILE" -DestinationPath "." -Force
 Rename-Item -Path "xmlcalabash-$VERSION" -NewName "XMLCalabash"
 Write-Host "XML Calabash is available - next, try executing a pipeline ..."

@@ -15,7 +15,7 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # XML Calabash version
-$XML_CALABASH_VERSION = "3.0.45"
+$XML_CALABASH_VERSION = "3.0.47"
 
 # XML Calabash file paths
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
